@@ -102,35 +102,44 @@
   .btn-ver:hover{background:var(--azul2)}
 
   /* MODAL */
-  .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:200;align-items:center;justify-content:center;padding:16px}
+  .modal-overlay{display:none;position:fixed;inset:0;background:rgba(10,15,40,0.75);backdrop-filter:blur(4px);z-index:200;align-items:center;justify-content:center;padding:16px;animation:fadeIn 0.2s ease}
   .modal-overlay.open{display:flex}
-  .modal{background:#fff;border-radius:16px;width:100%;max-width:680px;max-height:95vh;overflow-y:auto;position:relative;display:grid;grid-template-rows:auto 1fr}
-  .modal-header{background:var(--azul);padding:16px 20px;display:flex;align-items:center;justify-content:space-between;border-radius:16px 16px 0 0}
-  .modal-header h3{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:700;color:var(--amarillo)}
-  .modal-close{background:none;border:none;color:rgba(255,255,255,0.7);font-size:24px;cursor:pointer;line-height:1;padding:0}
-  .modal-close:hover{color:#fff}
-  .modal-body{padding:16px}
-  .modal-img{width:100%;height:160px;background:var(--gris);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:60px;margin-bottom:12px;overflow:hidden}
-  .modal-img img{width:100%;height:100%;object-fit:contain;padding:16px}
-  .modal-marca{font-size:11px;font-weight:700;color:var(--azul2);text-transform:uppercase;letter-spacing:1.5px}
-  .modal-nombre{font-size:16px;font-weight:600;color:var(--texto);margin:4px 0 8px;line-height:1.3}
-  .modal-precio{font-family:'Barlow Condensed',sans-serif;font-size:30px;font-weight:800;color:var(--azul)}
-  .modal-cuotas{font-size:14px;color:var(--verde);font-weight:600;margin-top:4px}
-  .modal-envio{display:inline-flex;align-items:center;gap:6px;background:#e8f5e9;color:var(--verde);font-size:13px;font-weight:600;padding:6px 14px;border-radius:8px;margin:12px 0}
-  .modal-desc{font-size:12px;color:var(--texto2);line-height:1.5;margin:8px 0;padding:10px;background:var(--gris);border-radius:8px;border-left:3px solid var(--amarillo);max-height:60px;overflow:hidden}
-  .modal-caracteres{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:12px}
-  .carac{background:var(--gris);border-radius:8px;padding:10px 12px}
-  .carac-label{font-size:11px;color:var(--texto2);margin-bottom:2px}
-  .carac-val{font-size:14px;font-weight:600;color:var(--texto)}
-  .btn-mp{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:11px;background:#009EE3;color:#fff;border:none;border-radius:10px;font-size:16px;font-weight:700;cursor:pointer;font-family:'Barlow',sans-serif;transition:background 0.2s;margin-bottom:10px}
-  .btn-mp:hover{background:#0081c2}
+  @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+  @keyframes slideUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+  .modal{background:#fff;border-radius:20px;width:100%;max-width:720px;max-height:95vh;overflow-y:auto;position:relative;animation:slideUp 0.25s ease;box-shadow:0 24px 80px rgba(0,0,0,0.3)}
+  .modal-top{display:grid;grid-template-columns:1fr 1fr;min-height:320px}
+  .modal-img-panel{background:linear-gradient(135deg,#f0f4ff 0%,#e8edf8 100%);border-radius:20px 0 0 0;display:flex;align-items:center;justify-content:center;font-size:72px;position:relative;overflow:hidden;min-height:280px}
+  .modal-img-panel::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at 30% 70%,rgba(13,27,94,0.06) 0%,transparent 70%)}
+  .modal-img-panel img{width:100%;height:100%;object-fit:contain;padding:24px;position:relative;z-index:1}
+  .modal-info-panel{padding:28px 24px 20px;display:flex;flex-direction:column;border-radius:0 20px 0 0}
+  .modal-marca-badge{display:inline-block;background:var(--azul);color:var(--amarillo);font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:4px 12px;border-radius:20px;margin-bottom:12px;width:fit-content}
+  .modal-nombre{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:700;color:var(--texto);line-height:1.2;margin-bottom:16px}
+  .modal-precio-wrap{display:flex;align-items:baseline;gap:8px;margin-bottom:8px}
+  .modal-precio{font-family:'Barlow Condensed',sans-serif;font-size:42px;font-weight:800;color:var(--azul);line-height:1}
+  .modal-cuotas{font-size:13px;color:var(--verde);font-weight:600}
+  .modal-envio-badge{display:inline-flex;align-items:center;gap:6px;background:#e8f5e9;color:#1b5e20;font-size:12px;font-weight:700;padding:6px 14px;border-radius:8px;margin-bottom:16px;border:1px solid #c8e6c9}
+  .modal-stock-wrap{display:flex;align-items:center;gap:8px;margin-bottom:auto}
+  .modal-stock-dot{width:8px;height:8px;border-radius:50%;background:#4caf50;box-shadow:0 0 0 3px #c8e6c9}
+  .modal-stock-text{font-size:13px;color:var(--texto2);font-weight:500}
+  .modal-body{padding:20px 24px 24px}
+  .modal-desc{font-size:13px;color:var(--texto2);line-height:1.6;padding:14px 16px;background:linear-gradient(135deg,#f8f9ff,#f4f5f7);border-radius:10px;border-left:4px solid var(--amarillo);margin-bottom:16px}
+  .modal-caracteres{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px;margin-bottom:20px}
+  .carac{background:#f8f9ff;border:1px solid #e8eaf6;border-radius:10px;padding:12px 14px}
+  .carac-label{font-size:10px;font-weight:700;color:#9fa8da;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
+  .carac-val{font-size:15px;font-weight:700;color:var(--azul)}
+  .modal-actions{display:flex;flex-direction:column;gap:10px;margin-bottom:16px}
+  .btn-mp{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:14px;background:linear-gradient(135deg,#009EE3,#0077b6);color:#fff;border:none;border-radius:12px;font-size:16px;font-weight:700;cursor:pointer;font-family:'Barlow',sans-serif;transition:all 0.2s;box-shadow:0 4px 16px rgba(0,158,227,0.3)}
+  .btn-mp:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(0,158,227,0.4)}
   .btn-mp svg{width:100px;flex-shrink:0}
-  .btn-carrito{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:9px;background:#fff;color:var(--azul);border:2px solid var(--azul);border-radius:10px;font-size:15px;font-weight:600;cursor:pointer;font-family:'Barlow',sans-serif;transition:all 0.2s}
-  .btn-carrito:hover{background:var(--azul);color:#fff}
-  .medios-pago{margin-top:16px;padding:14px;border:1px solid var(--gris2);border-radius:8px}
-  .medios-pago p{font-size:12px;color:var(--texto2);margin-bottom:8px;font-weight:600}
+  .btn-carrito{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:13px;background:#fff;color:var(--azul);border:2px solid var(--azul);border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;font-family:'Barlow',sans-serif;transition:all 0.2s}
+  .btn-carrito:hover{background:var(--azul);color:#fff;transform:translateY(-1px)}
+  .modal-close{position:absolute;top:16px;right:16px;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.9);border:none;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:10;box-shadow:0 2px 8px rgba(0,0,0,0.15);transition:all 0.2s;color:var(--texto)}
+  .modal-close:hover{background:#fff;transform:scale(1.1)}
+  .medios-pago{padding:14px 16px;background:#fafafa;border-radius:10px;border:1px solid var(--gris2)}
+  .medios-pago p{font-size:11px;color:var(--texto2);margin-bottom:8px;font-weight:700;text-transform:uppercase;letter-spacing:1px}
   .medios-icons{display:flex;flex-wrap:wrap;gap:6px}
-  .medio{padding:4px 10px;border:1px solid var(--gris2);border-radius:5px;font-size:11px;color:var(--texto2);font-weight:500}
+  .medio{padding:5px 12px;background:#fff;border:1px solid var(--gris2);border-radius:6px;font-size:11px;color:var(--texto2);font-weight:600}
+  @media(max-width:580px){.modal-top{grid-template-columns:1fr}.modal-img-panel{border-radius:20px 20px 0 0;min-height:200px}.modal-info-panel{border-radius:0}}
 
   /* CARRITO */
   .carrito-float{position:fixed;bottom:24px;right:24px;z-index:100;background:var(--azul);color:#fff;border-radius:50px;padding:12px 20px;display:flex;align-items:center;gap:10px;cursor:pointer;box-shadow:0 4px 20px rgba(13,27,94,0.35);transition:transform 0.2s;font-weight:600;font-size:14px}
@@ -328,27 +337,32 @@
 <!-- MODAL PRODUCTO -->
 <div class="modal-overlay" id="modal" onclick="closeModal(event)">
   <div class="modal">
-    <div class="modal-header">
-      <h3 id="m-marca"></h3>
-      <button class="modal-close" onclick="closeModalBtn()">✕</button>
+    <button class="modal-close" onclick="closeModalBtn()">✕</button>
+    <div class="modal-top">
+      <div class="modal-img-panel" id="m-img"></div>
+      <div class="modal-info-panel">
+        <div class="modal-marca-badge" id="m-marca"></div>
+        <div class="modal-nombre" id="m-nombre"></div>
+        <div class="modal-precio" id="m-precio"></div>
+        <div class="modal-cuotas" id="m-cuotas"></div>
+        <div class="modal-envio-badge" id="m-envio"></div>
+        <div id="m-stock-wrap" class="modal-stock-wrap"></div>
+      </div>
     </div>
     <div class="modal-body">
-      <div class="modal-img" id="m-img"></div>
-      <div class="modal-nombre" id="m-nombre"></div>
-      <div class="modal-precio" id="m-precio"></div>
-      <div class="modal-cuotas" id="m-cuotas"></div>
-      <div class="modal-envio" id="m-envio"></div>
       <div class="modal-desc" id="m-desc"></div>
       <div class="modal-caracteres" id="m-carac"></div>
-      <button class="btn-mp" onclick="pagarMP()">
-        <svg viewBox="0 0 200 40" xmlns="http://www.w3.org/2000/svg"><text x="0" y="30" font-size="26" fill="white" font-weight="bold" font-family="sans-serif">Mercado Pago</text></svg>
-      </button>
-      <button class="btn-carrito" onclick="agregarAlCarrito()">🛒 Agregar al carrito</button>
+      <div class="modal-actions">
+        <button class="btn-mp" onclick="pagarMP()">
+          <svg viewBox="0 0 200 40" xmlns="http://www.w3.org/2000/svg"><text x="0" y="30" font-size="26" fill="white" font-weight="bold" font-family="sans-serif">Mercado Pago</text></svg>
+        </button>
+        <button class="btn-carrito" onclick="agregarAlCarrito()">🛒 Agregar al carrito</button>
+      </div>
       <div class="medios-pago">
-        <p>Medios de pago aceptados:</p>
+        <p>Medios de pago aceptados</p>
         <div class="medios-icons">
-          <span class="medio">💳 Débito Visa</span>
-          <span class="medio">💳 Débito Mastercard</span>
+          <span class="medio">💳 Visa</span>
+          <span class="medio">💳 Mastercard</span>
           <span class="medio">🏦 Abitab</span>
           <span class="medio">🏦 Redpagos</span>
           <span class="medio" style="background:#009EE3;color:#fff;border-color:#009EE3">💙 Mercado Pago</span>
@@ -523,19 +537,28 @@ function openModal(id) {
   if (!p) return;
   prodActual = p;
   const foto = p.foto
-    ? `<img src="${p.foto}" style="width:100%;height:100%;object-fit:contain;padding:8px" alt="${p.nombre}" onerror="this.parentElement.innerHTML='<span style=font-size:60px>📦</span>'">`
-    : '<span style="font-size:60px">📦</span>';
+    ? `<img src="${p.foto}" style="width:100%;height:100%;object-fit:contain;padding:24px" alt="${p.nombre}" onerror="this.parentElement.innerHTML='<span style=font-size:72px>📦</span>'">`
+    : '<span style="font-size:72px">📦</span>';
   document.getElementById('m-img').innerHTML      = foto;
-  document.getElementById('m-marca').textContent  = p.marca  || '';
+  document.getElementById('m-marca').textContent  = p.marca  || 'ARMHEL';
   document.getElementById('m-nombre').textContent = p.nombre;
   document.getElementById('m-precio').textContent = formatPrecio(p);
   document.getElementById('m-cuotas').textContent = '';
-  document.getElementById('m-envio').innerHTML    = '🚚 Llega mañana en Montevideo' + (p.envio === 'gratis' ? ' · Envío gratis' : '');
+  document.getElementById('m-envio').innerHTML    = '🚚 Llega mañana en Montevideo' + (p.envio === 'gratis' ? ' · <strong>Envío gratis</strong>' : '');
   document.getElementById('m-desc').textContent   = p.desc   || '';
+  document.getElementById('m-desc').style.display = p.desc   ? '' : 'none';
 
   const sku   = p.sku ? `<div class="carac"><div class="carac-label">SKU</div><div class="carac-val">${p.sku}</div></div>` : '';
-  const stock = `<div class="carac"><div class="carac-label">Stock</div><div class="carac-val">${p.stock > 0 ? p.stock + ' unidades' : 'Sin stock'}</div></div>`;
+  const stock = `<div class="carac"><div class="carac-label">Stock</div><div class="carac-val">${p.stock > 0 ? p.stock + ' uds.' : 'Sin stock'}</div></div>`;
   document.getElementById('m-carac').innerHTML = sku + stock;
+
+  const stockWrap = document.getElementById('m-stock-wrap');
+  if (p.stock > 0) {
+    stockWrap.innerHTML = '<div class="modal-stock-dot"></div><span class="modal-stock-text">En stock · disponible</span>';
+  } else {
+    stockWrap.innerHTML = '<div class="modal-stock-dot" style="background:#ef5350;box-shadow:0 0 0 3px #ffcdd2"></div><span class="modal-stock-text">Sin stock</span>';
+  }
+
   document.getElementById('modal').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
