@@ -1,0 +1,17 @@
+{
+  "name": "armhel",
+  "version": "1.0.0",
+  "description": "Backend con IA y Mercado Pago",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "mercadopago": "^1.5.15"
+  }
+}
