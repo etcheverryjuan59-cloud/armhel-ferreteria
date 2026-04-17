@@ -1,3 +1,4 @@
+const fetch = require("node-fetch");
 const express = require("express");
 const cors = require("cors");
 
@@ -13,24 +14,46 @@ app.get("/", (req, res) => {
 });
 
 
-// 🤖 Ruta del asesor IA (CLAVE)
-app.post("/ia", (req, res) => {
+// 🤖 Ruta IA
+app.post("/ia", async (req, res) => {
   try {
     const { mensaje } = req.body;
 
-    console.log("Mensaje recibido:", mensaje);
+    const response = await fetch("https://api.anthropic.com/v1/messages", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "x-api-key": process.env.ANTHROPIC_API_KEY,
+        "anthropic-version": "2023-06-01"
+      },
+      body: JSON.stringify({
+        model: "claude-sonnet-4-20250514",
+        max_tokens: 200,
+        messages: [
+          {
+            role: "user",
+            content: `Sos asesor técnico de ferretería. Responde claro y corto:\n\n${mensaje}`
+          }
+        ]
+      })
+    });
+
+    const data = await response.json();
 
     res.json({
-      respuesta: "Asesor activo: " + mensaje
+      respuesta: data.content?.[0]?.text || "Sin respuesta"
     });
 
   } catch (error) {
     console.error(error);
-    res.status(500).send("Error en IA");
+    res.status(500).json({
+      respuesta: "Error en IA"
+    });
   }
 });
 
 
+// 🚀 PORT
 const PORT = process.env.PORT || 4000;
 
 app.listen(PORT, () => {
