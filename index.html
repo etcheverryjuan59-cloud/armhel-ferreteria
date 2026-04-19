@@ -679,17 +679,21 @@ Pregunta del cliente: ${pregunta}
 Respondé en máximo 3 oraciones. Si el producto no tiene stock, mencionalo y sugerí consultar por WhatsApp.`;
 
   try {
-    const res = await fetch('https://api.anthropic.com/v1/messages', {
+    const res = await fetch('/api/asesor', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
-        max_tokens: 150,
-        messages: [{ role: 'user', content: prompt }]
+        pregunta: prompt,
+        producto: {
+          nombre: prodActual.nombre,
+          descripcion: prodActual.desc,
+          precio: prodActual.precio,
+          stock: prodActual.stock
+        }
       })
     });
     const data = await res.json();
-    const texto = data.content?.[0]?.text || 'No se pudo responder en este momento.';
+    const texto = data.respuesta || 'No se pudo responder en este momento.';
     respDiv.innerHTML = texto.replace(/\n/g, '<br>');
     cacheIA[key] = respDiv.innerHTML;
   } catch (e) {
