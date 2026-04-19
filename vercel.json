@@ -3,7 +3,7 @@
   "routes": [
     {
       "src": "/api/asesor",
-      "dest": "/API/asesor.js"
+      "dest": "/asesor.js"
     },
     {
       "src": "/(.*)",
