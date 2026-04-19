@@ -1,10 +1,5 @@
 {
   "version": 2,
-  "functions": {
-    "API/asesor.js": {
-      "runtime": "nodejs20.x"
-    }
-  },
   "routes": [
     {
       "src": "/api/asesor",
