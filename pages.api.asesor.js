@@ -1,0 +1,17 @@
+{
+  "functions": {
+    "api/asesor.js": {
+      "runtime": "nodejs20.x"
+    }
+  },
+  "routes": [
+    {
+      "src": "/api/asesor",
+      "dest": "/API/asesor.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ]
+}
