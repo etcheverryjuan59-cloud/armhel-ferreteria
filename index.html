@@ -78,10 +78,10 @@ body{font-family:'Manrope',sans-serif;background:var(--gris);color:var(--texto);
 .nav-btn.active{color:var(--amarillo);border-bottom-color:var(--amarillo)}
 
 /* ── HERO BANNER ── */
-.hero{background:linear-gradient(105deg,var(--azul3) 0%,var(--azul) 40%,#1535a0 70%,#0d1b5e 100%);position:relative;overflow:hidden;min-height:320px;display:flex;align-items:center}
+.hero{background:linear-gradient(105deg,rgba(10,18,64,0.97) 0%,rgba(13,27,94,0.85) 45%,rgba(13,27,94,0.2) 100%),url('hero.jpg') center/cover no-repeat;position:relative;overflow:hidden;min-height:360px;display:flex;align-items:center}
 .hero-bg-pattern{position:absolute;inset:0;background-image:radial-gradient(circle at 20% 50%,rgba(255,214,0,0.06) 0%,transparent 50%),radial-gradient(circle at 80% 20%,rgba(255,255,255,0.04) 0%,transparent 40%);pointer-events:none}
 .hero-inner{max-width:1280px;margin:0 auto;padding:40px 24px;display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center;position:relative;z-index:1;width:100%}
-.hero-left h1{font-family:'Barlow Condensed',sans-serif;font-size:64px;font-weight:900;color:#fff;line-height:0.95;letter-spacing:1px;text-transform:uppercase}
+.hero-left h1{font-family:'Barlow Condensed',sans-serif;font-size:72px;font-weight:900;color:#fff;line-height:0.9;letter-spacing:1px;text-transform:uppercase;text-shadow:2px 4px 20px rgba(0,0,0,0.5)}
 .hero-left h1 .hl{color:var(--amarillo);display:block}
 .hero-left p{color:rgba(255,255,255,0.7);font-size:15px;margin-top:14px;max-width:380px;line-height:1.6}
 .hero-badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
@@ -324,7 +324,6 @@ footer{background:var(--azul3);color:rgba(255,255,255,0.7);padding:36px 24px;mar
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-bg-pattern"></div>
   <div class="hero-inner">
     <div class="hero-left">
       <h1>FERRETERÍA<span class="hl">INDUSTRIAL</span></h1>
