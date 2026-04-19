@@ -1,5 +1,3 @@
-const fetch = require("node-fetch");
-
 module.exports = async function handler(req, res) {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
@@ -11,9 +9,8 @@ module.exports = async function handler(req, res) {
   const { pregunta, producto } = req.body ?? {};
   if (!pregunta) return res.status(400).json({ error: "El campo pregunta es obligatorio" });
 
-  const systemPrompt = `Sos el asesor técnico de ARMHEL Ferretería, una ferretería en Montevideo, Uruguay.
-Respondé en español rioplatense, de manera clara y concisa (máximo 3-4 oraciones).
-${producto ? `El cliente ve: ${producto.nombre} - $${producto.precio}` : ""}`;
+  const systemPrompt = `Sos el asesor técnico de ARMHEL Ferretería en Montevideo. Respondé en español rioplatense, máximo 3 oraciones.
+${producto ? `Producto: ${producto.nombre} - $${producto.precio}` : ""}`;
 
   try {
     const response = await fetch("https://api.anthropic.com/v1/messages", {
