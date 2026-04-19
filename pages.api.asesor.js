@@ -1,6 +1,6 @@
 {
   "functions": {
-    "api/asesor.js": {
+    "api.asesor.js": {
       "runtime": "nodejs20.x"
     }
   },
