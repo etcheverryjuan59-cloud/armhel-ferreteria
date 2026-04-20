@@ -4,1296 +4,221 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Ferretería industrial en Montevideo. Herramientas, taladros, amoladoras y más. Envíos a todo Uruguay.">
-<meta name="geo.region" content="UY-MO">
-<meta name="geo.placename" content="Montevideo">
-<meta name="geo.position" content="-34.9011;-56.1645">
-<meta name="ICBM" content="-34.9011, -56.1645">
-<meta property="og:title" content="ARMHEL Ferretería Industrial | Montevideo, Uruguay">
-<meta property="og:description" content="Herramientas industriales en Uruguay. Envíos rápidos a todo el país.">
-<meta property="og:url" content="https://armhel-ferreteria.vercel.app/">
-<meta property="og:type" content="website">
 <title>ARMHEL Ferretería Industrial | Montevideo, Uruguay</title>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --azul:#0d1b5e;
-  --azul2:#1a2d8a;
-  --azul3:#0a1240;
-  --azul-bright:#1E5EFF;
-  --amarillo:#FFD600;
-  --amarillo2:#FFC000;
-  --blanco:#ffffff;
-  --gris:#f4f5f7;
-  --gris2:#e4e6ed;
-  --texto:#12172e;
-  --texto2:#4a4f6a;
-  --verde:#1a7a3c;
-  --rojo:#c0392b;
-}
-html{scroll-behavior:smooth}
-body{font-family:'Manrope',sans-serif;background:var(--gris);color:var(--texto);min-height:100vh}
-
-/* ── TOPBAR ── */
-.topbar{background:var(--azul3);color:rgba(255,255,255,0.75);font-size:12px;padding:5px 24px;display:flex;justify-content:space-between;align-items:center;gap:12px}
-.topbar a{color:rgba(255,255,255,0.75);text-decoration:none}
-.topbar strong{color:var(--amarillo)}
-
-/* ── HEADER ── */
-.header{background:linear-gradient(135deg,#0a1240 0%,#0d1b5e 50%,#0a1240 100%);padding:0 24px;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,0.5)}
-.header-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:20px;padding:12px 0}
-.logo-wrap{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0}
-.logo-circle{width:52px;height:52px;background:var(--amarillo);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:900;color:var(--azul);flex-shrink:0;border:2px solid rgba(255,255,255,0.3)}
-.logo-text{display:flex;flex-direction:column;line-height:1}
-.logo-text .lt1{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:900;color:var(--amarillo);letter-spacing:3px}
-.logo-text .lt2{font-size:10px;color:rgba(255,255,255,0.6);letter-spacing:3px;text-transform:uppercase;margin-top:2px}
-
-/* Buscador */
-.search-wrap{flex:1;max-width:580px;position:relative}
-.search-wrap input{width:100%;padding:13px 18px 13px 46px;border-radius:30px;border:2px solid rgba(255,255,255,0.15);font-size:14px;background:rgba(255,255,255,0.97);color:var(--texto);outline:none;font-family:'Manrope',sans-serif;transition:border-color 0.2s,box-shadow 0.2s;box-shadow:0 0 0 0 rgba(30,94,255,0)}
-.search-wrap input:focus{border-color:var(--amarillo);box-shadow:0 0 0 4px rgba(255,214,0,0.25)}
-.search-wrap .ico-search{position:absolute;left:16px;top:50%;transform:translateY(-50%);opacity:0.35;width:18px;height:18px;pointer-events:none}
-.autocomplete-box{display:none;position:absolute;top:calc(100% + 6px);left:0;right:0;background:#fff;border-radius:12px;box-shadow:0 12px 40px rgba(0,0,0,0.2);z-index:200;overflow:hidden;border:1px solid var(--gris2)}
-.autocomplete-box.show{display:block}
-.ac-item{display:flex;align-items:center;gap:10px;padding:10px 14px;cursor:pointer;transition:background 0.15s;border-bottom:1px solid var(--gris2)}
-.ac-item:last-child{border-bottom:none}
-.ac-item:hover{background:var(--gris)}
-.ac-img{width:42px;height:42px;background:var(--gris);border-radius:8px;object-fit:contain;flex-shrink:0}
-.ac-info{flex:1;min-width:0}
-.ac-nombre{font-size:13px;font-weight:600;color:var(--texto);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.ac-precio{font-size:12px;color:var(--azul);font-weight:700}
-.ac-stock{font-size:11px;padding:2px 7px;border-radius:4px;margin-left:auto;flex-shrink:0;font-weight:700}
-.ac-stock.ok{background:#e8f5e9;color:#1b5e20}
-.ac-stock.no{background:#ffebee;color:#c62828}
-
-/* STANLEY logo en header */
-.header-brand-logo{flex-shrink:0;display:flex;align-items:center}
-.stanley-logo-text{font-family:'Barlow Condensed',sans-serif;font-size:32px;font-weight:900;color:var(--amarillo);letter-spacing:3px;text-transform:uppercase}
-
-/* ── NAV CATS ── */
-.nav{background:var(--azul2);border-bottom:3px solid var(--amarillo)}
-.nav-inner{max-width:1280px;margin:0 auto;display:flex;overflow-x:auto;scrollbar-width:none}
-.nav-inner::-webkit-scrollbar{display:none}
-.nav-btn{padding:13px 20px;font-family:'Manrope',sans-serif;font-size:13px;font-weight:600;color:rgba(255,255,255,0.8);background:none;border:none;cursor:pointer;white-space:nowrap;border-bottom:3px solid transparent;margin-bottom:-3px;transition:all 0.2s;display:flex;align-items:center;gap:7px}
-.nav-btn:hover{color:#fff;background:rgba(255,255,255,0.1)}
-.nav-btn.active{color:var(--amarillo);border-bottom-color:var(--amarillo)}
-.nav-sep{width:1px;background:rgba(255,255,255,0.12);margin:8px 0;flex-shrink:0}
-
-/* ── HERO BANNER ── */
-.hero{position:relative;overflow:hidden;min-height:360px;display:flex;align-items:center;background:#060c30}
-.hero-bg{position:absolute;inset:0;background-image:url('https://armhel-ferreteria.vercel.app/hero.jpg');background-size:cover;background-position:right center;background-repeat:no-repeat;z-index:0}
-.hero-bg::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(6,11,52,0.97) 0%,rgba(8,14,70,0.92) 35%,rgba(8,14,70,0.6) 60%,rgba(8,14,70,0.1) 100%)}
-.hero-inner{max-width:1280px;margin:0 auto;padding:40px 24px;display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center;position:relative;z-index:1;width:100%}
-.hero-left h1{font-family:'Barlow Condensed',sans-serif;font-size:82px;font-weight:900;color:#fff;line-height:0.85;letter-spacing:1px;text-transform:uppercase;text-shadow:2px 4px 28px rgba(0,0,0,0.8)}
-.hero-left h1 .hl{color:var(--amarillo);display:block}
-.hero-left p{color:rgba(255,255,255,0.85);font-size:15px;margin-top:16px;max-width:400px;line-height:1.6;text-shadow:1px 2px 8px rgba(0,0,0,0.6)}
-.hero-badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
-.hbadge{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:26px;font-size:12px;font-weight:700;letter-spacing:0.3px}
-.hbadge-yellow{background:var(--amarillo);color:var(--azul)}
-.hbadge-green{background:rgba(26,122,60,0.9);color:#fff;border:1px solid rgba(255,255,255,0.2)}
-.hbadge-ghost{background:rgba(255,255,255,0.1);color:#fff;border:1px solid rgba(255,255,255,0.25);text-decoration:none}
-.hero-right{display:flex;flex-direction:column;gap:16px;align-items:flex-end}
-.hero-envios-btn{display:inline-flex;align-items:center;gap:14px;background:var(--amarillo);border-radius:50px;padding:16px 32px;text-decoration:none;transition:transform 0.2s,box-shadow 0.2s;box-shadow:0 4px 24px rgba(255,214,0,0.4)}
-.hero-envios-btn:hover{transform:scale(1.04);box-shadow:0 8px 32px rgba(255,214,0,0.6)}
-.hero-envios-btn .ico{font-size:28px}
-.hero-envios-btn .txt strong{display:block;font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:900;color:var(--azul);text-transform:uppercase;line-height:1}
-.hero-envios-btn .txt span{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;color:var(--azul);text-transform:uppercase;letter-spacing:1px}
-.hero-stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;width:100%}
-.hstat{background:rgba(255,255,255,0.09);border:1px solid rgba(255,255,255,0.15);border-radius:12px;padding:16px 10px;text-align:center;backdrop-filter:blur(4px)}
-.hstat-num{font-family:'Barlow Condensed',sans-serif;font-size:32px;font-weight:900;color:var(--amarillo);line-height:1}
-.hstat-label{font-size:10px;color:rgba(255,255,255,0.55);text-transform:uppercase;letter-spacing:1px;margin-top:4px}
-
-/* Barra beneficios */
-.benefits-bar{background:var(--azul2);border-bottom:1px solid rgba(255,255,255,0.08)}
-.benefits-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);padding:0 24px}
-.benefit{display:flex;align-items:center;gap:12px;padding:14px 8px;border-right:1px solid rgba(255,255,255,0.1)}
-.benefit:last-child{border-right:none}
-.benefit-icon{font-size:24px;flex-shrink:0}
-.benefit-text strong{display:block;font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;color:var(--amarillo);text-transform:uppercase;letter-spacing:0.5px}
-.benefit-text span{font-size:11px;color:rgba(255,255,255,0.55)}
-
-/* Marcas strip */
-.marcas-strip{background:#fff;border-bottom:1px solid var(--gris2);padding:12px 24px}
-.marcas-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:20px;overflow-x:auto;scrollbar-width:none}
-.marcas-inner::-webkit-scrollbar{display:none}
-.marca-label{font-size:11px;font-weight:700;color:var(--texto2);text-transform:uppercase;letter-spacing:1px;white-space:nowrap;flex-shrink:0}
-/* Logos de marcas SVG/texto estilizados */
-.marca-pill{display:inline-flex;align-items:center;padding:6px 16px;border:1.5px solid var(--gris2);border-radius:8px;cursor:pointer;white-space:nowrap;transition:all 0.2s;text-decoration:none;background:#fff;flex-shrink:0}
-.marca-pill:hover{background:var(--azul);border-color:var(--azul)}
-.marca-pill:hover .marca-svg-text{color:#fff!important;stroke:#fff!important}
-.marca-pill:hover .marca-svg-text-white{color:var(--azul)!important}
-
-/* Logo STANLEY */
-.logo-stanley{font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:900;color:#FFD600;letter-spacing:2px;background:#0d1b5e;padding:2px 10px;border-radius:3px}
-/* Logo INGCO */
-.logo-ingco{font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:900;color:#e31e25;letter-spacing:2px}
-/* Logo DEWALT */
-.logo-dewalt{font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:900;color:#FEBD17;background:#111;padding:2px 8px;border-radius:3px}
-/* Logo TOLSEN */
-.logo-tolsen{font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:900;color:#1a2d8a;letter-spacing:1px}
-/* Logo IRWIN */
-.logo-irwin{font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:900;color:#c62828;letter-spacing:2px}
-/* Logo RUST-OLEUM */
-.logo-rustoleum{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:900;color:#1b5e20;letter-spacing:1px}
-/* Logo TRUPER */
-.logo-truper{font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:900;color:#e65100;letter-spacing:1px}
-/* Logo HYUNDAI */
-.logo-hyundai{font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:900;color:#002c5f;letter-spacing:1px}
-
-.marca-pill:hover .logo-stanley,
-.marca-pill:hover .logo-ingco,
-.marca-pill:hover .logo-dewalt,
-.marca-pill:hover .logo-tolsen,
-.marca-pill:hover .logo-irwin,
-.marca-pill:hover .logo-rustoleum,
-.marca-pill:hover .logo-truper,
-.marca-pill:hover .logo-hyundai{color:#fff;background:transparent}
-
-/* ── MAIN ── */
-.main{max-width:1280px;margin:0 auto;padding:28px 24px}
-
-/* Títulos de sección */
-.sec-title{display:flex;align-items:center;gap:14px;margin-bottom:18px}
-.sec-title h2{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:800;color:var(--azul);text-transform:uppercase;letter-spacing:0.5px}
-.sec-title-accent{width:5px;height:30px;background:var(--amarillo);border-radius:2px;flex-shrink:0}
-.sec-title-bar{flex:1;height:1px;background:var(--gris2)}
-.sec-title-count{font-size:12px;color:var(--texto2);background:var(--gris2);padding:3px 12px;border-radius:10px;font-weight:600}
-
-/* Cats grid */
-.cats-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;margin-bottom:36px}
-.cat-card{background:#fff;border-radius:12px;padding:20px 12px;text-align:center;cursor:pointer;border:2px solid transparent;transition:all 0.2s;box-shadow:0 1px 4px rgba(0,0,0,0.06)}
-.cat-card:hover{border-color:var(--azul);transform:translateY(-3px);box-shadow:0 8px 24px rgba(13,27,94,0.14)}
-.cat-icon{font-size:30px;margin-bottom:8px}
-.cat-name{font-size:12px;font-weight:700;color:var(--azul);line-height:1.3;text-transform:uppercase;letter-spacing:0.3px}
-.cat-count{font-size:10px;color:var(--texto2);margin-top:3px}
-
-/* Productos grid */
-.products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin-bottom:40px}
-.prod-card{background:#fff;border-radius:16px;overflow:hidden;cursor:pointer;border:1.5px solid var(--gris2);transition:all 0.22s;box-shadow:0 2px 8px rgba(0,0,0,0.06);display:flex;flex-direction:column}
-.prod-card:hover{border-color:var(--azul);transform:translateY(-4px);box-shadow:0 12px 32px rgba(13,27,94,0.15)}
-.prod-img{height:180px;background:var(--gris);display:flex;align-items:center;justify-content:center;font-size:60px;position:relative;overflow:hidden}
-.prod-img img{width:100%;height:100%;object-fit:contain;padding:12px;transition:transform 0.3s}
-.prod-card:hover .prod-img img{transform:scale(1.06)}
-.tag-envio{position:absolute;bottom:8px;left:8px;background:#e8f5e9;color:#1b5e20;font-size:10px;font-weight:700;padding:3px 9px;border-radius:6px}
-.tag-oferta{position:absolute;top:8px;right:8px;background:var(--rojo);color:#fff;font-size:10px;font-weight:700;padding:3px 9px;border-radius:6px}
-.tag-agotado{position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(255,255,255,0.75);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:var(--rojo);letter-spacing:1px}
-.prod-body{padding:14px;flex:1;display:flex;flex-direction:column}
-.prod-marca{font-size:10px;font-weight:700;color:var(--azul2);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:4px}
-.prod-nombre{font-size:13px;color:var(--texto);line-height:1.4;min-height:36px;margin-bottom:10px;font-weight:500}
-.prod-precio{font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:800;color:var(--azul)}
-.prod-precio-old{font-size:14px;color:#aaa;text-decoration:line-through;margin-right:6px}
-.prod-cuotas{font-size:11px;color:var(--verde);margin-top:2px;font-weight:600}
-.btn-comprar{display:block;width:100%;margin-top:auto;padding:11px;background:var(--azul);color:#fff;border:none;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Manrope',sans-serif;transition:background 0.2s;letter-spacing:0.5px;text-transform:uppercase;margin-top:10px}
-.btn-comprar:hover{background:var(--azul2)}
-
-/* ── MODAL 3 COLUMNAS ── */
-.modal-overlay{display:none;position:fixed;inset:0;background:rgba(6,10,38,0.88);backdrop-filter:blur(6px);z-index:200;align-items:center;justify-content:center;padding:16px;animation:fadeIn 0.2s ease}
-.modal-overlay.open{display:flex}
-@keyframes fadeIn{from{opacity:0}to{opacity:1}}
-@keyframes slideUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
-.modal{background:#fff;border-radius:16px;width:100%;max-width:1000px;max-height:96vh;overflow-y:auto;position:relative;animation:slideUp 0.28s ease;box-shadow:0 32px 100px rgba(0,0,0,0.4)}
-
-/* Header modal */
-.modal-header-bar{background:var(--azul);padding:12px 20px;border-radius:16px 16px 0 0;display:flex;align-items:center;justify-content:space-between}
-.modal-header-brand{display:flex;align-items:center;gap:10px}
-.modal-header-logo{width:36px;height:36px;background:var(--amarillo);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:900;color:var(--azul)}
-.modal-header-name{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;letter-spacing:2px;color:var(--amarillo);text-transform:uppercase}
-.modal-close{width:34px;height:34px;border-radius:50%;background:var(--amarillo);border:none;color:var(--azul);font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-weight:900;transition:transform 0.2s}
-.modal-close:hover{transform:scale(1.1)}
-
-/* Layout 3 columnas */
-.modal-body-3col{display:grid;grid-template-columns:260px 1fr 260px;min-height:480px}
-
-/* Columna 1: imagen + IA */
-.modal-col1{
-background:#f8f9fc;
-border-right:1px solid #eef0f8;
-
-display:grid;
-grid-template-rows:340px 1fr;
-
-width:360px;
-min-width:360px;
+/* VARIABLES */
+:root {
+  --amarillo: #FFD700;
+  --negro: #1a1a1a;
+  --blanco: #ffffff;
+  --gris-oscuro: #333333;
+  --gris-medio: #666666;
+  --gris-claro: #f4f4f4;
+  --borde: #e0e0e0;
+  --azul-mp: #009ee3;
 }
 
-.modal-img-wrap{
-display:flex;
-align-items:center;
-justify-content:center;
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Manrope', sans-serif; background-color: var(--blanco); color: var(--negro); overflow-x: hidden; }
 
-padding:30px;
-min-height:340px;
+/* HEADER */
+header { 
+  background: var(--negro); 
+  color: white; 
+  padding: 15px 5%; 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  position: sticky; 
+  top: 0; 
+  z-index: 1000; 
+}
+.logo h1 { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 1.8rem; letter-spacing: 1px; }
 
-cursor:zoom-in;
-
-border-bottom:1px solid #e5e7f2;
+.cart-trigger { cursor: pointer; position: relative; font-size: 1.4rem; }
+.cart-count { 
+  position: absolute; top: -8px; right: -10px; 
+  background: var(--amarillo); color: var(--negro); 
+  font-size: 0.75rem; width: 20px; height: 20px; 
+  border-radius: 50%; display: flex; align-items: center; 
+  justify-content: center; font-weight: 800; 
 }
 
-.modal-img-wrap img{
-max-width:90%;
-max-height:300px;
-object-fit:contain;
+/* SECCIÓN CONTADORES (Estadísticas) */
+.stats-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 40px 5%;
+  background: var(--negro);
+  color: white;
+  text-align: center;
+}
+.stat-item h3 { font-family: 'Barlow Condensed', sans-serif; font-size: 2.5rem; font-weight: 800; color: var(--amarillo); }
+.stat-item p { text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; opacity: 0.8; }
 
-transition:transform .3s;
-border-radius:8px;
+/* PANEL DE CARRITO */
+.cart-panel {
+  position: fixed; right: -100%; top: 0; 
+  width: 100%; max-width: 400px; height: 100vh;
+  background: var(--blanco); z-index: 3000;
+  box-shadow: -5px 0 25px rgba(0,0,0,0.2);
+  display: flex; flex-direction: column;
+  transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.cart-panel.show { right: 0; }
+
+.cart-header {
+  padding: 20px; background: var(--negro); color: white;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.cart-header h2 { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; text-transform: uppercase; margin: 0; }
+.close-cart { background: none; border: none; color: white; font-size: 2rem; cursor: pointer; }
+
+.cart-body { flex: 1; overflow-y: auto; padding: 20px; }
+.cart-item { display: flex; gap: 15px; padding: 15px 0; border-bottom: 1px solid var(--borde); align-items: center; }
+.cart-item img { width: 60px; height: 60px; object-fit: contain; background: #eee; border-radius: 4px; }
+.cart-item-info { flex: 1; }
+.cart-item-info h4 { font-size: 0.85rem; text-transform: uppercase; font-weight: 700; margin-bottom: 4px; }
+.cart-item-price { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1.1rem; }
+
+/* FOOTER CARRITO (ESTILO IMAGEN) */
+.cart-footer { background: var(--gris-claro); padding: 25px; border-top: 1px solid var(--borde); }
+.total-line { display: flex; justify-content: space-between; margin-bottom: 10px; font-family: 'Barlow', sans-serif; }
+.main-total { 
+  margin-top: 15px; padding-top: 15px; border-top: 2px solid var(--borde);
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 1.8rem; text-transform: uppercase;
+}
+.btn-comprar-ahora {
+  width: 100%; background: var(--azul-mp); color: white; border: none; padding: 18px;
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1.2rem;
+  text-transform: uppercase; border-radius: 4px; cursor: pointer; margin-top: 20px;
 }
 
-.modal-img-wrap img:hover{
-transform:scale(1.08);
-}
-
-.modal-img-placeholder{
-font-size:80px;
-text-align:center;
-}
-
-
-/* ASESOR IA */
-.asesor-box{
-width:100%;
-height:100%;
-
-padding:28px;
-
-background:#f4f6fd;
-
-display:flex;
-flex-direction:column;
-}
-
-.asesor-title{
-font-size:34px;
-font-weight:900;
-margin-bottom:25px;
-}
-
-.asesor-actions{
-display:flex;
-gap:14px;
-flex-wrap:wrap;
-margin-bottom:28px;
-}
-
-.asesor-actions button{
-padding:14px 24px;
-font-size:19px;
-border-radius:40px;
-}
-
-.asesor-input-row{
-display:flex;
-gap:16px;
-margin-top:auto;
-}
-
-.asesor-input-row input{
-flex:1;
-height:70px;
-
-font-size:24px;
-
-padding:0 22px;
-border-radius:14px;
-}
-
-.asesor-input-row button{
-width:220px;
-height:70px;
-
-font-size:24px;
-font-weight:800;
-}
-
-/* Columna 2: info producto */
-.modal-col2{padding:22px 24px;display:flex;flex-direction:column;gap:10px;border-right:1px solid #eef0f8}
-.modal-marca-badge{display:inline-block;background:var(--azul);color:var(--amarillo);font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;padding:4px 12px;border-radius:20px;width:fit-content}
-.modal-nombre{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:800;color:var(--azul);line-height:1.1}
-/* Rating */
-.modal-rating{display:flex;align-items:center;gap:6px}
-.stars{color:#FFD600;font-size:15px;letter-spacing:1px}
-.stars-num{font-size:13px;color:var(--texto2);font-weight:600}
-/* Precio */
-.modal-precio-wrap{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
-.modal-precio-old{font-size:16px;color:#aaa;text-decoration:line-through}
-.modal-precio{font-family:'Barlow Condensed',sans-serif;font-size:46px;font-weight:900;color:var(--azul);line-height:1}
-/* Color selector */
-.modal-color-row{display:flex;align-items:center;gap:10px}
-.modal-color-label{font-size:13px;font-weight:600;color:var(--texto2)}
-.color-dot{width:28px;height:28px;border-radius:6px;border:2px solid #ddd;cursor:pointer;transition:border-color 0.2s}
-.color-dot.active{border-color:var(--azul);box-shadow:0 0 0 3px rgba(13,27,94,0.2)}
-/* Atributos bullet */
-.modal-attrs{font-size:13px;color:var(--texto);line-height:2;padding-left:4px}
-.modal-attrs li{list-style:disc;margin-left:16px;color:var(--texto2)}
-.modal-attrs li strong{color:var(--texto);font-weight:600}
-/* Descripción */
-.modal-desc{font-size:14px;color:#3a3f5c;line-height:1.7;padding:12px 16px;background:linear-gradient(135deg,#f8f9ff,#f2f5fb);border-radius:8px;border-left:4px solid var(--amarillo);font-family:'Manrope',sans-serif;min-height:48px}
-.modal-desc-cursor{display:inline-block;width:2px;height:14px;background:var(--azul);margin-left:2px;vertical-align:middle;animation:cursorBlink 0.75s step-end infinite}
-@keyframes cursorBlink{0%,100%{opacity:1}50%{opacity:0}}
-
-/* Columna 3: panel compra */
-.modal-col3{padding:20px;display:flex;flex-direction:column;gap:12px}
-.compra-llega-hoy{background:var(--amarillo);color:var(--azul);font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;letter-spacing:1px;padding:6px 14px;border-radius:20px;display:inline-block;width:fit-content;text-transform:uppercase}
-.compra-stock-badge{display:flex;align-items:center;gap:7px;font-size:13px;font-weight:600}
-.stock-dot-ok{width:9px;height:9px;border-radius:50%;background:#4caf50;box-shadow:0 0 0 3px #c8e6c9;flex-shrink:0}
-.stock-dot-no{width:9px;height:9px;border-radius:50%;background:#ef5350;box-shadow:0 0 0 3px #ffcdd2;flex-shrink:0}
-/* Selector cantidad */
-.qty-selector{display:flex;align-items:center;gap:0;border:1.5px solid var(--gris2);border-radius:8px;overflow:hidden;width:fit-content}
-.qty-selector span{font-size:12px;color:var(--texto2);padding:0 12px;font-weight:600}
-.qty-btn-modal{width:36px;height:36px;background:#f8f9ff;border:none;cursor:pointer;font-size:18px;font-weight:700;color:var(--azul);display:flex;align-items:center;justify-content:center;transition:background 0.2s}
-.qty-btn-modal:hover{background:#e8edf8}
-.qty-num{min-width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700;color:var(--azul);border-left:1px solid var(--gris2);border-right:1px solid var(--gris2)}
-/* Botones compra */
-.btn-comprar-ahora{display:block;width:100%;padding:14px;background:var(--azul);color:#fff;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;font-family:'Manrope',sans-serif;transition:all 0.2s;letter-spacing:0.5px;text-transform:uppercase;text-align:center}
-.btn-comprar-ahora:hover{background:var(--azul2);transform:translateY(-1px)}
-.btn-carrito-modal{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:13px;background:var(--amarillo);color:var(--azul);border:none;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;font-family:'Manrope',sans-serif;transition:all 0.2s;text-transform:uppercase}
-.btn-carrito-modal:hover{background:var(--amarillo2)}
-.btn-mp-modal{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:13px;background:#009EE3;color:#fff;border:none;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;font-family:'Manrope',sans-serif;transition:all 0.2s}
-.btn-mp-modal:hover{background:#0080c0}
-.btn-mp-modal img{height:22px}
-.btn-wsp-modal{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:11px;background:#25D366;color:#fff;border:none;border-radius:10px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Manrope',sans-serif;text-decoration:none;transition:all 0.2s}
-.btn-wsp-modal:hover{background:#1da851}
-/* Sin stock */
-.sin-stock-actions{background:#fff5f5;border:1px solid #ffcdd2;border-radius:10px;padding:14px;display:none}
-.sin-stock-actions.show{display:block}
-.sin-stock-actions p{font-size:13px;color:var(--rojo);font-weight:700;margin-bottom:10px}
-.sin-stock-btns{display:flex;flex-direction:column;gap:8px}
-.btn-alternativas{padding:10px;background:var(--azul);color:#fff;border:none;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Manrope',sans-serif;text-align:center}
-.btn-avisar{padding:10px;background:#fff;color:var(--azul);border:2px solid var(--azul);border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Manrope',sans-serif;text-align:center}
-/* Productos relacionados */
-.relacionados-title{font-size:11px;font-weight:700;color:var(--texto2);text-transform:uppercase;letter-spacing:1px;padding-top:4px;border-top:1px solid var(--gris2)}
-.rel-item{display:flex;gap:10px;cursor:pointer;padding:6px;border-radius:8px;transition:background 0.2s}
-.rel-item:hover{background:var(--gris)}
-.rel-img{width:52px;height:52px;background:var(--gris);border-radius:8px;flex-shrink:0;overflow:hidden;display:flex;align-items:center;justify-content:center}
-.rel-img img{width:100%;height:100%;object-fit:contain}
-.rel-info .rel-nombre{font-size:11px;color:var(--texto);line-height:1.3;font-weight:500}
-.rel-info .rel-precio{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;color:var(--azul)}
-.rel-info .rel-cuotas{font-size:10px;color:var(--verde);font-weight:600}
-
-/* IA Box */
-.ia-box{background:linear-gradient(135deg,#f0f4ff,#e8edf8);border:1px solid #cdd4f0;border-radius:10px;padding:14px;margin:0 0 0}
-.ia-box h4{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;color:var(--azul);margin-bottom:9px;display:flex;align-items:center;gap:7px;text-transform:uppercase;letter-spacing:0.5px}
-.ia-dot-live{width:8px;height:8px;border-radius:50%;background:var(--azul);display:inline-block;animation:iaPulse 2s ease-in-out infinite;flex-shrink:0}
-@keyframes iaPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.35;transform:scale(0.65)}}
-.ia-quickbtns{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:9px}
-.ia-quick{padding:5px 10px;background:#fff;border:1px solid #c5cae9;border-radius:20px;font-size:10px;color:var(--azul);cursor:pointer;font-weight:700;transition:all 0.2s;font-family:'Manrope',sans-serif}
-.ia-quick:hover{background:var(--azul);color:#fff;border-color:var(--azul)}
-.ia-input-row{display:flex;gap:6px}
-.ia-input-row textarea{flex:1;padding:8px 10px;border-radius:7px;border:1px solid #c5cae9;font-size:12px;font-family:'Manrope',sans-serif;resize:none;height:40px;color:var(--texto);background:#fff}
-.ia-input-row textarea:focus{outline:none;border-color:var(--azul)}
-.btn-ia{padding:8px 14px;background:var(--azul);color:#fff;border:none;border-radius:7px;font-size:11px;font-weight:700;cursor:pointer;font-family:'Manrope',sans-serif;white-space:nowrap;transition:all 0.2s}
-.btn-ia:hover{background:var(--azul2)}
-.btn-ia:disabled{background:#9fa8da;cursor:not-allowed}
-.ia-respuesta{margin-top:8px;font-size:13px;color:var(--texto);line-height:1.65;background:#fff;border-radius:8px;padding:10px 12px;border-left:3px solid var(--azul);display:none;font-family:'Manrope',sans-serif}
-.ia-respuesta.show{display:block}
-
-/* Medios de pago */
-.medios-pago-mini{padding:10px 12px;background:#fafbff;border-radius:8px;border:1px solid var(--gris2)}
-.medios-pago-mini p{font-size:10px;color:#aaa;margin-bottom:6px;font-weight:700;text-transform:uppercase;letter-spacing:1px}
-.medios-icons{display:flex;flex-wrap:wrap;gap:4px}
-.medio{padding:3px 8px;background:#fff;border:1px solid var(--gris2);border-radius:5px;font-size:10px;color:var(--texto2);font-weight:600}
-
-@media(max-width:900px){
-  .modal-body-3col{grid-template-columns:1fr}
-  .modal-col1,.modal-col2{border-right:none;border-bottom:1px solid #eef0f8}
-  .modal-col3{border-top:1px solid #eef0f8}
-}
-
-/* ── CARRITO ── */
-.carrito-float{position:fixed;bottom:24px;right:24px;z-index:100;background:var(--azul);color:#fff;border-radius:50px;padding:13px 24px;display:flex;align-items:center;gap:10px;cursor:pointer;box-shadow:0 4px 24px rgba(13,27,94,0.45);transition:transform 0.2s;font-weight:700;font-size:14px;font-family:'Manrope',sans-serif}
-.carrito-float:hover{transform:scale(1.05)}
-.carrito-count{background:var(--amarillo);color:var(--azul);width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800}
-.cart-panel{display:none;position:fixed;right:0;top:0;bottom:0;width:380px;background:#fff;z-index:300;box-shadow:-4px 0 32px rgba(0,0,0,0.15);flex-direction:column}
-.cart-panel.open{display:flex}
-.cart-header{background:var(--azul);padding:16px 20px;display:flex;align-items:center;justify-content:space-between}
-.cart-header h3{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:800;color:var(--amarillo);text-transform:uppercase}
-.cart-close{background:none;border:none;color:rgba(255,255,255,0.7);font-size:22px;cursor:pointer}
-.cart-items{flex:1;overflow-y:auto;padding:16px}
-.cart-item{display:flex;gap:10px;padding:12px 0;border-bottom:1px solid var(--gris2)}
-.cart-item-img{width:56px;height:56px;background:var(--gris);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0;overflow:hidden}
-.cart-item-img img{width:100%;height:100%;object-fit:contain}
-.cart-item-info{flex:1}
-.cart-item-nombre{font-size:13px;font-weight:600;color:var(--texto);line-height:1.3}
-.cart-item-precio{font-size:15px;font-weight:700;color:var(--azul);margin-top:4px}
-.cart-item-qty{display:flex;align-items:center;gap:8px;margin-top:6px}
-.qty-btn{width:28px;height:28px;border-radius:6px;border:1px solid var(--gris2);background:#fff;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;color:var(--azul);font-weight:700}
-.qty-btn:hover{background:var(--gris)}
-.cart-remove{background:none;border:none;cursor:pointer;color:var(--rojo);font-size:18px;margin-left:auto;align-self:flex-start}
-.cart-footer{padding:16px;border-top:2px solid var(--gris2)}
-.cart-total{display:flex;justify-content:space-between;margin-bottom:14px;align-items:baseline}
-.cart-total span:first-child{font-size:14px;color:var(--texto2)}
-.cart-total span:last-child{font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:800;color:var(--azul)}
-.cart-empty{text-align:center;padding:48px 20px;color:var(--texto2)}
-.cart-empty p{margin-top:12px;font-size:14px}
-
-/* ── FOOTER ── */
-footer{background:var(--azul3);color:rgba(255,255,255,0.7);padding:36px 24px;margin-top:40px}
-.footer-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:28px}
-.footer-col h4{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;color:var(--amarillo);margin-bottom:12px;text-transform:uppercase;letter-spacing:1.5px}
-.footer-col p,.footer-col a{font-size:13px;line-height:2.1;color:rgba(255,255,255,0.65);display:block;text-decoration:none}
-.footer-col a:hover{color:var(--amarillo)}
-.footer-bottom{text-align:center;margin-top:28px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.08);font-size:12px;color:rgba(255,255,255,0.35)}
-
-/* ── TOAST ── */
-.toast{position:fixed;bottom:90px;right:24px;background:var(--verde);color:#fff;padding:13px 22px;border-radius:10px;font-size:14px;font-weight:600;z-index:400;opacity:0;transform:translateY(10px);transition:all 0.3s;pointer-events:none;font-family:'Manrope',sans-serif}
-.toast.show{opacity:1;transform:translateY(0)}
-
-/* Visor de imagen ampliada */
-.img-zoom-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.9);z-index:500;align-items:center;justify-content:center;cursor:zoom-out}
-.img-zoom-overlay.open{display:flex}
-.img-zoom-overlay img{max-width:90vw;max-height:90vh;object-fit:contain;border-radius:8px}
-
-@media(max-width:900px){
-  .hero-inner{grid-template-columns:1fr}
-  .hero-left h1{font-size:52px}
-  .hero-right{display:none}
-  .benefits-inner{grid-template-columns:repeat(2,1fr)}
-}
-@media(max-width:600px){
-  .topbar{display:none}
-  .cart-panel{width:100%}
-  .benefits-inner{grid-template-columns:1fr}
-  .hero-left h1{font-size:42px}
-}
+.overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); display: none; z-index: 2500; }
+.overlay.show { display: block; }
 </style>
 </head>
 <body>
 
-<!-- TOPBAR -->
-<div class="topbar">
-  <a href="https://maps.app.goo.gl/i4scVP3cZRVpeWGG9" target="_blank">📍 Paysandú 1047, Centro — Montevideo</a>
-  <span>🕐 Lun–Vie <strong>9:00–18:00</strong></span>
-  <a href="https://wa.me/59898033982" target="_blank">💬 WhatsApp: <strong>098 033 982</strong></a>
-</div>
-
-<!-- HEADER -->
-<header class="header">
-  <div class="header-inner">
-    <a class="logo-wrap" href="#">
-      <div class="logo-circle">AH</div>
-      <div class="logo-text">
-        <span class="lt1">ARMHEL</span>
-        <span class="lt2">Ferretería Industrial</span>
-      </div>
-    </a>
-    <div class="search-wrap">
-      <svg class="ico-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-      <input type="text" placeholder="Buscar productos, marcas, SKU..." oninput="handleSearch(this.value)" id="buscador" autocomplete="off">
-      <div class="autocomplete-box" id="autocomplete-box"></div>
-    </div>
-    <div class="header-brand-logo">
-      <span class="stanley-logo-text">STANLEY</span>
-    </div>
+<header>
+  <div class="logo"><h1>ARMHEL</h1></div>
+  <div class="cart-trigger" onclick="toggleCart()">
+    🛒 <span class="cart-count" id="cart-count">0</span>
   </div>
 </header>
 
-<!-- NAV -->
-<nav class="nav">
-  <div class="nav-inner" id="nav-container"></div>
-</nav>
-
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-inner">
-    <div class="hero-left">
-      <h1>FERRETERÍA<span class="hl">INDUSTRIAL</span></h1>
-      <p>Herramientas profesionales de las mejores marcas. Stanley, DeWalt, Ingco, Irwin, Tolsen y más.</p>
-      <div class="hero-badges">
-        <span class="hbadge hbadge-yellow">🚚 Envíos a todo Uruguay</span>
-        <span class="hbadge hbadge-green">✅ +1000 ventas</span>
-        <a href="https://wa.me/59898033982" target="_blank" class="hbadge hbadge-ghost">💬 WhatsApp</a>
-      </div>
-    </div>
-    <div class="hero-right">
-      <a href="https://wa.me/59898033982" target="_blank" class="hero-envios-btn">
-        <span class="ico">🚚</span>
-        <div class="txt">
-          <strong>ENVÍOS</strong>
-          <span>A TODO EL PAÍS</span>
-        </div>
-      </a>
-      <div class="hero-stats-row">
-        <div class="hstat"><div class="hstat-num" id="stat-ventas">0</div><div class="hstat-label">Ventas</div></div>
-        <div class="hstat"><div class="hstat-num" id="stat-clientes">0</div><div class="hstat-label">Clientes</div></div>
-        <div class="hstat"><div class="hstat-num" id="stat-productos">0</div><div class="hstat-label">Productos</div></div>
-      </div>
-    </div>
+<section class="stats-container">
+  <div class="stat-item">
+    <h3 id="count-productos">0</h3>
+    <p>Productos</p>
+  </div>
+  <div class="stat-item">
+    <h3 id="count-ventas">0</h3>
+    <p>Ventas Realizadas</p>
+  </div>
+  <div class="stat-item">
+    <h3 id="count-clientes">0</h3>
+    <p>Clientes Felices</p>
   </div>
 </section>
 
-<!-- BARRA BENEFICIOS -->
-<div class="benefits-bar">
-  <div class="benefits-inner">
-    <div class="benefit"><span class="benefit-icon">🚚</span><div class="benefit-text"><strong>Envíos Rápidos</strong><span>A todo el país</span></div></div>
-    <div class="benefit"><span class="benefit-icon">🏆</span><div class="benefit-text"><strong>Grandes Marcas</strong><span>Ingco · Stanley · DeWalt</span></div></div>
-    <div class="benefit"><span class="benefit-icon">🔒</span><div class="benefit-text"><strong>Paga Seguro</strong><span>Mercado Pago</span></div></div>
-    <div class="benefit"><span class="benefit-icon">💬</span><div class="benefit-text"><strong>Atención Directa</strong><span>WhatsApp personal</span></div></div>
-  </div>
-</div>
-
-<!-- MARCAS STRIP — logos originales estilizados -->
-<div class="marcas-strip">
-  <div class="marcas-inner">
-    <span class="marca-label">Marcas:</span>
-    <div class="marca-pill" onclick="filtrarMarca('Stanley')"><span class="logo-stanley">STANLEY</span></div>
-    <div class="marca-pill" onclick="filtrarMarca('Ingco')"><span class="logo-ingco">INGCO</span></div>
-    <div class="marca-pill" onclick="filtrarMarca('DeWalt')"><span class="logo-dewalt">DeWALT</span></div>
-    <div class="marca-pill" onclick="filtrarMarca('Tolsen')"><span class="logo-tolsen">TOLSEN</span></div>
-    <div class="marca-pill" onclick="filtrarMarca('Irwin')"><span class="logo-irwin">IRWIN</span></div>
-    <div class="marca-pill" onclick="filtrarMarca('Rust-Oleum')"><span class="logo-rustoleum">RUST-OLEUM</span></div>
-    <div class="marca-pill" onclick="filtrarMarca('Truper')"><span class="logo-truper">TRUPER</span></div>
-    <div class="marca-pill" onclick="filtrarMarca('Hyundai')"><span class="logo-hyundai">HYUNDAI</span></div>
-  </div>
-</div>
-
-<!-- MAIN -->
-<main class="main" id="main-content">
-  <div id="view-inicio">
-    <div class="sec-title"><div class="sec-title-accent"></div><h2>Categorías</h2><div class="sec-title-bar"></div></div>
-    <div class="cats-grid">
-      <div class="cat-card" onclick="verSeccionBtn('herramientas')"><div class="cat-icon">🔧</div><div class="cat-name">Herramientas manuales</div><div class="cat-count">Alicates · llaves · destornilladores</div></div>
-      <div class="cat-card" onclick="verSeccionBtn('electrico')"><div class="cat-icon">⚡</div><div class="cat-name">Eléctricas</div><div class="cat-count">Taladros · amoladora · soldadura</div></div>
-      <div class="cat-card" onclick="verSeccionBtn('pinturas')"><div class="cat-icon">🎨</div><div class="cat-name">Pinturas</div><div class="cat-count">Rust-Oleum · esmaltes</div></div>
-      <div class="cat-card" onclick="verSeccionBtn('construccion')"><div class="cat-icon">🏗️</div><div class="cat-name">Construcción</div><div class="cat-count">Brocas · discos · cintas</div></div>
-      <div class="cat-card" onclick="verSeccionBtn('medicion')"><div class="cat-icon">📏</div><div class="cat-name">Medición</div><div class="cat-count">Multímetros · detectores</div></div>
-      <div class="cat-card" onclick="verSeccionBtn('iluminacion')"><div class="cat-icon">💡</div><div class="cat-name">Iluminación</div><div class="cat-count">Linternas · focos</div></div>
-    </div>
-    <div class="sec-title"><div class="sec-title-accent"></div><h2>Destacados</h2><div class="sec-title-bar"></div><span class="sec-title-count" id="count-inicio">cargando...</span></div>
-    <div class="products-grid" id="grid-inicio"></div>
-  </div>
-
-  <div id="view-seccion" style="display:none">
-    <div class="sec-title"><div class="sec-title-accent"></div><h2 id="seccion-titulo"></h2><div class="sec-title-bar"></div><span class="sec-title-count" id="seccion-count"></span></div>
-    <div class="products-grid" id="grid-seccion"></div>
-  </div>
-
-  <div id="view-busqueda" style="display:none">
-    <div class="sec-title"><div class="sec-title-accent"></div><h2 id="busqueda-titulo">Resultados</h2><div class="sec-title-bar"></div></div>
-    <div class="products-grid" id="grid-busqueda"></div>
-  </div>
-</main>
-
-<!-- FOOTER -->
-<footer>
-  <div class="footer-inner">
-    <div class="footer-col">
-      <h4>ARMHEL Ferretería</h4>
-      <a href="https://maps.app.goo.gl/i4scVP3cZRVpeWGG9" target="_blank">📍 Paysandú 1047, Centro</a>
-      <p style="color:var(--amarillo)">🕐 Lun–Vie: 9:00 – 18:00</p>
-      <p>🇺🇾 Montevideo, Uruguay</p>
-      <p>⭐ +1000 ventas concretadas</p>
-    </div>
-    <div class="footer-col">
-      <h4>Categorías</h4>
-      <a href="javascript:void(0)" onclick="verSeccionBtn('herramientas')">Herramientas manuales</a>
-      <a href="javascript:void(0)" onclick="verSeccionBtn('electrico')">Herramientas eléctricas</a>
-      <a href="javascript:void(0)" onclick="verSeccionBtn('pinturas')">Pinturas y aerosoles</a>
-      <a href="javascript:void(0)" onclick="verSeccionBtn('construccion')">Construcción</a>
-      <a href="javascript:void(0)" onclick="verSeccionBtn('medicion')">Medición y testers</a>
-    </div>
-    <div class="footer-col">
-      <h4>Medios de pago</h4>
-      <p>💳 Visa · Mastercard</p>
-      <p>🏦 Abitab · Redpagos</p>
-      <p>📱 Mercado Pago</p>
-      <a href="https://wa.me/59898033982" target="_blank">💬 WhatsApp: 098 033 982</a>
-    </div>
-    <div class="footer-col">
-      <h4>Información</h4>
-      <p>🚚 Envíos a todo Uruguay</p>
-      <p>📦 Retiro en tienda</p>
-      <p>🔒 Compra protegida</p>
-      <p>🤖 Asesor IA 24/7</p>
-    </div>
-  </div>
-  <div class="footer-bottom">© 2026 ARMHEL Ferretería Industrial S.R.L. · Montevideo, Uruguay</div>
-</footer>
-
-<!-- WA flotante -->
-<a href="https://wa.me/59898033982" target="_blank" style="position:fixed;bottom:84px;right:24px;z-index:99;background:#25D366;color:#fff;border-radius:50px;padding:11px 20px;display:flex;align-items:center;gap:8px;font-weight:700;font-size:13px;text-decoration:none;box-shadow:0 4px 20px rgba(37,211,102,0.45);font-family:'Manrope',sans-serif">
-  💬 WhatsApp
-</a>
-
-<!-- Carrito flotante -->
-<div class="carrito-float" onclick="toggleCarrito()" id="carrito-float" style="display:none">
-  🛒 Carrito <span class="carrito-count" id="carrito-count">0</span>
-</div>
-
-<!-- Panel carrito -->
+<div class="overlay" id="overlay" onclick="toggleCart()"></div>
 <div class="cart-panel" id="cart-panel">
-  <div class="cart-header"><h3>🛒 Tu carrito</h3><button class="cart-close" onclick="toggleCarrito()">✕</button></div>
-  <div class="cart-items" id="cart-items"></div>
-  <div class="cart-footer" id="cart-footer"></div>
-</div>
-
-<!-- MODAL 3 COLUMNAS -->
-<div class="modal-overlay" id="modal" onclick="closeModal(event)">
-  <div class="modal">
-    <div class="modal-header-bar">
-      <div class="modal-header-brand">
-        <div class="modal-header-logo">AH</div>
-        <span class="modal-header-name">Ferretería ARMHEL</span>
-      </div>
-      <button class="modal-close" onclick="closeModalBtn()">✕</button>
-    </div>
-
-    <div class="modal-body-3col">
-      <!-- COL 1: imagen + IA -->
-      <div class="modal-col1">
-        <div class="modal-img-wrap" id="m-img" onclick="abrirZoom()"></div>
-        <div style="padding:0 12px 14px">
-          <div class="ia-box">
-            <h4><span class="ia-dot-live"></span> Asesor Técnico IA</h4>
-            <div class="ia-quickbtns">
-              <button class="ia-quick" onclick="preguntaRapida('¿Para qué sirve este producto?')">¿Para qué sirve?</button>
-              <button class="ia-quick" onclick="preguntaRapida('¿Sirve para madera o metal?')">Compatibilidad</button>
-              <button class="ia-quick" onclick="preguntaRapida('¿Hay alguna alternativa mejor?')">Alternativas</button>
-              <button class="ia-quick" onclick="preguntaRapida('¿Qué accesorios necesito?')">Accesorios</button>
-            </div>
-            <div class="ia-input-row">
-              <textarea id="ia-pregunta" placeholder="Ej: ¿Sirve para perforar hormigón?"></textarea>
-              <button class="btn-ia" id="btn-ia" onclick="consultarIA()">Consultar</button>
-            </div>
-            <div class="ia-respuesta" id="ia-respuesta"></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- COL 2: info producto -->
-      <div class="modal-col2">
-        <div class="modal-marca-badge" id="m-marca"></div>
-        <div class="modal-nombre" id="m-nombre"></div>
-        <div class="modal-rating" id="m-rating"></div>
-        <div class="modal-precio-wrap">
-          <div class="modal-precio-old" id="m-precio-old" style="display:none"></div>
-          <div class="modal-precio" id="m-precio"></div>
-        </div>
-        <div id="m-color-row" style="display:none" class="modal-color-row">
-          <span class="modal-color-label">Color:</span>
-          <div id="m-colores"></div>
-          <span id="m-color-nombre" style="font-size:13px;color:var(--texto2);font-weight:600"></span>
-        </div>
-        <ul class="modal-attrs" id="m-attrs"></ul>
-        <div class="modal-desc" id="m-desc" style="display:none"></div>
-      </div>
-
-      <!-- COL 3: panel compra -->
-      <div class="modal-col3">
-        <span class="compra-llega-hoy">🚀 Llega hoy</span>
-        <div class="compra-stock-badge" id="m-stock-badge"></div>
-        <div id="m-envio-badge" style="font-size:12px;color:var(--verde);font-weight:700"></div>
-
-        <!-- Selector cantidad -->
-        <div>
-          <div style="font-size:11px;color:var(--texto2);font-weight:700;margin-bottom:6px;text-transform:uppercase;letter-spacing:1px">Cantidad</div>
-          <div class="qty-selector">
-            <button class="qty-btn-modal" onclick="cambiarQtyModal(-1)">−</button>
-            <div class="qty-num" id="modal-qty">1</div>
-            <button class="qty-btn-modal" onclick="cambiarQtyModal(1)">+</button>
-            <span id="modal-qty-label">unidad</span>
-          </div>
-        </div>
-
-        <!-- Botones compra -->
-        <div id="modal-compra-btns">
-          <button class="btn-comprar-ahora" onclick="pagarMP()">COMPRAR AHORA</button>
-          <div style="height:8px"></div>
-          <button class="btn-carrito-modal" onclick="agregarAlCarrito()">🛒 AGREGAR AL CARRITO</button>
-          <div style="height:8px"></div>
-          <button class="btn-mp-modal" onclick="pagarMP()">
-            <svg viewBox="0 0 120 22" width="120" height="22" xmlns="http://www.w3.org/2000/svg"><text x="0" y="17" font-size="15" fill="white" font-weight="bold" font-family="sans-serif">mercado pago</text></svg>
-          </button>
-          <div style="height:8px"></div>
-          <a class="btn-wsp-modal" id="btn-wsp" href="#" target="_blank">💬 Consultar por WhatsApp</a>
-        </div>
-
-        <!-- Sin stock -->
-        <div class="sin-stock-actions" id="sin-stock-actions">
-          <p>❌ Producto sin stock disponible</p>
-          <div class="sin-stock-btns">
-            <button class="btn-alternativas" onclick="buscarAlternativas()">🔍 Ver alternativas</button>
-            <button class="btn-avisar" onclick="consultarDisponibilidad()">🔔 Consultar disponibilidad</button>
-          </div>
-        </div>
-
-        <div class="medios-pago-mini">
-          <p>Medios de pago</p>
-          <div class="medios-icons">
-            <span class="medio">💳 Visa</span>
-            <span class="medio">💳 Master</span>
-            <span class="medio">🏦 Abitab</span>
-            <span class="medio" style="background:#009EE3;color:#fff;border-color:#009EE3">💙 MP</span>
-          </div>
-        </div>
-
-        <!-- Productos relacionados -->
-        <div>
-          <div class="relacionados-title">También te puede interesar</div>
-          <div id="m-relacionados" style="display:flex;flex-direction:column;gap:8px;margin-top:8px"></div>
-        </div>
-      </div>
-    </div>
+  <div class="cart-header">
+    <h2>TU CARRITO</h2>
+    <button class="close-cart" onclick="toggleCart()">&times;</button>
+  </div>
+  <div class="cart-body" id="cart-items-container"></div>
+  <div class="cart-footer">
+    <div class="total-line"><span>Subtotal</span><span id="cart-subtotal">$ 0</span></div>
+    <div class="total-line"><span>Envío</span><span style="color:green; font-weight:bold;">GRATIS</span></div>
+    <div class="total-line main-total"><span>Total</span><span id="cart-total">$ 0</span></div>
+    <button class="btn-comprar-ahora" onclick="pagarMercadoPago()">Pagar con Mercado Pago</button>
   </div>
 </div>
 
-<!-- Visor imagen ampliada -->
-<div class="img-zoom-overlay" id="img-zoom" onclick="cerrarZoom()">
-  <img id="img-zoom-src" src="" alt="">
-</div>
-
-<div class="toast" id="toast"></div>
-
-<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
 <script>
-const firebaseConfig = {
-  apiKey: "AIzaSyBSxak7iBUY0agyeP9yCoalpYeIbkfZ3EE",
-  authDomain: "armhel-ferreteria.firebaseapp.com",
-  projectId: "armhel-ferreteria",
-  storageBucket: "armhel-ferreteria.firebasestorage.app",
-  messagingSenderId: "273578362843",
-  appId: "1:273578362843:web:01a78cd27c3486c91389fe"
-};
-const MP_ACCESS_TOKEN = 'APP_USR-8936066667800988-032523-6f883d7050c2c6e89650c061ef7a41ac-240179402';
-const TIENDA_URL = 'https://armhel-ferreteria-bzrbsjt6n-etcheverryjuan59-9700s-projects.vercel.app';
-const WA_NUMERO  = '59898033982';
+// Datos base
+const productosCatalogo = [
+    { id: 1, nombre: "Taladro Percutor", precio: 4500, imagen: "https://via.placeholder.com/100" },
+    { id: 2, nombre: "Amoladora Angular", precio: 3200, imagen: "https://via.placeholder.com/100" },
+    // Agrega aquí el resto de tus productos...
+];
 
-firebase.initializeApp(firebaseConfig);
-const db = firebase.firestore();
+let carrito = JSON.parse(localStorage.getItem('carrito_armhel')) || [];
 
-let productos  = [];
-let categorias = [];
-let carrito    = [];
-let prodActual = null;
-let cacheIA    = {};
-let searchTimer = null;
-let modalQty   = 1;
-let imgZoomSrc = '';
-
-// ── CONTADORES ANIMADOS ──────────────────────────────────────────────────────
-function animarContador(el, target, prefix, suffix, duracion) {
-  const start = performance.now();
-  function step(now) {
-    const elapsed = now - start;
-    const progress = Math.min(elapsed / duracion, 1);
-    // ease-out
-    const eased = 1 - Math.pow(1 - progress, 3);
-    const current = Math.round(eased * target);
-    el.textContent = prefix + current.toLocaleString('es-UY') + suffix;
-    if (progress < 1) requestAnimationFrame(step);
-  }
-  requestAnimationFrame(step);
+// FUNCIÓN DE ANIMACIÓN DE NÚMEROS (Para que no cargue de golpe)
+function animarContador(id, fin, duracion = 1500) {
+    const obj = document.getElementById(id);
+    let inicio = 0;
+    let paso = Math.ceil(fin / (duracion / 16));
+    
+    const temporizador = setInterval(() => {
+        inicio += paso;
+        if (inicio >= fin) {
+            obj.textContent = fin + "+";
+            clearInterval(temporizador);
+        } else {
+            obj.textContent = inicio;
+        }
+    }, 16);
 }
 
-function iniciarContadores() {
-  setTimeout(() => {
-    animarContador(document.getElementById('stat-ventas'),   1000, '+', '', 2200);
-    animarContador(document.getElementById('stat-clientes'),  210, '+', '', 2000);
-  }, 400);
-}
+// INICIALIZACIÓN
+window.addEventListener('DOMContentLoaded', () => {
+    // 1. Iniciamos contadores fijos rápido
+    animarContador("count-ventas", 1250);
+    animarContador("count-clientes", 980);
+    
+    // 2. Cargamos el número de productos del array inmediatamente
+    const totalProds = productosCatalogo.length;
+    animarContador("count-productos", totalProds);
 
-// ── INIT ──────────────────────────────────────────────────────────────────────
-async function initTienda() {
-  iniciarContadores();
-  document.getElementById('grid-inicio').innerHTML =
-    '<p style="padding:20px;color:#888;grid-column:1/-1;font-family:Manrope,sans-serif">Cargando productos...</p>';
-  try {
-    const [prodSnap, catSnap] = await Promise.all([
-      db.collection('productos').get(),
-      db.collection('categorias').get()
-    ]);
-    categorias = catSnap.docs.map(d => ({ id: d.id, ...d.data() }));
-    productos  = prodSnap.docs.map(d => ({ id: d.id, ...d.data() }));
-    renderNavCats();
-    renderGrid(productos.slice(0, 16), 'grid-inicio');
-    document.getElementById('count-inicio').textContent = '+' + productos.length + ' productos';
-    // Animar contador de productos con el valor real
-    animarContador(document.getElementById('stat-productos'), Math.max(productos.length, 1389), '+', '', 2400);
-  } catch (e) {
-    console.error(e);
-    // Animar con valor default si falla
-    animarContador(document.getElementById('stat-productos'), 1389, '+', '', 2400);
-    document.getElementById('grid-inicio').innerHTML =
-      '<p style="padding:20px;color:#c62828;grid-column:1/-1">❌ Error al cargar productos.</p>';
-  }
-}
-
-function renderNavCats() {
-  const nav = document.getElementById('nav-container');
-  let html = '<button class="nav-btn active" onclick="verSeccion(\'inicio\',this)">🏠 Inicio</button>';
-  categorias.forEach(c => {
-    html += `<div class="nav-sep"></div><button class="nav-btn" onclick="verSeccion('${c.id}',this)">${c.icono||'📦'} ${c.nombre}</button>`;
-  });
-  html += '<div class="nav-sep"></div><button class="nav-btn" onclick="verSeccion(\'todos\',this)">📦 Ver todo</button>';
-  nav.innerHTML = html;
-}
-
-// ── PRECIO ────────────────────────────────────────────────────────────────────
-function formatPrecio(p) {
-  if (p.precioUSD) return 'USD ' + parseFloat(p.precioUSD).toFixed(2);
-  if (p.precio)    return '$ '   + parseInt(p.precio).toLocaleString('es-UY');
-  return 'Consultar';
-}
-function precioNum(p) {
-  if (p.precio)    return parseInt(p.precio);
-  if (p.precioUSD) return Math.round(parseFloat(p.precioUSD)*40);
-  return 0;
-}
-
-// ── GRID ──────────────────────────────────────────────────────────────────────
-function renderGrid(lista, cid) {
-  const c = document.getElementById(cid);
-  if (!lista||!lista.length) {
-    c.innerHTML='<p style="color:#888;padding:20px;grid-column:1/-1">No se encontraron productos.</p>';
-    return;
-  }
-  c.innerHTML = lista.map(p => {
-    const sinStock = !p.stock || p.stock <= 0;
-    const foto = p.foto
-      ? `<img src="${p.foto}" alt="${p.nombre}" onerror="this.style.display='none'">`
-      : `<span style="font-size:52px">📦</span>`;
-    const precioOld = p.precioOriginal
-      ? `<span class="prod-precio-old">${formatPrecio({precio:p.precioOriginal})}</span>` : '';
-    return `<div class="prod-card" onclick="openModal('${p.id}')">
-      <div class="prod-img">
-        ${foto}
-        ${p.envio==='gratis'?'<span class="tag-envio">🚚 Gratis</span>':''}
-        ${p.precioOriginal?'<span class="tag-oferta">OFERTA</span>':''}
-        ${sinStock?'<div class="tag-agotado">SIN STOCK</div>':''}
-      </div>
-      <div class="prod-body">
-        <div class="prod-marca">${p.marca||''}</div>
-        ${p.sku?`<div style="font-size:10px;color:#aaa;margin-bottom:3px;font-family:Manrope,sans-serif">SKU: ${p.sku}</div>`:''}
-        <div class="prod-nombre">${p.nombre}</div>
-        <div>${precioOld}<span class="prod-precio">${formatPrecio(p)}</span></div>
-        <div class="prod-cuotas">${precioNum(p)?'3x $'+Math.round(precioNum(p)/3).toLocaleString('es-UY')+' sin interés':''}</div>
-        <button class="btn-comprar" onclick="event.stopPropagation();openModal('${p.id}')">${sinStock?'VER PRODUCTO':'COMPRAR'}</button>
-      </div>
-    </div>`;
-  }).join('');
-}
-
-// ── NAVEGACIÓN ────────────────────────────────────────────────────────────────
-function verSeccion(sec, btn) {
-  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
-  if (btn) btn.classList.add('active');
-  cerrarAutocomplete();
-  document.getElementById('view-busqueda').style.display='none';
-  document.getElementById('buscador').value='';
-  if (sec==='inicio') {
-    document.getElementById('view-inicio').style.display='';
-    document.getElementById('view-seccion').style.display='none';
-    renderGrid(productos.slice(0,16),'grid-inicio');
-  } else {
-    document.getElementById('view-inicio').style.display='none';
-    document.getElementById('view-seccion').style.display='';
-    const cat  = categorias.find(c=>c.id===sec);
-    const lista = sec==='todos' ? productos : productos.filter(p=>p.categoria===sec);
-    document.getElementById('seccion-titulo').textContent = cat?(cat.icono||'📦')+' '+cat.nombre:'📦 Todos los productos';
-    document.getElementById('seccion-count').textContent  = lista.length+' productos';
-    renderGrid(lista,'grid-seccion');
-  }
-  window.scrollTo({top:0,behavior:'smooth'});
-}
-function verSeccionBtn(s){ const b=document.querySelector(`[onclick="verSeccion('${s}',this)"]`); verSeccion(s,b); }
-
-// ── FILTRAR MARCA — ahora muestra resultados correctamente ───────────────────
-function filtrarMarca(marca) {
-  // Búsqueda flexible (incluye variaciones mayúsculas/minúsculas y parciales)
-  const marcaL = marca.toLowerCase();
-  const lista = productos.filter(p =>
-    p.marca && p.marca.toLowerCase().includes(marcaL)
-  );
-  document.getElementById('view-inicio').style.display='none';
-  document.getElementById('view-seccion').style.display='';
-  document.getElementById('view-busqueda').style.display='none';
-  document.getElementById('seccion-titulo').textContent = '🏷 ' + marca;
-  document.getElementById('seccion-count').textContent  = lista.length+' productos';
-  renderGrid(lista,'grid-seccion');
-  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
-  window.scrollTo({top:0,behavior:'smooth'});
-  if (lista.length===0) showToast('No se encontraron productos de '+marca+'. Verificá el catálogo.','info');
-}
-
-// ── BUSCADOR CON AUTOCOMPLETADO ───────────────────────────────────────────────
-function handleSearch(q) {
-  clearTimeout(searchTimer);
-  if (!q.trim()) {
-    cerrarAutocomplete();
-    document.getElementById('view-busqueda').style.display='none';
-    document.getElementById('view-inicio').style.display='';
-    document.getElementById('view-seccion').style.display='none';
-    return;
-  }
-  const ql = q.toLowerCase();
-  const tops = productos.filter(p=>
-    p.nombre.toLowerCase().includes(ql)||
-    (p.marca&&p.marca.toLowerCase().includes(ql))||
-    (p.sku&&p.sku.toLowerCase().includes(ql))
-  ).slice(0,6);
-  mostrarAutocomplete(tops);
-  searchTimer = setTimeout(()=>{
-    const todos = productos.filter(p=>
-      p.nombre.toLowerCase().includes(ql)||
-      (p.marca&&p.marca.toLowerCase().includes(ql))||
-      (p.sku&&p.sku.toLowerCase().includes(ql))
-    );
-    document.getElementById('view-busqueda').style.display='';
-    document.getElementById('view-inicio').style.display='none';
-    document.getElementById('view-seccion').style.display='none';
-    document.getElementById('busqueda-titulo').textContent=`Resultados para "${q}" (${todos.length})`;
-    renderGrid(todos,'grid-busqueda');
-  },300);
-}
-
-function mostrarAutocomplete(lista) {
-  const box = document.getElementById('autocomplete-box');
-  if (!lista.length){ cerrarAutocomplete(); return; }
-  box.innerHTML = lista.map(p=>{
-    const sinStock = !p.stock||p.stock<=0;
-    const img = p.foto
-      ? `<img class="ac-img" src="${p.foto}" alt="" onerror="this.style.display='none'">`
-      : `<div class="ac-img" style="display:flex;align-items:center;justify-content:center;font-size:22px">📦</div>`;
-    return `<div class="ac-item" onclick="openModal('${p.id}');cerrarAutocomplete()">
-      ${img}
-      <div class="ac-info">
-        <div class="ac-nombre">${p.nombre}</div>
-        <div class="ac-precio">${formatPrecio(p)}</div>
-      </div>
-      <span class="ac-stock ${sinStock?'no':'ok'}">${sinStock?'Sin stock':'Disponible'}</span>
-    </div>`;
-  }).join('');
-  box.classList.add('show');
-}
-
-function cerrarAutocomplete(){
-  document.getElementById('autocomplete-box').classList.remove('show');
-}
-document.addEventListener('click',e=>{
-  if (!e.target.closest('.search-wrap')) cerrarAutocomplete();
+    actualizarCarritoUI();
 });
 
-// ── MODAL ─────────────────────────────────────────────────────────────────────
-function openModal(id) {
-  const p = productos.find(x=>x.id===id);
-  if (!p) return;
-  prodActual = p;
-  cacheIA    = {};
-  modalQty   = 1;
-  document.getElementById('modal-qty').textContent = '1';
-  const sinStock = !p.stock||p.stock<=0;
-
-  // Imagen col1
-  const imgEl = document.getElementById('m-img');
-  if (p.foto) {
-    imgZoomSrc = p.foto;
-    imgEl.innerHTML = `<img src="${p.foto}" alt="${p.nombre}" onerror="this.parentElement.innerHTML='<div class=modal-img-placeholder>📦</div>'">`;
-  } else {
-    imgZoomSrc = '';
-    imgEl.innerHTML = `<div class="modal-img-placeholder">📦</div>`;
-  }
-
-  // Col2: info
-  document.getElementById('m-marca').textContent = p.marca||'ARMHEL';
-  document.getElementById('m-nombre').textContent = p.nombre;
-
-  // Rating (si existe)
-  const ratingEl = document.getElementById('m-rating');
-  if (p.rating) {
-    const stars = '★'.repeat(Math.round(p.rating)) + '☆'.repeat(5-Math.round(p.rating));
-    ratingEl.innerHTML = `<span class="stars">${stars}</span><span class="stars-num">${p.rating} (${p.reviews||0} reseñas)</span>`;
-    ratingEl.style.display='flex';
-  } else {
-    ratingEl.style.display='none';
-  }
-
-  // Precio
-  const precioEl = document.getElementById('m-precio');
-  const precioOldEl = document.getElementById('m-precio-old');
-  precioEl.textContent = formatPrecio(p);
-  if (p.precioOriginal) {
-    precioOldEl.textContent = formatPrecio({precio:p.precioOriginal});
-    precioOldEl.style.display='';
-  } else {
-    precioOldEl.style.display='none';
-  }
-
-  // Color (si existe)
-  const colorRow = document.getElementById('m-color-row');
-  if (p.color) {
-    document.getElementById('m-color-nombre').textContent = p.color;
-    colorRow.style.display='flex';
-  } else {
-    colorRow.style.display='none';
-  }
-
-  // Atributos
-  const attrsEl = document.getElementById('m-attrs');
-  const attrs = [];
-  if (p.peso)         attrs.push(`<strong>Peso neto:</strong> ${p.peso}`);
-  if (p.volumen)      attrs.push(`<strong>Volumen neto:</strong> ${p.volumen}`);
-  if (p.unidades)     attrs.push(`<strong>Unidades por pack:</strong> ${p.unidades}`);
-  if (p.formato)      attrs.push(`<strong>Formato de venta:</strong> ${p.formato}`);
-  if (p.sku)          attrs.push(`<strong>SKU:</strong> ${p.sku}`);
-  if (p.stock>0)      attrs.push(`<strong>Stock:</strong> ${p.stock} unidades`);
-  if (p.cuotas)       attrs.push(`<strong>Cuotas:</strong> 3x $${Math.round(precioNum(p)/3).toLocaleString('es-UY')} sin interés`);
-  attrsEl.innerHTML = attrs.map(a=>`<li>${a}</li>`).join('');
-
-  // Descripción — SIEMPRE mostrar (con o sin stock)
-  const descEl = document.getElementById('m-desc');
-  const texto = p.desc || p.descripcion || '';
-  if (texto) {
-    descEl.style.display = '';
-    descEl.innerHTML = '';
-    let i = 0;
-    const cursor = document.createElement('span');
-    cursor.className = 'modal-desc-cursor';
-    descEl.appendChild(cursor);
-    function typeChar() {
-      if (i < texto.length) {
-        descEl.insertBefore(document.createTextNode(texto[i]), cursor);
-        i++;
-        setTimeout(typeChar, 14);
-      } else { cursor.remove(); }
-    }
-    setTimeout(typeChar, 120);
-  } else {
-    descEl.style.display = 'none';
-  }
-
-  // Col3: compra
-  const stockBadge = document.getElementById('m-stock-badge');
-  if (sinStock) {
-    stockBadge.innerHTML = `<div class="stock-dot-no"></div><span style="color:#e53935">Sin stock disponible</span>`;
-  } else {
-    stockBadge.innerHTML = `<div class="stock-dot-ok"></div><span style="color:#1b5e20">Stock disponible · ${p.stock} unidades</span>`;
-  }
-
-  // Envío
-  const envioEl = document.getElementById('m-envio-badge');
-  envioEl.innerHTML = p.envio==='gratis'
-    ? '🚚 Llega mañana · <strong>Envío gratis</strong>'
-    : '🚚 Llega mañana en Montevideo';
-
-  // Sin stock: mostrar/ocultar botones
-  document.getElementById('sin-stock-actions').classList.toggle('show', sinStock);
-  document.getElementById('modal-compra-btns').style.display = sinStock ? 'none' : 'flex';
-  document.getElementById('modal-compra-btns').style.flexDirection = 'column';
-
-  // WhatsApp con enlace directo al producto
-  const productoUrl = `${TIENDA_URL}?producto=${p.id}`;
-  const msg = sinStock
-    ? `Hola! Me interesa este producto:\n\n*${p.nombre}*\nPrecio: ${formatPrecio(p)}\n🔗 ${productoUrl}\n\n¿Cuándo vuelve a tener stock?`
-    : `Hola! Quiero comprar:\n\n*${p.nombre}*\nPrecio: ${formatPrecio(p)}\n🔗 ${productoUrl}\n\n¿Está disponible?`;
-  document.getElementById('btn-wsp').href = `https://wa.me/${WA_NUMERO}?text=${encodeURIComponent(msg)}`;
-
-  // Productos relacionados
-  const rel = productos.filter(x => x.categoria===p.categoria && x.id!==p.id && x.stock>0).slice(0,3);
-  const relEl = document.getElementById('m-relacionados');
-  if (rel.length) {
-    relEl.innerHTML = rel.map(r => `
-      <div class="rel-item" onclick="openModal('${r.id}')">
-        <div class="rel-img">${r.foto?`<img src="${r.foto}" alt="${r.nombre}">`:'📦'}</div>
-        <div class="rel-info">
-          <div class="rel-nombre">${r.nombre}</div>
-          <div class="rel-precio">${formatPrecio(r)}</div>
-          ${precioNum(r)?`<div class="rel-cuotas">3x $${Math.round(precioNum(r)/3).toLocaleString('es-UY')} s/i</div>`:''}
-        </div>
-      </div>`).join('');
-  } else {
-    relEl.innerHTML = '<p style="font-size:12px;color:#aaa">No hay alternativas disponibles.</p>';
-  }
-
-  // IA reset
-  document.getElementById('ia-pregunta').value='';
-  document.getElementById('ia-respuesta').innerHTML='';
-  document.getElementById('ia-respuesta').classList.remove('show');
-  document.getElementById('btn-ia').disabled=false;
-  document.getElementById('btn-ia').textContent='Consultar';
-
-  document.getElementById('modal').classList.add('open');
-  document.body.style.overflow='hidden';
+function toggleCart() {
+    document.getElementById('cart-panel').classList.toggle('show');
+    document.getElementById('overlay').classList.toggle('show');
 }
 
-// Cantidad modal
-function cambiarQtyModal(d) {
-  modalQty = Math.max(1, modalQty + d);
-  document.getElementById('modal-qty').textContent = modalQty;
+function actualizarCarritoUI() {
+    const container = document.getElementById('cart-items-container');
+    const totalLabel = document.getElementById('cart-total');
+    const subtotalLabel = document.getElementById('cart-subtotal');
+    const countLabel = document.getElementById('cart-count');
+    
+    container.innerHTML = '';
+    let total = 0;
+    let itemsQty = 0;
+
+    carrito.forEach((p, i) => {
+        total += p.precio * p.qty;
+        itemsQty += p.qty;
+        container.innerHTML += `
+            <div class="cart-item">
+                <img src="${p.imagen}" alt="${p.nombre}">
+                <div class="cart-item-info">
+                    <h4>${p.nombre}</h4>
+                    <p class="cart-item-price">${p.qty} x $${p.precio.toLocaleString()}</p>
+                </div>
+                <button onclick="eliminar(${i})" style="border:none; background:none; cursor:pointer;">✕</button>
+            </div>
+        `;
+    });
+
+    countLabel.textContent = itemsQty;
+    subtotalLabel.textContent = `$ ${total.toLocaleString()}`;
+    totalLabel.textContent = `$ ${total.toLocaleString()}`;
+    localStorage.setItem('carrito_armhel', JSON.stringify(carrito));
 }
 
-// Visor imagen
-function abrirZoom() {
-  if (!imgZoomSrc) return;
-  document.getElementById('img-zoom-src').src = imgZoomSrc;
-  document.getElementById('img-zoom').classList.add('open');
+function eliminar(i) {
+    carrito.splice(i, 1);
+    actualizarCarritoUI();
 }
-function cerrarZoom() {
-  document.getElementById('img-zoom').classList.remove('open');
-}
-
-function buscarAlternativas() {
-  if (!prodActual) return;
-  closeModalBtn();
-  const alt = productos.filter(p=>p.categoria===prodActual.categoria&&p.id!==prodActual.id&&p.stock>0).slice(0,12);
-  document.getElementById('view-inicio').style.display='none';
-  document.getElementById('view-seccion').style.display='';
-  document.getElementById('view-busqueda').style.display='none';
-  document.getElementById('seccion-titulo').textContent='🔍 Alternativas disponibles';
-  document.getElementById('seccion-count').textContent=alt.length+' productos con stock';
-  renderGrid(alt,'grid-seccion');
-  showToast('Mostrando alternativas con stock disponible');
-}
-
-function consultarDisponibilidad() {
-  if (!prodActual) return;
-  const productoUrl = `${TIENDA_URL}?producto=${prodActual.id}`;
-  const msg = `Hola! Me interesa el producto:\n\n*${prodActual.nombre}*\n🔗 ${productoUrl}\n\n¿Cuándo vuelve a tener stock?`;
-  window.open(`https://wa.me/${WA_NUMERO}?text=${encodeURIComponent(msg)}`,'_blank');
-}
-
-function closeModal(e){if(e&&e.target!==document.getElementById('modal'))return;closeModalBtn();}
-function closeModalBtn(){document.getElementById('modal').classList.remove('open');document.body.style.overflow='';}
-
-// ── ASESOR IA ─────────────────────────────────────────────────────────────────
-function preguntaRapida(t){document.getElementById('ia-pregunta').value=t;}
-
-async function consultarIA() {
-  const pregunta = document.getElementById('ia-pregunta').value.trim();
-  if (!pregunta||!prodActual) return;
-  const key     = prodActual.id+'_'+pregunta;
-  const respDiv = document.getElementById('ia-respuesta');
-  const btnIA   = document.getElementById('btn-ia');
-  if (cacheIA[key]){ respDiv.innerHTML=cacheIA[key]; respDiv.classList.add('show'); return; }
-  btnIA.disabled=true; btnIA.textContent='...';
-  respDiv.innerHTML='⏳ Analizando...'; respDiv.classList.add('show');
-
-  const alternativas = productos
-    .filter(p=>p.categoria===prodActual.categoria&&p.id!==prodActual.id&&p.stock>0)
-    .slice(0,6)
-    .map(p=>`- ${p.nombre} (${formatPrecio(p)})`)
-    .join('\n');
-
-  const prompt = `Sos el asesor técnico de ARMHEL Ferretería Industrial, Montevideo, Uruguay.
-
-REGLAS ESTRICTAS:
-- Respondé SIEMPRE de manera profesional, técnica y cortés.
-- NUNCA uses lenguaje informal, modismos, apodos ni palabras ofensivas.
-- NUNCA menciones productos que no estén en el catálogo real proporcionado.
-- Si no tenés certeza, decí que no podés confirmarlo y sugerí consultar por WhatsApp.
-- Respondé en español neutro, claro y preciso.
-- Máximo 4 oraciones.
-
-Producto consultado:
-- Nombre: ${prodActual.nombre}
-- Descripción: ${prodActual.desc||prodActual.descripcion||'Sin descripción disponible'}
-- Precio: ${formatPrecio(prodActual)}
-- Stock: ${prodActual.stock>0?prodActual.stock+' unidades disponibles':'SIN STOCK'}
-
-${alternativas?`Productos alternativos disponibles:\n${alternativas}`:''}
-
-Pregunta del cliente: ${pregunta}`;
-
-  try {
-    const res  = await fetch('/api/asesor',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({pregunta:prompt,producto:{nombre:prodActual.nombre,descripcion:prodActual.desc,precio:prodActual.precio,stock:prodActual.stock}})});
-    const data = await res.json();
-    const txt  = data.respuesta||'No se pudo responder en este momento.';
-    respDiv.innerHTML = txt.replace(/\n/g,'<br>');
-    cacheIA[key] = respDiv.innerHTML;
-  } catch(e) {
-    respDiv.innerHTML='Error al conectar con el asesor. Consultá por WhatsApp.';
-  }
-  btnIA.disabled=false; btnIA.textContent='Consultar';
-}
-
-// ── MERCADO PAGO ──────────────────────────────────────────────────────────────
-async function pagarMP() {
-  if (!prodActual) return;
-  if (!prodActual.stock||prodActual.stock<=0){showToast('Producto sin stock','error');return;}
-  const precio = precioNum(prodActual) * modalQty;
-  const btn = document.querySelector('.btn-comprar-ahora');
-  if (btn) { btn.textContent='Procesando...'; btn.disabled=true; }
-  try {
-    const res=await fetch('https://api.mercadopago.com/checkout/preferences',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+MP_ACCESS_TOKEN},body:JSON.stringify({items:[{title:prodActual.nombre,quantity:modalQty,currency_id:'UYU',unit_price:precioNum(prodActual)}],back_urls:{success:TIENDA_URL,failure:TIENDA_URL,pending:TIENDA_URL},auto_return:'approved',statement_descriptor:'ARMHEL FERRETERIA'})});
-    const data=await res.json();
-    if (data.init_point){window.location.href=data.init_point;}
-    else showToast('Error al crear preferencia de pago','error');
-  } catch(e){showToast('Error al conectar con Mercado Pago','error');}
-  if (btn) { btn.textContent='COMPRAR AHORA'; btn.disabled=false; }
-}
-
-// ── CARRITO ───────────────────────────────────────────────────────────────────
-function agregarAlCarrito() {
-  if (!prodActual) return;
-  const idx=carrito.findIndex(i=>i.id===prodActual.id);
-  if (idx>=0){carrito[idx].qty+=modalQty;}else{carrito.push({...prodActual,qty:modalQty});}
-  actualizarCarrito();
-  showToast('✅ Producto agregado al carrito');
-  closeModalBtn();
-}
-function actualizarCarrito() {
-  const total=carrito.reduce((s,i)=>s+i.qty,0);
-  document.getElementById('carrito-count').textContent=total;
-  document.getElementById('carrito-float').style.display=total>0?'flex':'none';
-  const items=document.getElementById('cart-items');
-  if (!carrito.length){
-    items.innerHTML='<div class="cart-empty"><span style="font-size:40px">🛒</span><p>Tu carrito está vacío</p></div>';
-    document.getElementById('cart-footer').innerHTML='';return;
-  }
-  items.innerHTML=carrito.map((i,idx)=>`
-    <div class="cart-item">
-      <div class="cart-item-img">${i.foto?`<img src="${i.foto}" alt="${i.nombre}">`:'📦'}</div>
-      <div class="cart-item-info">
-        <div class="cart-item-nombre">${i.nombre}</div>
-        <div class="cart-item-precio">${formatPrecio(i)}</div>
-        <div class="cart-item-qty">
-          <button class="qty-btn" onclick="cambiarQty(${idx},-1)">−</button>
-          <span style="font-size:14px;font-weight:700">${i.qty}</span>
-          <button class="qty-btn" onclick="cambiarQty(${idx},1)">+</button>
-        </div>
-      </div>
-      <button class="cart-remove" onclick="removerItem(${idx})">🗑</button>
-    </div>`).join('');
-  const tot=carrito.reduce((s,i)=>s+precioNum(i)*i.qty,0);
-  document.getElementById('cart-footer').innerHTML=`
-    <div class="cart-total"><span>Total estimado:</span><span>$ ${tot.toLocaleString('es-UY')}</span></div>
-    <button class="btn-comprar-ahora" onclick="pagarCarritoMP()" style="border-radius:10px">Pagar con Mercado Pago</button>`;
-}
-function cambiarQty(idx,d){carrito[idx].qty+=d;if(carrito[idx].qty<=0)carrito.splice(idx,1);actualizarCarrito();}
-function removerItem(idx){carrito.splice(idx,1);actualizarCarrito();}
-function toggleCarrito(){document.getElementById('cart-panel').classList.toggle('open');}
-
-async function pagarCarritoMP(){
-  const btn=document.querySelector('#cart-footer .btn-comprar-ahora');
-  if(btn){btn.textContent='Procesando...';btn.disabled=true;}
-  try{
-    const items=carrito.map(i=>({title:i.nombre,quantity:i.qty,currency_id:'UYU',unit_price:precioNum(i)}));
-    const res=await fetch('https://api.mercadopago.com/checkout/preferences',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+MP_ACCESS_TOKEN},body:JSON.stringify({items,back_urls:{success:TIENDA_URL,failure:TIENDA_URL,pending:TIENDA_URL},auto_return:'approved',statement_descriptor:'ARMHEL FERRETERIA'})});
-    const data=await res.json();
-    if(data.init_point){window.location.href=data.init_point;}
-    else showToast('Error al crear preferencia','error');
-  }catch(e){showToast('Error Mercado Pago','error');}
-  if(btn){btn.textContent='Pagar con Mercado Pago';btn.disabled=false;}
-}
-
-function showToast(msg,type='success'){
-  const t=document.getElementById('toast');
-  t.textContent=msg;
-  t.style.background=type==='error'?'var(--rojo)':type==='info'?'var(--azul2)':'var(--verde)';
-  t.className='toast show';
-  setTimeout(()=>t.classList.remove('show'),3200);
-}
-
-// Deep link: abrir producto por URL param
-function checkDeepLink() {
-  const params = new URLSearchParams(window.location.search);
-  const pid = params.get('producto');
-  if (pid && productos.length) {
-    const p = productos.find(x => x.id === pid);
-    if (p) openModal(pid);
-  }
-}
-
-initTienda().then(checkDeepLink);
 </script>
 </body>
 </html>
