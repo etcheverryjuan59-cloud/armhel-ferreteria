@@ -202,11 +202,11 @@ body{font-family:'Manrope',sans-serif;background:var(--gris);color:var(--texto);
 .modal-close:hover{transform:scale(1.1)}
 
 /* Layout 3 columnas */
-.modal-body-3col{display:grid;grid-template-columns:320px 1fr 260px;min-height:480px}
+.modal-body-3col{display:grid;grid-template-columns:350px 1fr 260px;min-height:550px}
 
 /* Columna 1: imagen + IA */
 .modal-col1{background:#f8f9fc;border-right:1px solid #eef0f8;display:flex;flex-direction:column}
-.modal-img-wrap{display:flex;align-items:center;justify-content:center;padding:24px;min-height:240px;flex:1;cursor:zoom-in}
+.modal-img-wrap{display:flex;align-items:center;justify-content:center;padding:24px;min-height:200px;flex:1;cursor:zoom-in}
 .modal-img-wrap img{max-width:100%;max-height:220px;object-fit:contain;transition:transform 0.3s;border-radius:8px}
 .modal-img-wrap img:hover{transform:scale(1.08)}
 .modal-img-placeholder{font-size:80px;text-align:center}
@@ -277,7 +277,7 @@ body{font-family:'Manrope',sans-serif;background:var(--gris);color:var(--texto);
 .rel-info .rel-cuotas{font-size:10px;color:var(--verde);font-weight:600}
 
 /* IA Box */
-.ia-box{background:linear-gradient(135deg,#f0f4ff,#e8edf8);border:1px solid #cdd4f0;border-radius:10px;padding:20px;margin:0 0 0; min-height: 300px;}
+.ia-box{background:linear-gradient(135deg,#f0f4ff,#e8edf8);border:1px solid #cdd4f0;border-radius:10px;padding:20px;margin:0 0 0; min-height: 400px;}
 .ia-box h4{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;color:var(--azul);margin-bottom:9px;display:flex;align-items:center;gap:7px;text-transform:uppercase;letter-spacing:0.5px}
 .ia-dot-live{width:8px;height:8px;border-radius:50%;background:var(--azul);display:inline-block;animation:iaPulse 2s ease-in-out infinite;flex-shrink:0}
 @keyframes iaPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.35;transform:scale(0.65)}}
@@ -285,12 +285,12 @@ body{font-family:'Manrope',sans-serif;background:var(--gris);color:var(--texto);
 .ia-quick{padding:5px 10px;background:#fff;border:1px solid #c5cae9;border-radius:20px;font-size:10px;color:var(--azul);cursor:pointer;font-weight:700;transition:all 0.2s;font-family:'Manrope',sans-serif}
 .ia-quick:hover{background:var(--azul);color:#fff;border-color:var(--azul)}
 .ia-input-row{display:flex;gap:6px}
-.ia-input-row textarea{flex:1;padding:8px 10px;border-radius:7px;border:1px solid #c5cae9;font-size:12px;font-family:'Manrope',sans-serif;resize:none;height:40px;color:var(--texto);background:#fff}
+.ia-input-row textarea{flex:1;padding:8px 10px;border-radius:7px;border:1px solid #c5cae9;font-size:12px;font-family:'Manrope',sans-serif;resize:none;height:50px;color:var(--texto);background:#fff}
 .ia-input-row textarea:focus{outline:none;border-color:var(--azul)}
 .btn-ia{padding:8px 14px;background:var(--azul);color:#fff;border:none;border-radius:7px;font-size:11px;font-weight:700;cursor:pointer;font-family:'Manrope',sans-serif;white-space:nowrap;transition:all 0.2s}
 .btn-ia:hover{background:var(--azul2)}
 .btn-ia:disabled{background:#9fa8da;cursor:not-allowed}
-.ia-respuesta{margin-top:8px;font-size:13px;color:var(--texto);line-height:1.65;background:#fff;border-radius:8px;padding:10px 12px;border-left:3px solid var(--azul);display:none;font-family:'Manrope',sans-serif}
+.ia-respuesta{margin-top:8px;font-size:14px;color:var(--texto);line-height:1.7;background:#fff;border-radius:8px;padding:12px 14px;border-left:3px solid var(--azul);display:none;font-family:'Manrope',sans-serif}
 .ia-respuesta.show{display:block}
 
 /* Medios de pago */
