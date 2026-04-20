@@ -801,10 +801,10 @@ function verSeccionBtn(s){ const b=document.querySelector(`[onclick="verSeccion(
 
 // ── FILTRAR MARCA — ahora muestra resultados correctamente ───────────────────
 function filtrarMarca(marca) {
-  // Búsqueda flexible (incluye variaciones mayúsculas/minúsculas y parciales)
+  // Búsqueda en el nombre del producto (título)
   const marcaL = marca.toLowerCase();
   const lista = productos.filter(p =>
-    p.marca && p.marca.toLowerCase().includes(marcaL)
+    p.nombre && p.nombre.toLowerCase().includes(marcaL)
   );
   document.getElementById('view-inicio').style.display='none';
   document.getElementById('view-seccion').style.display='';
