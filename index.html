@@ -201,8 +201,8 @@ body{font-family:'Manrope',sans-serif;background:var(--gris);color:var(--texto);
 .modal-close{width:34px;height:34px;border-radius:50%;background:var(--amarillo);border:none;color:var(--azul);font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-weight:900;transition:transform 0.2s}
 .modal-close:hover{transform:scale(1.1)}
 
-/* Layout 3 columnas */
-.modal-body-3col{display:grid;grid-template-columns:260px 1fr 260px;min-height:480px}
+/* Layout 3 columnas con IA en fila 2 */
+.modal-body-3col{display:grid;grid-template-columns:260px 1fr 260px;grid-template-rows:auto auto;min-height:550px}
 
 /* Columna 1: imagen + IA */
 .modal-col1{background:#f8f9fc;border-right:1px solid #eef0f8;display:flex;flex-direction:column}
@@ -545,47 +545,29 @@ footer{background:var(--azul3);color:rgba(255,255,255,0.7);padding:36px 24px;mar
     </div>
 
     <div class="modal-body-3col">
-      <!-- COL 1: imagen + IA -->
-      <div class="modal-col1">
+      <!-- COL 1: imagen + descripción + IA -->
+      <div class="modal-col1" style="grid-column: 1 / 3; display: flex; flex-direction: column; gap: 0;">
         <div class="modal-img-wrap" id="m-img" onclick="abrirZoom()"></div>
-        <div style="padding:12px 12px 0">
-          <div class="ia-box">
-            <h4><span class="ia-dot-live"></span> Asesor Técnico IA</h4>
-            <div class="ia-quickbtns">
-              <button class="ia-quick" onclick="preguntaRapida('¿Para qué sirve este producto?')">¿Para qué sirve?</button>
-              <button class="ia-quick" onclick="preguntaRapida('¿Sirve para madera o metal?')">Compatibilidad</button>
-              <button class="ia-quick" onclick="preguntaRapida('¿Hay alguna alternativa mejor?')">Alternativas</button>
-              <button class="ia-quick" onclick="preguntaRapida('¿Qué accesorios necesito?')">Accesorios</button>
-            </div>
-            <div class="ia-input-row">
-              <textarea id="ia-pregunta" placeholder="Ej: ¿Sirve para perforar hormigón?"></textarea>
-              <button class="btn-ia" id="btn-ia" onclick="consultarIA()">Consultar</button>
-            </div>
-            <div class="ia-respuesta" id="ia-respuesta"></div>
+        <div style="padding: 16px; overflow-y: auto; flex: 1;">
+          <div class="modal-marca-badge" id="m-marca"></div>
+          <div class="modal-nombre" id="m-nombre"></div>
+          <div class="modal-rating" id="m-rating"></div>
+          <div class="modal-precio-wrap">
+            <div class="modal-precio-old" id="m-precio-old" style="display:none"></div>
+            <div class="modal-precio" id="m-precio"></div>
           </div>
+          <div id="m-color-row" style="display:none" class="modal-color-row">
+            <span class="modal-color-label">Color:</span>
+            <div id="m-colores"></div>
+            <span id="m-color-nombre" style="font-size:13px;color:var(--texto2);font-weight:600"></span>
+          </div>
+          <ul class="modal-attrs" id="m-attrs"></ul>
+          <div class="modal-desc" id="m-desc" style="display:none"></div>
         </div>
       </div>
 
-      <!-- COL 2: info producto -->
-      <div class="modal-col2">
-        <div class="modal-marca-badge" id="m-marca"></div>
-        <div class="modal-nombre" id="m-nombre"></div>
-        <div class="modal-rating" id="m-rating"></div>
-        <div class="modal-precio-wrap">
-          <div class="modal-precio-old" id="m-precio-old" style="display:none"></div>
-          <div class="modal-precio" id="m-precio"></div>
-        </div>
-        <div id="m-color-row" style="display:none" class="modal-color-row">
-          <span class="modal-color-label">Color:</span>
-          <div id="m-colores"></div>
-          <span id="m-color-nombre" style="font-size:13px;color:var(--texto2);font-weight:600"></span>
-        </div>
-        <ul class="modal-attrs" id="m-attrs"></ul>
-        <div class="modal-desc" id="m-desc" style="display:none"></div>
-      </div>
-
-      <!-- COL 3: panel compra -->
-      <div class="modal-col3">
+      <!-- COL 3: panel compra + sugerencias (abarca filas 1-2) -->
+      <div class="modal-col3" style="grid-row: 1 / 3; grid-column: 3;">
         <span class="compra-llega-hoy">🚀 Llega hoy</span>
         <div class="compra-stock-badge" id="m-stock-badge"></div>
         <div id="m-envio-badge" style="font-size:12px;color:var(--verde);font-weight:700"></div>
@@ -634,14 +616,29 @@ footer{background:var(--azul3);color:rgba(255,255,255,0.7);padding:36px 24px;mar
         </div>
 
         <!-- Productos relacionados -->
-        <div>
+        <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--gris2)">
           <div class="relacionados-title">También te puede interesar</div>
           <div id="m-relacionados" style="display:flex;flex-direction:column;gap:8px;margin-top:8px"></div>
         </div>
       </div>
+
+      <!-- IA: fila 2, columnas 1-2 -->
+      <div class="ia-box" style="grid-row: 2; grid-column: 1 / 3; padding: 12px;">
+        <h4><span class="ia-dot-live"></span> Asesor Técnico IA</h4>
+        <div class="ia-quickbtns">
+          <button class="ia-quick" onclick="preguntaRapida('¿Para qué sirve este producto?')">¿Para qué sirve?</button>
+          <button class="ia-quick" onclick="preguntaRapida('¿Sirve para madera o metal?')">Compatibilidad</button>
+          <button class="ia-quick" onclick="preguntaRapida('¿Hay alguna alternativa mejor?')">Alternativas</button>
+          <button class="ia-quick" onclick="preguntaRapida('¿Qué accesorios necesito?')">Accesorios</button>
+        </div>
+        <div class="ia-input-row">
+          <textarea id="ia-pregunta" placeholder="Ej: ¿Sirve para perforar hormigón?"></textarea>
+          <button class="btn-ia" id="btn-ia" onclick="consultarIA()">Consultar</button>
+        </div>
+        <div class="ia-respuesta" id="ia-respuesta"></div>
+      </div>
     </div>
 
-<!-- Visor imagen ampliada -->
 <div class="img-zoom-overlay" id="img-zoom" onclick="cerrarZoom()">
   <img id="img-zoom-src" src="" alt="">
 </div>
