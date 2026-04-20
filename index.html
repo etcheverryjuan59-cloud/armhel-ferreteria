@@ -545,9 +545,25 @@ footer{background:var(--azul3);color:rgba(255,255,255,0.7);padding:36px 24px;mar
     </div>
 
     <div class="modal-body-3col">
-      <!-- COL 1: imagen -->
+      <!-- COL 1: imagen + IA -->
       <div class="modal-col1">
         <div class="modal-img-wrap" id="m-img" onclick="abrirZoom()"></div>
+        <div style="padding:12px 12px 0">
+          <div class="ia-box">
+            <h4><span class="ia-dot-live"></span> Asesor Técnico IA</h4>
+            <div class="ia-quickbtns">
+              <button class="ia-quick" onclick="preguntaRapida('¿Para qué sirve este producto?')">¿Para qué sirve?</button>
+              <button class="ia-quick" onclick="preguntaRapida('¿Sirve para madera o metal?')">Compatibilidad</button>
+              <button class="ia-quick" onclick="preguntaRapida('¿Hay alguna alternativa mejor?')">Alternativas</button>
+              <button class="ia-quick" onclick="preguntaRapida('¿Qué accesorios necesito?')">Accesorios</button>
+            </div>
+            <div class="ia-input-row">
+              <textarea id="ia-pregunta" placeholder="Ej: ¿Sirve para perforar hormigón?"></textarea>
+              <button class="btn-ia" id="btn-ia" onclick="consultarIA()">Consultar</button>
+            </div>
+            <div class="ia-respuesta" id="ia-respuesta"></div>
+          </div>
+        </div>
       </div>
 
       <!-- COL 2: info producto -->
@@ -624,22 +640,6 @@ footer{background:var(--azul3);color:rgba(255,255,255,0.7);padding:36px 24px;mar
         </div>
       </div>
     </div>
-    <div class="ia-box">
-      <h4><span class="ia-dot-live"></span> Asesor Técnico IA</h4>
-      <div class="ia-quickbtns">
-        <button class="ia-quick" onclick="preguntaRapida('¿Para qué sirve este producto?')">¿Para qué sirve?</button>
-        <button class="ia-quick" onclick="preguntaRapida('¿Sirve para madera o metal?')">Compatibilidad</button>
-        <button class="ia-quick" onclick="preguntaRapida('¿Hay alguna alternativa mejor?')">Alternativas</button>
-        <button class="ia-quick" onclick="preguntaRapida('¿Qué accesorios necesito?')">Accesorios</button>
-      </div>
-      <div class="ia-input-row">
-        <textarea id="ia-pregunta" placeholder="Ej: ¿Sirve para perforar hormigón?"></textarea>
-        <button class="btn-ia" id="btn-ia" onclick="consultarIA()">Consultar</button>
-      </div>
-      <div class="ia-respuesta" id="ia-respuesta"></div>
-    </div>
-  </div>
-</div>
 
 <!-- Visor imagen ampliada -->
 <div class="img-zoom-overlay" id="img-zoom" onclick="cerrarZoom()">
