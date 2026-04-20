@@ -993,7 +993,7 @@ function openModal(id) {
   document.getElementById('btn-wsp').href = `https://wa.me/${WA_NUMERO}?text=${encodeURIComponent(msg)}`;
 
   // Productos relacionados
-  const rel = productos.filter(x => x.categoria===p.categoria && x.id!==p.id && x.stock>0).slice(0,3);
+  const rel = productos.filter(x => x.categoria===p.categoria && x.id!==p.id && x.stock>0).slice(0,1);
   const relEl = document.getElementById('m-relacionados');
   if (rel.length) {
     relEl.innerHTML = rel.map(r => `
