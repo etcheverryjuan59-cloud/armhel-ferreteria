@@ -384,7 +384,7 @@ footer{background:var(--azul3);color:rgba(255,255,255,0.7);padding:36px 24px;mar
     </a>
     <div class="search-wrap">
       <svg class="ico-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-      <input type="text" placeholder="Buscar productos, marcas, SKU..." oninput="handleSearch(this.value)" onkeydown="if(event.key==='Enter'){event.preventDefault();handleSearch(this.value)}" id="buscador" autocomplete="off">
+      <input type="text" placeholder="Buscar productos, marcas, SKU..." oninput="handleSearch(this.value)" onkeydown="if(event.key==='Enter'){event.preventDefault();ejecutarBusqueda(this.value)}" id="buscador" autocomplete="off">
       <div class="autocomplete-box" id="autocomplete-box"></div>
     </div>
     <div class="header-brand-logo">
@@ -691,6 +691,7 @@ function iniciarContadores() {
   setTimeout(() => {
     animarContador(document.getElementById('stat-ventas'),   1000, '+', '', 2200);
     animarContador(document.getElementById('stat-clientes'),  210, '+', '', 2000);
+    animarContador(document.getElementById('stat-productos'), 1389, '+', '', 2200);
   }, 400);
 }
 
@@ -709,12 +710,14 @@ async function initTienda() {
     renderNavCats();
     renderGrid(productos.slice(0, 16), 'grid-inicio');
     document.getElementById('count-inicio').textContent = '+' + productos.length + ' productos';
-    // Animar contador de productos con el valor real
-    animarContador(document.getElementById('stat-productos'), Math.max(productos.length, 1389), '+', '', 2400);
+    // Si el número real es diferente del default, actualizar el contador
+    const cantReal = Math.max(productos.length, 1389);
+    if (cantReal !== 1389) {
+      const statEl = document.getElementById('stat-productos');
+      statEl.textContent = '+' + cantReal.toLocaleString('es-UY');
+    }
   } catch (e) {
     console.error(e);
-    // Animar con valor default si falla
-    animarContador(document.getElementById('stat-productos'), 1389, '+', '', 2400);
     document.getElementById('grid-inicio').innerHTML =
       '<p style="padding:20px;color:#c62828;grid-column:1/-1">❌ Error al cargar productos.</p>';
   }
@@ -846,6 +849,29 @@ function handleSearch(q) {
     document.getElementById('busqueda-titulo').textContent=`Resultados para "${q}" (${todos.length})`;
     renderGrid(todos,'grid-busqueda');
   },300);
+}
+
+function ejecutarBusqueda(q) {
+  clearTimeout(searchTimer);
+  cerrarAutocomplete();
+  if (!q.trim()) {
+    document.getElementById('view-busqueda').style.display='none';
+    document.getElementById('view-inicio').style.display='';
+    document.getElementById('view-seccion').style.display='none';
+    return;
+  }
+  const ql = q.toLowerCase();
+  const todos = productos.filter(p=>
+    p.nombre.toLowerCase().includes(ql)||
+    (p.marca&&p.marca.toLowerCase().includes(ql))||
+    (p.sku&&p.sku.toLowerCase().includes(ql))
+  );
+  document.getElementById('view-busqueda').style.display='';
+  document.getElementById('view-inicio').style.display='none';
+  document.getElementById('view-seccion').style.display='none';
+  document.getElementById('busqueda-titulo').textContent=`Resultados para "${q}" (${todos.length})`;
+  renderGrid(todos,'grid-busqueda');
+  window.scrollTo({top:0,behavior:'smooth'});
 }
 
 function mostrarAutocomplete(lista) {
