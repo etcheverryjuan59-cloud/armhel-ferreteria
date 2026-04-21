@@ -50,10 +50,10 @@ body{font-family:'Manrope',sans-serif;background:var(--gris);color:var(--texto);
 
 /* Buscador */
 .search-wrap{flex:1;max-width:580px;position:relative}
-.search-wrap input{width:100%;padding:13px 18px 13px 46px;border-radius:30px;border:2px solid rgba(255,255,255,0.15);font-size:14px;background:rgba(255,255,255,0.97);color:var(--texto);outline:none;font-family:'Manrope',sans-serif;transition:border-color 0.2s,box-shadow 0.2s;box-shadow:0 0 0 0 rgba(30,94,255,0)}
+.search-wrap input{width:100%;padding:13px 18px 13px 46px;border-radius:30px;border:2px solid rgba(255,255,255,0.15);font-size:14px;background:rgba(255,255,255,0.97);color:var(--texto);outline:none;font-family:'Manrope',sans-serif;transition:border-color 0.2s,box-shadow 0.2s}
 .search-wrap input:focus{border-color:var(--amarillo);box-shadow:0 0 0 4px rgba(255,214,0,0.25)}
 .search-wrap .ico-search{position:absolute;left:16px;top:50%;transform:translateY(-50%);opacity:0.35;width:18px;height:18px;pointer-events:none}
-.autocomplete-box{display:none;position:absolute;top:calc(100% + 6px);left:0;right:0;background:#fff;border-radius:12px;box-shadow:0 12px 40px rgba(0,0,0,0.2);z-index:200;overflow:hidden;border:1px solid var(--gris2)}
+.autocomplete-box{display:none;position:absolute;top:calc(100% + 6px);left:0;right:0;background:#fff;border-radius:12px;box-shadow:0 12px 40px rgba(0,0,0,0.2);z-index:200;overflow:hidden;border:1px solid var(--gris2);max-height:320px;overflow-y:auto}
 .autocomplete-box.show{display:block}
 .ac-item{display:flex;align-items:center;gap:10px;padding:10px 14px;cursor:pointer;transition:background 0.15s;border-bottom:1px solid var(--gris2)}
 .ac-item:last-child{border-bottom:none}
@@ -81,8 +81,8 @@ body{font-family:'Manrope',sans-serif;background:var(--gris);color:var(--texto);
 
 /* ── HERO BANNER ── */
 .hero{position:relative;overflow:hidden;min-height:360px;display:flex;align-items:center;background:#060c30}
-.hero-bg{position:absolute;inset:0;background-image:url('https://raw.githubusercontent.com/etcheverryjuan59-cloud/armhel-ferreteria/main/hero.jpg');background-size:cover;background-position:right center;background-repeat:no-repeat;z-index:0}
-.hero-bg::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(6,11,52,0.7) 0%,rgba(8,14,70,0.6) 35%,rgba(8,14,70,0.3) 60%,rgba(8,14,70,0.05) 100%)}
+.hero-bg{position:absolute;inset:0;background-image:url('https://armhel-ferreteria.vercel.app/hero.jpg');background-size:cover;background-position:right center;background-repeat:no-repeat;z-index:0}
+.hero-bg::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(6,11,52,0.97) 0%,rgba(8,14,70,0.92) 35%,rgba(8,14,70,0.6) 60%,rgba(8,14,70,0.1) 100%)}
 .hero-inner{max-width:1280px;margin:0 auto;padding:40px 24px;display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center;position:relative;z-index:1;width:100%}
 .hero-left h1{font-family:'Barlow Condensed',sans-serif;font-size:82px;font-weight:900;color:#fff;line-height:0.85;letter-spacing:1px;text-transform:uppercase;text-shadow:2px 4px 28px rgba(0,0,0,0.8)}
 .hero-left h1 .hl{color:var(--amarillo);display:block}
@@ -117,42 +117,20 @@ body{font-family:'Manrope',sans-serif;background:var(--gris);color:var(--texto);
 .marcas-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:20px;overflow-x:auto;scrollbar-width:none}
 .marcas-inner::-webkit-scrollbar{display:none}
 .marca-label{font-size:11px;font-weight:700;color:var(--texto2);text-transform:uppercase;letter-spacing:1px;white-space:nowrap;flex-shrink:0}
-/* Logos de marcas SVG/texto estilizados */
 .marca-pill{display:inline-flex;align-items:center;padding:6px 16px;border:1.5px solid var(--gris2);border-radius:8px;cursor:pointer;white-space:nowrap;transition:all 0.2s;text-decoration:none;background:#fff;flex-shrink:0}
 .marca-pill:hover{background:var(--azul);border-color:var(--azul)}
-.marca-pill:hover .marca-svg-text{color:#fff!important;stroke:#fff!important}
-.marca-pill:hover .marca-svg-text-white{color:var(--azul)!important}
-
-/* Logo STANLEY */
-.logo-stanley{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:900;color:#FFD600;letter-spacing:2px;background:#0d1b5e;padding:4px 14px;border-radius:3px}
-/* Logo INGCO */
-.logo-ingco{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:900;color:#e31e25;letter-spacing:2px}
-/* Logo DEWALT */
-.logo-dewalt{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:900;color:#FEBD17;background:#111;padding:4px 12px;border-radius:3px}
-/* Logo TOLSEN */
-.logo-tolsen{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:900;color:#1a2d8a;letter-spacing:1px}
-/* Logo IRWIN */
-.logo-irwin{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:900;color:#c62828;letter-spacing:2px}
-/* Logo RUST-OLEUM */
-.logo-rustoleum{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:900;color:#1b5e20;letter-spacing:1px}
-/* Logo TRUPER */
-.logo-truper{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:900;color:#e65100;letter-spacing:1px}
-/* Logo HYUNDAI */
-.logo-hyundai{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:900;color:#002c5f;letter-spacing:1px}
-
-.marca-pill:hover .logo-stanley,
-.marca-pill:hover .logo-ingco,
-.marca-pill:hover .logo-dewalt,
-.marca-pill:hover .logo-tolsen,
-.marca-pill:hover .logo-irwin,
-.marca-pill:hover .logo-rustoleum,
-.marca-pill:hover .logo-truper,
-.marca-pill:hover .logo-hyundai{color:#fff;background:transparent}
+.marca-pill:hover span{color:#fff!important;background:transparent!important}
+.logo-stanley{font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:900;color:#FFD600;letter-spacing:2px;background:#0d1b5e;padding:2px 10px;border-radius:3px;transition:all 0.2s}
+.logo-ingco{font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:900;color:#e31e25;letter-spacing:2px;transition:all 0.2s}
+.logo-dewalt{font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:900;color:#FEBD17;background:#111;padding:2px 8px;border-radius:3px;transition:all 0.2s}
+.logo-tolsen{font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:900;color:#1a2d8a;letter-spacing:1px;transition:all 0.2s}
+.logo-irwin{font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:900;color:#c62828;letter-spacing:2px;transition:all 0.2s}
+.logo-rustoleum{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:900;color:#1b5e20;letter-spacing:1px;transition:all 0.2s}
+.logo-truper{font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:900;color:#e65100;letter-spacing:1px;transition:all 0.2s}
+.logo-hyundai{font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:900;color:#002c5f;letter-spacing:1px;transition:all 0.2s}
 
 /* ── MAIN ── */
 .main{max-width:1280px;margin:0 auto;padding:28px 24px}
-
-/* Títulos de sección */
 .sec-title{display:flex;align-items:center;gap:14px;margin-bottom:18px}
 .sec-title h2{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:800;color:var(--azul);text-transform:uppercase;letter-spacing:0.5px}
 .sec-title-accent{width:5px;height:30px;background:var(--amarillo);border-radius:2px;flex-shrink:0}
@@ -174,16 +152,17 @@ body{font-family:'Manrope',sans-serif;background:var(--gris);color:var(--texto);
 .prod-img{height:180px;background:var(--gris);display:flex;align-items:center;justify-content:center;font-size:60px;position:relative;overflow:hidden}
 .prod-img img{width:100%;height:100%;object-fit:contain;padding:12px;transition:transform 0.3s}
 .prod-card:hover .prod-img img{transform:scale(1.06)}
+/* FIX: sin stock — badge rojo en texto, foto visible */
 .tag-envio{position:absolute;bottom:8px;left:8px;background:#e8f5e9;color:#1b5e20;font-size:10px;font-weight:700;padding:3px 9px;border-radius:6px}
 .tag-oferta{position:absolute;top:8px;right:8px;background:var(--rojo);color:#fff;font-size:10px;font-weight:700;padding:3px 9px;border-radius:6px}
-.tag-agotado{position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(255,255,255,0.75);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:var(--rojo);letter-spacing:1px}
+.tag-agotado{position:absolute;bottom:0;left:0;right:0;background:var(--rojo);color:#fff;font-size:11px;font-weight:700;padding:5px;text-align:center;letter-spacing:0.5px}
 .prod-body{padding:14px;flex:1;display:flex;flex-direction:column}
 .prod-marca{font-size:10px;font-weight:700;color:var(--azul2);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:4px}
 .prod-nombre{font-size:13px;color:var(--texto);line-height:1.4;min-height:36px;margin-bottom:10px;font-weight:500}
 .prod-precio{font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:800;color:var(--azul)}
 .prod-precio-old{font-size:14px;color:#aaa;text-decoration:line-through;margin-right:6px}
 .prod-cuotas{font-size:11px;color:var(--verde);margin-top:2px;font-weight:600}
-.btn-comprar{display:block;width:100%;margin-top:auto;padding:11px;background:var(--azul);color:#fff;border:none;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Manrope',sans-serif;transition:background 0.2s;letter-spacing:0.5px;text-transform:uppercase;margin-top:10px}
+.btn-comprar{display:block;width:100%;padding:11px;background:var(--azul);color:#fff;border:none;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Manrope',sans-serif;transition:background 0.2s;letter-spacing:0.5px;text-transform:uppercase;margin-top:auto}
 .btn-comprar:hover{background:var(--azul2)}
 
 /* ── MODAL 3 COLUMNAS ── */
@@ -192,81 +171,61 @@ body{font-family:'Manrope',sans-serif;background:var(--gris);color:var(--texto);
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
 @keyframes slideUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
 .modal{background:#fff;border-radius:16px;width:100%;max-width:1000px;max-height:96vh;overflow-y:auto;position:relative;animation:slideUp 0.28s ease;box-shadow:0 32px 100px rgba(0,0,0,0.4)}
-
-/* Header modal */
 .modal-header-bar{background:var(--azul);padding:12px 20px;border-radius:16px 16px 0 0;display:flex;align-items:center;justify-content:space-between}
 .modal-header-brand{display:flex;align-items:center;gap:10px}
 .modal-header-logo{width:36px;height:36px;background:var(--amarillo);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:900;color:var(--azul)}
 .modal-header-name{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;letter-spacing:2px;color:var(--amarillo);text-transform:uppercase}
 .modal-close{width:34px;height:34px;border-radius:50%;background:var(--amarillo);border:none;color:var(--azul);font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-weight:900;transition:transform 0.2s}
 .modal-close:hover{transform:scale(1.1)}
-
-/* Layout 3 columnas con IA en fila 2 */
-.modal-body-3col{display:grid;grid-template-columns:260px 1fr 260px;grid-template-rows:auto auto;min-height:550px}
-
-/* Columna 1: imagen + IA */
+.modal-body-3col{display:grid;grid-template-columns:350px 1fr 260px;min-height:550px}
 .modal-col1{background:#f8f9fc;border-right:1px solid #eef0f8;display:flex;flex-direction:column}
-.modal-img-wrap{display:flex;align-items:center;justify-content:center;padding:24px;min-height:240px;flex:1;cursor:zoom-in}
+.modal-img-wrap{display:flex;align-items:center;justify-content:center;padding:24px;min-height:200px;flex:1;cursor:zoom-in}
 .modal-img-wrap img{max-width:100%;max-height:220px;object-fit:contain;transition:transform 0.3s;border-radius:8px}
 .modal-img-wrap img:hover{transform:scale(1.08)}
 .modal-img-placeholder{font-size:80px;text-align:center}
-
-/* Columna 2: info producto */
 .modal-col2{padding:22px 24px;display:flex;flex-direction:column;gap:10px;border-right:1px solid #eef0f8}
-.modal-marca-badge{display:inline-block;background:var(--azul);color:var(--amarillo);font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;padding:8px 16px;border-radius:20px;width:100%}
+.modal-marca-badge{display:inline-block;background:var(--azul);color:var(--amarillo);font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;padding:4px 12px;border-radius:20px;width:fit-content}
 .modal-nombre{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:800;color:var(--azul);line-height:1.1}
-/* Rating */
 .modal-rating{display:flex;align-items:center;gap:6px}
 .stars{color:#FFD600;font-size:15px;letter-spacing:1px}
 .stars-num{font-size:13px;color:var(--texto2);font-weight:600}
-/* Precio */
 .modal-precio-wrap{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
 .modal-precio-old{font-size:16px;color:#aaa;text-decoration:line-through}
 .modal-precio{font-family:'Barlow Condensed',sans-serif;font-size:46px;font-weight:900;color:var(--azul);line-height:1}
-/* Color selector */
 .modal-color-row{display:flex;align-items:center;gap:10px}
 .modal-color-label{font-size:13px;font-weight:600;color:var(--texto2)}
-.color-dot{width:28px;height:28px;border-radius:6px;border:2px solid #ddd;cursor:pointer;transition:border-color 0.2s}
-.color-dot.active{border-color:var(--azul);box-shadow:0 0 0 3px rgba(13,27,94,0.2)}
-/* Atributos bullet */
 .modal-attrs{font-size:13px;color:var(--texto);line-height:2;padding-left:4px}
 .modal-attrs li{list-style:disc;margin-left:16px;color:var(--texto2)}
 .modal-attrs li strong{color:var(--texto);font-weight:600}
-/* Descripción */
 .modal-desc{font-size:14px;color:#3a3f5c;line-height:1.7;padding:12px 16px;background:linear-gradient(135deg,#f8f9ff,#f2f5fb);border-radius:8px;border-left:4px solid var(--amarillo);font-family:'Manrope',sans-serif;min-height:48px}
 .modal-desc-cursor{display:inline-block;width:2px;height:14px;background:var(--azul);margin-left:2px;vertical-align:middle;animation:cursorBlink 0.75s step-end infinite}
 @keyframes cursorBlink{0%,100%{opacity:1}50%{opacity:0}}
 
-/* Columna 3: panel compra */
+/* Col 3: panel compra */
 .modal-col3{padding:20px;display:flex;flex-direction:column;gap:12px}
 .compra-llega-hoy{background:var(--amarillo);color:var(--azul);font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;letter-spacing:1px;padding:6px 14px;border-radius:20px;display:inline-block;width:fit-content;text-transform:uppercase}
 .compra-stock-badge{display:flex;align-items:center;gap:7px;font-size:13px;font-weight:600}
 .stock-dot-ok{width:9px;height:9px;border-radius:50%;background:#4caf50;box-shadow:0 0 0 3px #c8e6c9;flex-shrink:0}
 .stock-dot-no{width:9px;height:9px;border-radius:50%;background:#ef5350;box-shadow:0 0 0 3px #ffcdd2;flex-shrink:0}
-/* Selector cantidad */
-.qty-selector{display:flex;align-items:center;gap:0;border:1.5px solid var(--gris2);border-radius:8px;overflow:hidden;width:fit-content}
+.qty-selector{display:flex;align-items:center;border:1.5px solid var(--gris2);border-radius:8px;overflow:hidden;width:fit-content}
 .qty-selector span{font-size:12px;color:var(--texto2);padding:0 12px;font-weight:600}
 .qty-btn-modal{width:36px;height:36px;background:#f8f9ff;border:none;cursor:pointer;font-size:18px;font-weight:700;color:var(--azul);display:flex;align-items:center;justify-content:center;transition:background 0.2s}
 .qty-btn-modal:hover{background:#e8edf8}
 .qty-num{min-width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700;color:var(--azul);border-left:1px solid var(--gris2);border-right:1px solid var(--gris2)}
-/* Botones compra */
 .btn-comprar-ahora{display:block;width:100%;padding:14px;background:var(--azul);color:#fff;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;font-family:'Manrope',sans-serif;transition:all 0.2s;letter-spacing:0.5px;text-transform:uppercase;text-align:center}
 .btn-comprar-ahora:hover{background:var(--azul2);transform:translateY(-1px)}
 .btn-carrito-modal{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:13px;background:var(--amarillo);color:var(--azul);border:none;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;font-family:'Manrope',sans-serif;transition:all 0.2s;text-transform:uppercase}
 .btn-carrito-modal:hover{background:var(--amarillo2)}
 .btn-mp-modal{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:13px;background:#009EE3;color:#fff;border:none;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;font-family:'Manrope',sans-serif;transition:all 0.2s}
 .btn-mp-modal:hover{background:#0080c0}
-.btn-mp-modal img{height:22px}
 .btn-wsp-modal{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:11px;background:#25D366;color:#fff;border:none;border-radius:10px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Manrope',sans-serif;text-decoration:none;transition:all 0.2s}
 .btn-wsp-modal:hover{background:#1da851}
-/* Sin stock */
 .sin-stock-actions{background:#fff5f5;border:1px solid #ffcdd2;border-radius:10px;padding:14px;display:none}
 .sin-stock-actions.show{display:block}
 .sin-stock-actions p{font-size:13px;color:var(--rojo);font-weight:700;margin-bottom:10px}
 .sin-stock-btns{display:flex;flex-direction:column;gap:8px}
 .btn-alternativas{padding:10px;background:var(--azul);color:#fff;border:none;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Manrope',sans-serif;text-align:center}
 .btn-avisar{padding:10px;background:#fff;color:var(--azul);border:2px solid var(--azul);border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Manrope',sans-serif;text-align:center}
-/* Productos relacionados */
 .relacionados-title{font-size:11px;font-weight:700;color:var(--texto2);text-transform:uppercase;letter-spacing:1px;padding-top:4px;border-top:1px solid var(--gris2)}
 .rel-item{display:flex;gap:10px;cursor:pointer;padding:6px;border-radius:8px;transition:background 0.2s}
 .rel-item:hover{background:var(--gris)}
@@ -277,7 +236,7 @@ body{font-family:'Manrope',sans-serif;background:var(--gris);color:var(--texto);
 .rel-info .rel-cuotas{font-size:10px;color:var(--verde);font-weight:600}
 
 /* IA Box */
-.ia-box{background:linear-gradient(135deg,#f0f4ff,#e8edf8);border:1px solid #cdd4f0;border-radius:10px;padding:14px;margin:0 0 0}
+.ia-box{background:linear-gradient(135deg,#f0f4ff,#e8edf8);border:1px solid #cdd4f0;border-radius:10px;padding:20px;margin:0}
 .ia-box h4{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;color:var(--azul);margin-bottom:9px;display:flex;align-items:center;gap:7px;text-transform:uppercase;letter-spacing:0.5px}
 .ia-dot-live{width:8px;height:8px;border-radius:50%;background:var(--azul);display:inline-block;animation:iaPulse 2s ease-in-out infinite;flex-shrink:0}
 @keyframes iaPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.35;transform:scale(0.65)}}
@@ -285,12 +244,12 @@ body{font-family:'Manrope',sans-serif;background:var(--gris);color:var(--texto);
 .ia-quick{padding:5px 10px;background:#fff;border:1px solid #c5cae9;border-radius:20px;font-size:10px;color:var(--azul);cursor:pointer;font-weight:700;transition:all 0.2s;font-family:'Manrope',sans-serif}
 .ia-quick:hover{background:var(--azul);color:#fff;border-color:var(--azul)}
 .ia-input-row{display:flex;gap:6px}
-.ia-input-row textarea{flex:1;padding:8px 10px;border-radius:7px;border:1px solid #c5cae9;font-size:12px;font-family:'Manrope',sans-serif;resize:none;height:40px;color:var(--texto);background:#fff}
+.ia-input-row textarea{flex:1;padding:8px 10px;border-radius:7px;border:1px solid #c5cae9;font-size:12px;font-family:'Manrope',sans-serif;resize:none;height:50px;color:var(--texto);background:#fff}
 .ia-input-row textarea:focus{outline:none;border-color:var(--azul)}
 .btn-ia{padding:8px 14px;background:var(--azul);color:#fff;border:none;border-radius:7px;font-size:11px;font-weight:700;cursor:pointer;font-family:'Manrope',sans-serif;white-space:nowrap;transition:all 0.2s}
 .btn-ia:hover{background:var(--azul2)}
 .btn-ia:disabled{background:#9fa8da;cursor:not-allowed}
-.ia-respuesta{margin-top:8px;font-size:13px;color:var(--texto);line-height:1.65;background:#fff;border-radius:8px;padding:10px 12px;border-left:3px solid var(--azul);display:none;font-family:'Manrope',sans-serif}
+.ia-respuesta{margin-top:8px;font-size:14px;color:var(--texto);line-height:1.7;background:#fff;border-radius:8px;padding:12px 14px;border-left:3px solid var(--azul);display:none;font-family:'Manrope',sans-serif}
 .ia-respuesta.show{display:block}
 
 /* Medios de pago */
@@ -344,10 +303,15 @@ footer{background:var(--azul3);color:rgba(255,255,255,0.7);padding:36px 24px;mar
 .toast{position:fixed;bottom:90px;right:24px;background:var(--verde);color:#fff;padding:13px 22px;border-radius:10px;font-size:14px;font-weight:600;z-index:400;opacity:0;transform:translateY(10px);transition:all 0.3s;pointer-events:none;font-family:'Manrope',sans-serif}
 .toast.show{opacity:1;transform:translateY(0)}
 
-/* Visor de imagen ampliada */
+/* Visor imagen ampliada */
 .img-zoom-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.9);z-index:500;align-items:center;justify-content:center;cursor:zoom-out}
 .img-zoom-overlay.open{display:flex}
 .img-zoom-overlay img{max-width:90vw;max-height:90vh;object-fit:contain;border-radius:8px}
+
+/* ── SIN FOTO PLACEHOLDER ── */
+.no-foto-placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#f0f2f8;color:var(--texto2)}
+.no-foto-placeholder span{font-size:40px;margin-bottom:4px}
+.no-foto-placeholder small{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:1px;opacity:0.5}
 
 @media(max-width:900px){
   .hero-inner{grid-template-columns:1fr}
@@ -384,7 +348,12 @@ footer{background:var(--azul3);color:rgba(255,255,255,0.7);padding:36px 24px;mar
     </a>
     <div class="search-wrap">
       <svg class="ico-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-      <input type="text" placeholder="Buscar productos, marcas, SKU..." oninput="handleSearch(this.value)" id="buscador" autocomplete="off">
+      <input type="text"
+             placeholder="Buscar productos, marcas, SKU..."
+             oninput="handleSearch(this.value)"
+             onkeydown="handleSearchKeydown(event)"
+             id="buscador"
+             autocomplete="off">
       <div class="autocomplete-box" id="autocomplete-box"></div>
     </div>
     <div class="header-brand-logo">
@@ -420,9 +389,9 @@ footer{background:var(--azul3);color:rgba(255,255,255,0.7);padding:36px 24px;mar
         </div>
       </a>
       <div class="hero-stats-row">
-        <div class="hstat"><div class="hstat-num" id="stat-ventas">0</div><div class="hstat-label">Ventas</div></div>
-        <div class="hstat"><div class="hstat-num" id="stat-clientes">0</div><div class="hstat-label">Clientes</div></div>
-        <div class="hstat"><div class="hstat-num" id="stat-productos">0</div><div class="hstat-label">Productos</div></div>
+        <div class="hstat"><div class="hstat-num" id="stat-ventas">+0</div><div class="hstat-label">Ventas</div></div>
+        <div class="hstat"><div class="hstat-num" id="stat-clientes">+0</div><div class="hstat-label">Clientes</div></div>
+        <div class="hstat"><div class="hstat-num" id="stat-productos">+0</div><div class="hstat-label">Productos</div></div>
       </div>
     </div>
   </div>
@@ -438,7 +407,7 @@ footer{background:var(--azul3);color:rgba(255,255,255,0.7);padding:36px 24px;mar
   </div>
 </div>
 
-<!-- MARCAS STRIP — logos originales estilizados -->
+<!-- MARCAS STRIP -->
 <div class="marcas-strip">
   <div class="marcas-inner">
     <span class="marca-label">Marcas:</span>
@@ -545,34 +514,51 @@ footer{background:var(--azul3);color:rgba(255,255,255,0.7);padding:36px 24px;mar
     </div>
 
     <div class="modal-body-3col">
-      <!-- COL 1: imagen + descripción + IA -->
-      <div class="modal-col1" style="grid-column: 1 / 3; display: flex; flex-direction: column; gap: 0;">
+      <!-- COL 1: imagen + IA -->
+      <div class="modal-col1">
         <div class="modal-img-wrap" id="m-img" onclick="abrirZoom()"></div>
-        <div style="padding: 16px; overflow-y: auto; flex: 1;">
-          <div class="modal-marca-badge" id="m-marca"></div>
-          <div class="modal-nombre" id="m-nombre"></div>
-          <div class="modal-rating" id="m-rating"></div>
-          <div class="modal-precio-wrap">
-            <div class="modal-precio-old" id="m-precio-old" style="display:none"></div>
-            <div class="modal-precio" id="m-precio"></div>
+        <div style="padding:0 12px 14px">
+          <div class="ia-box">
+            <h4><span class="ia-dot-live"></span> Asesor Técnico IA</h4>
+            <div class="ia-quickbtns">
+              <button class="ia-quick" onclick="preguntaRapida('¿Para qué sirve este producto?')">¿Para qué sirve?</button>
+              <button class="ia-quick" onclick="preguntaRapida('¿Sirve para madera o metal?')">Compatibilidad</button>
+              <button class="ia-quick" onclick="preguntaRapida('¿Hay alguna alternativa mejor?')">Alternativas</button>
+              <button class="ia-quick" onclick="preguntaRapida('¿Qué accesorios necesito?')">Accesorios</button>
+            </div>
+            <div class="ia-input-row">
+              <textarea id="ia-pregunta" placeholder="Ej: ¿Sirve para perforar hormigón?"></textarea>
+              <button class="btn-ia" id="btn-ia" onclick="consultarIA()">Consultar</button>
+            </div>
+            <div class="ia-respuesta" id="ia-respuesta"></div>
           </div>
-          <div id="m-color-row" style="display:none" class="modal-color-row">
-            <span class="modal-color-label">Color:</span>
-            <div id="m-colores"></div>
-            <span id="m-color-nombre" style="font-size:13px;color:var(--texto2);font-weight:600"></span>
-          </div>
-          <ul class="modal-attrs" id="m-attrs"></ul>
-          <div class="modal-desc" id="m-desc" style="display:none"></div>
         </div>
       </div>
 
-      <!-- COL 3: panel compra + sugerencias (abarca filas 1-2) -->
-      <div class="modal-col3" style="grid-row: 1 / 3; grid-column: 3;">
+      <!-- COL 2: info producto -->
+      <div class="modal-col2">
+        <div class="modal-marca-badge" id="m-marca"></div>
+        <div class="modal-nombre" id="m-nombre"></div>
+        <div class="modal-rating" id="m-rating"></div>
+        <div class="modal-precio-wrap">
+          <div class="modal-precio-old" id="m-precio-old" style="display:none"></div>
+          <div class="modal-precio" id="m-precio"></div>
+        </div>
+        <div id="m-color-row" style="display:none" class="modal-color-row">
+          <span class="modal-color-label">Color:</span>
+          <div id="m-colores"></div>
+          <span id="m-color-nombre" style="font-size:13px;color:var(--texto2);font-weight:600"></span>
+        </div>
+        <ul class="modal-attrs" id="m-attrs"></ul>
+        <div class="modal-desc" id="m-desc" style="display:none"></div>
+      </div>
+
+      <!-- COL 3: panel compra -->
+      <div class="modal-col3">
         <span class="compra-llega-hoy">🚀 Llega hoy</span>
         <div class="compra-stock-badge" id="m-stock-badge"></div>
         <div id="m-envio-badge" style="font-size:12px;color:var(--verde);font-weight:700"></div>
 
-        <!-- Selector cantidad -->
         <div>
           <div style="font-size:11px;color:var(--texto2);font-weight:700;margin-bottom:6px;text-transform:uppercase;letter-spacing:1px">Cantidad</div>
           <div class="qty-selector">
@@ -583,20 +569,18 @@ footer{background:var(--azul3);color:rgba(255,255,255,0.7);padding:36px 24px;mar
           </div>
         </div>
 
-        <!-- Botones compra -->
         <div id="modal-compra-btns">
           <button class="btn-comprar-ahora" onclick="pagarMP()">COMPRAR AHORA</button>
           <div style="height:8px"></div>
           <button class="btn-carrito-modal" onclick="agregarAlCarrito()">🛒 AGREGAR AL CARRITO</button>
           <div style="height:8px"></div>
           <button class="btn-mp-modal" onclick="pagarMP()">
-            <svg viewBox="0 0 120 22" width="120" height="22" xmlns="http://www.w3.org/2000/svg"><text x="0" y="17" font-size="15" fill="white" font-weight="bold" font-family="sans-serif">mercado pago</text></svg>
+            <svg viewBox="0 0 120 22" width="120" height="22"><text x="0" y="17" font-size="15" fill="white" font-weight="bold" font-family="sans-serif">mercado pago</text></svg>
           </button>
           <div style="height:8px"></div>
           <a class="btn-wsp-modal" id="btn-wsp" href="#" target="_blank">💬 Consultar por WhatsApp</a>
         </div>
 
-        <!-- Sin stock -->
         <div class="sin-stock-actions" id="sin-stock-actions">
           <p>❌ Producto sin stock disponible</p>
           <div class="sin-stock-btns">
@@ -615,30 +599,16 @@ footer{background:var(--azul3);color:rgba(255,255,255,0.7);padding:36px 24px;mar
           </div>
         </div>
 
-        <!-- Productos relacionados -->
-        <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--gris2)">
+        <div>
           <div class="relacionados-title">También te puede interesar</div>
           <div id="m-relacionados" style="display:flex;flex-direction:column;gap:8px;margin-top:8px"></div>
         </div>
       </div>
-
-      <!-- IA: fila 2, columnas 1-2 -->
-      <div class="ia-box" style="grid-row: 2; grid-column: 1 / 3; padding: 12px;">
-        <h4><span class="ia-dot-live"></span> Asesor Técnico IA</h4>
-        <div class="ia-quickbtns">
-          <button class="ia-quick" onclick="preguntaRapida('¿Para qué sirve este producto?')">¿Para qué sirve?</button>
-          <button class="ia-quick" onclick="preguntaRapida('¿Sirve para madera o metal?')">Compatibilidad</button>
-          <button class="ia-quick" onclick="preguntaRapida('¿Hay alguna alternativa mejor?')">Alternativas</button>
-          <button class="ia-quick" onclick="preguntaRapida('¿Qué accesorios necesito?')">Accesorios</button>
-        </div>
-        <div class="ia-input-row">
-          <textarea id="ia-pregunta" placeholder="Ej: ¿Sirve para perforar hormigón?"></textarea>
-          <button class="btn-ia" id="btn-ia" onclick="consultarIA()">Consultar</button>
-        </div>
-        <div class="ia-respuesta" id="ia-respuesta"></div>
-      </div>
     </div>
+  </div>
+</div>
 
+<!-- Visor imagen ampliada -->
 <div class="img-zoom-overlay" id="img-zoom" onclick="cerrarZoom()">
   <img id="img-zoom-src" src="" alt="">
 </div>
@@ -672,33 +642,42 @@ let searchTimer = null;
 let modalQty   = 1;
 let imgZoomSrc = '';
 
-// ── CONTADORES ANIMADOS ──────────────────────────────────────────────────────
+// ─────────────────────────────────────────────────────────────────────────────
+// CONTADORES ANIMADOS
+// FIX: los 3 arrancan juntos desde el inicio, productos no espera al fetch
+// ─────────────────────────────────────────────────────────────────────────────
 function animarContador(el, target, prefix, suffix, duracion) {
   const start = performance.now();
   function step(now) {
-    const elapsed = now - start;
+    const elapsed  = now - start;
     const progress = Math.min(elapsed / duracion, 1);
-    // ease-out
-    const eased = 1 - Math.pow(1 - progress, 3);
-    const current = Math.round(eased * target);
+    const eased    = 1 - Math.pow(1 - progress, 3); // ease-out cúbico
+    const current  = Math.round(eased * target);
     el.textContent = prefix + current.toLocaleString('es-UY') + suffix;
     if (progress < 1) requestAnimationFrame(step);
   }
   requestAnimationFrame(step);
 }
 
-function iniciarContadores() {
+function iniciarContadores(totalProductos) {
+  // Arrancan todos al mismo tiempo con un pequeño delay inicial
   setTimeout(() => {
-    animarContador(document.getElementById('stat-ventas'),   1000, '+', '', 2200);
-    animarContador(document.getElementById('stat-clientes'),  210, '+', '', 2000);
+    animarContador(document.getElementById('stat-ventas'),    1000, '+', '', 2200);
+    animarContador(document.getElementById('stat-clientes'),   210, '+', '', 2000);
+    animarContador(document.getElementById('stat-productos'), Math.max(totalProductos, 1389), '+', '', 2400);
   }, 400);
 }
 
-// ── INIT ──────────────────────────────────────────────────────────────────────
+// ─────────────────────────────────────────────────────────────────────────────
+// INIT
+// ─────────────────────────────────────────────────────────────────────────────
 async function initTienda() {
-  iniciarContadores();
   document.getElementById('grid-inicio').innerHTML =
     '<p style="padding:20px;color:#888;grid-column:1/-1;font-family:Manrope,sans-serif">Cargando productos...</p>';
+
+  // Mostramos contadores con valor estimado de inmediato, sin esperar el fetch
+  iniciarContadores(1389);
+
   try {
     const [prodSnap, catSnap] = await Promise.all([
       db.collection('productos').get(),
@@ -706,17 +685,19 @@ async function initTienda() {
     ]);
     categorias = catSnap.docs.map(d => ({ id: d.id, ...d.data() }));
     productos  = prodSnap.docs.map(d => ({ id: d.id, ...d.data() }));
+
     renderNavCats();
     renderGrid(productos.slice(0, 16), 'grid-inicio');
     document.getElementById('count-inicio').textContent = '+' + productos.length + ' productos';
-    // Animar contador de productos con el valor real
-    animarContador(document.getElementById('stat-productos'), Math.max(productos.length, 1389), '+', '', 2400);
+
+    // Si el total real es mayor al estimado, re-animamos solo el de productos
+    if (productos.length > 1389) {
+      animarContador(document.getElementById('stat-productos'), productos.length, '+', '', 1800);
+    }
   } catch (e) {
     console.error(e);
-    // Animar con valor default si falla
-    animarContador(document.getElementById('stat-productos'), 1389, '+', '', 2400);
     document.getElementById('grid-inicio').innerHTML =
-      '<p style="padding:20px;color:#c62828;grid-column:1/-1">❌ Error al cargar productos.</p>';
+      '<p style="padding:20px;color:#c62828;grid-column:1/-1">❌ Error al cargar productos. Recargá la página.</p>';
   }
 }
 
@@ -730,7 +711,9 @@ function renderNavCats() {
   nav.innerHTML = html;
 }
 
-// ── PRECIO ────────────────────────────────────────────────────────────────────
+// ─────────────────────────────────────────────────────────────────────────────
+// PRECIO
+// ─────────────────────────────────────────────────────────────────────────────
 function formatPrecio(p) {
   if (p.precioUSD) return 'USD ' + parseFloat(p.precioUSD).toFixed(2);
   if (p.precio)    return '$ '   + parseInt(p.precio).toLocaleString('es-UY');
@@ -738,123 +721,165 @@ function formatPrecio(p) {
 }
 function precioNum(p) {
   if (p.precio)    return parseInt(p.precio);
-  if (p.precioUSD) return Math.round(parseFloat(p.precioUSD)*40);
+  if (p.precioUSD) return Math.round(parseFloat(p.precioUSD) * 40);
   return 0;
 }
 
-// ── GRID ──────────────────────────────────────────────────────────────────────
+// ─────────────────────────────────────────────────────────────────────────────
+// FOTO PLACEHOLDER — muestra imagen si existe, placeholder si no
+// ─────────────────────────────────────────────────────────────────────────────
+function fotoHTML(p, size='card') {
+  if (p.foto) {
+    if (size === 'card') {
+      return `<img src="${p.foto}" alt="${p.nombre}" onerror="this.parentElement.innerHTML='<div class=no-foto-placeholder><span>📦</span><small>Sin foto</small></div>'">`;
+    }
+    return `<img src="${p.foto}" alt="${p.nombre}" onerror="this.parentElement.innerHTML='<div class=modal-img-placeholder>📦</div>'">`;
+  }
+  if (size === 'card') {
+    return `<div class="no-foto-placeholder"><span>📦</span><small>Sin foto</small></div>`;
+  }
+  return `<div class="modal-img-placeholder">📦</div>`;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// GRID
+// ─────────────────────────────────────────────────────────────────────────────
 function renderGrid(lista, cid) {
   const c = document.getElementById(cid);
-  if (!lista||!lista.length) {
-    c.innerHTML='<p style="color:#888;padding:20px;grid-column:1/-1">No se encontraron productos.</p>';
+  if (!lista || !lista.length) {
+    c.innerHTML = '<p style="color:#888;padding:20px;grid-column:1/-1">No se encontraron productos.</p>';
     return;
   }
   c.innerHTML = lista.map(p => {
     const sinStock = !p.stock || p.stock <= 0;
-    const foto = p.foto
-      ? `<img src="${p.foto}" alt="${p.nombre}" onerror="this.style.display='none'">`
-      : `<span style="font-size:52px">📦</span>`;
     const precioOld = p.precioOriginal
       ? `<span class="prod-precio-old">${formatPrecio({precio:p.precioOriginal})}</span>` : '';
     return `<div class="prod-card" onclick="openModal('${p.id}')">
       <div class="prod-img">
-        ${foto}
-        ${p.envio==='gratis'?'<span class="tag-envio">🚚 Gratis</span>':''}
-        ${p.precioOriginal?'<span class="tag-oferta">OFERTA</span>':''}
-        ${sinStock?'<div class="tag-agotado">SIN STOCK</div>':''}
+        ${fotoHTML(p, 'card')}
+        ${p.envio==='gratis' ? '<span class="tag-envio">🚚 Gratis</span>' : ''}
+        ${p.precioOriginal ? '<span class="tag-oferta">OFERTA</span>' : ''}
+        ${sinStock ? '<div class="tag-agotado">❌ SIN STOCK</div>' : ''}
       </div>
       <div class="prod-body">
         <div class="prod-marca">${p.marca||''}</div>
-        ${p.sku?`<div style="font-size:10px;color:#aaa;margin-bottom:3px;font-family:Manrope,sans-serif">SKU: ${p.sku}</div>`:''}
+        ${p.sku ? `<div style="font-size:10px;color:#aaa;margin-bottom:3px">SKU: ${p.sku}</div>` : ''}
         <div class="prod-nombre">${p.nombre}</div>
         <div>${precioOld}<span class="prod-precio">${formatPrecio(p)}</span></div>
-        <div class="prod-cuotas">${precioNum(p)?'3x $'+Math.round(precioNum(p)/3).toLocaleString('es-UY')+' sin interés':''}</div>
+        <div class="prod-cuotas">${precioNum(p) ? '3x $'+Math.round(precioNum(p)/3).toLocaleString('es-UY')+' sin interés' : ''}</div>
         <button class="btn-comprar" onclick="event.stopPropagation();openModal('${p.id}')">${sinStock?'VER PRODUCTO':'COMPRAR'}</button>
       </div>
     </div>`;
   }).join('');
 }
 
-// ── NAVEGACIÓN ────────────────────────────────────────────────────────────────
+// ─────────────────────────────────────────────────────────────────────────────
+// NAVEGACIÓN
+// ─────────────────────────────────────────────────────────────────────────────
 function verSeccion(sec, btn) {
-  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
   if (btn) btn.classList.add('active');
   cerrarAutocomplete();
-  document.getElementById('view-busqueda').style.display='none';
-  document.getElementById('buscador').value='';
-  if (sec==='inicio') {
-    document.getElementById('view-inicio').style.display='';
-    document.getElementById('view-seccion').style.display='none';
-    renderGrid(productos.slice(0,16),'grid-inicio');
+  document.getElementById('view-busqueda').style.display = 'none';
+  document.getElementById('buscador').value = '';
+
+  if (sec === 'inicio') {
+    document.getElementById('view-inicio').style.display = '';
+    document.getElementById('view-seccion').style.display = 'none';
+    renderGrid(productos.slice(0, 16), 'grid-inicio');
   } else {
-    document.getElementById('view-inicio').style.display='none';
-    document.getElementById('view-seccion').style.display='';
-    const cat  = categorias.find(c=>c.id===sec);
-    const lista = sec==='todos' ? productos : productos.filter(p=>p.categoria===sec);
-    document.getElementById('seccion-titulo').textContent = cat?(cat.icono||'📦')+' '+cat.nombre:'📦 Todos los productos';
-    document.getElementById('seccion-count').textContent  = lista.length+' productos';
-    renderGrid(lista,'grid-seccion');
+    document.getElementById('view-inicio').style.display = 'none';
+    document.getElementById('view-seccion').style.display = '';
+    const cat   = categorias.find(c => c.id === sec);
+    const lista = sec === 'todos' ? productos : productos.filter(p => p.categoria === sec);
+    document.getElementById('seccion-titulo').textContent = cat ? (cat.icono||'📦')+' '+cat.nombre : '📦 Todos los productos';
+    document.getElementById('seccion-count').textContent  = lista.length + ' productos';
+    renderGrid(lista, 'grid-seccion');
   }
-  window.scrollTo({top:0,behavior:'smooth'});
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
-function verSeccionBtn(s){ const b=document.querySelector(`[onclick="verSeccion('${s}',this)"]`); verSeccion(s,b); }
+function verSeccionBtn(s) {
+  const b = document.querySelector(`[onclick="verSeccion('${s}',this)"]`);
+  verSeccion(s, b);
+}
 
-// ── FILTRAR MARCA — ahora muestra resultados correctamente ───────────────────
+// ─────────────────────────────────────────────────────────────────────────────
+// FILTRAR MARCA
+// Busca en el campo `marca` del producto (prioridad) y también en el nombre
+// ─────────────────────────────────────────────────────────────────────────────
 function filtrarMarca(marca) {
-  // Búsqueda en el nombre del producto (título)
   const marcaL = marca.toLowerCase();
-  const lista = productos.filter(p =>
-    p.nombre && p.nombre.toLowerCase().includes(marcaL)
-  );
-  document.getElementById('view-inicio').style.display='none';
-  document.getElementById('view-seccion').style.display='';
-  document.getElementById('view-busqueda').style.display='none';
+  const lista = productos.filter(p => {
+    const enMarca  = p.marca  && p.marca.toLowerCase().includes(marcaL);
+    const enNombre = p.nombre && p.nombre.toLowerCase().includes(marcaL);
+    return enMarca || enNombre;
+  });
+
+  document.getElementById('view-inicio').style.display  = 'none';
+  document.getElementById('view-seccion').style.display = '';
+  document.getElementById('view-busqueda').style.display = 'none';
   document.getElementById('seccion-titulo').textContent = '🏷 ' + marca;
-  document.getElementById('seccion-count').textContent  = lista.length+' productos';
-  renderGrid(lista,'grid-seccion');
-  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
-  window.scrollTo({top:0,behavior:'smooth'});
-  if (lista.length===0) showToast('No se encontraron productos de '+marca+'. Verificá el catálogo.','info');
+  document.getElementById('seccion-count').textContent  = lista.length + ' productos';
+  renderGrid(lista, 'grid-seccion');
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  if (!lista.length) showToast('No hay productos de ' + marca + ' en el catálogo.', 'info');
 }
 
-// ── BUSCADOR CON AUTOCOMPLETADO ───────────────────────────────────────────────
+// ─────────────────────────────────────────────────────────────────────────────
+// BUSCADOR CON AUTOCOMPLETADO
+// FIX: Enter cierra el autocomplete
+// ─────────────────────────────────────────────────────────────────────────────
 function handleSearch(q) {
   clearTimeout(searchTimer);
+
   if (!q.trim()) {
     cerrarAutocomplete();
-    document.getElementById('view-busqueda').style.display='none';
-    document.getElementById('view-inicio').style.display='';
-    document.getElementById('view-seccion').style.display='none';
+    document.getElementById('view-busqueda').style.display = 'none';
+    document.getElementById('view-inicio').style.display   = '';
+    document.getElementById('view-seccion').style.display  = 'none';
     return;
   }
-  const ql = q.toLowerCase();
-  const tops = productos.filter(p=>
-    p.nombre.toLowerCase().includes(ql)||
-    (p.marca&&p.marca.toLowerCase().includes(ql))||
-    (p.sku&&p.sku.toLowerCase().includes(ql))
-  ).slice(0,6);
+
+  const ql   = q.toLowerCase();
+  const tops = productos.filter(p =>
+    p.nombre.toLowerCase().includes(ql) ||
+    (p.marca && p.marca.toLowerCase().includes(ql)) ||
+    (p.sku   && p.sku.toLowerCase().includes(ql))
+  ).slice(0, 6);
+
   mostrarAutocomplete(tops);
-  searchTimer = setTimeout(()=>{
-    const todos = productos.filter(p=>
-      p.nombre.toLowerCase().includes(ql)||
-      (p.marca&&p.marca.toLowerCase().includes(ql))||
-      (p.sku&&p.sku.toLowerCase().includes(ql))
+
+  searchTimer = setTimeout(() => {
+    const todos = productos.filter(p =>
+      p.nombre.toLowerCase().includes(ql) ||
+      (p.marca && p.marca.toLowerCase().includes(ql)) ||
+      (p.sku   && p.sku.toLowerCase().includes(ql))
     );
-    document.getElementById('view-busqueda').style.display='';
-    document.getElementById('view-inicio').style.display='none';
-    document.getElementById('view-seccion').style.display='none';
-    document.getElementById('busqueda-titulo').textContent=`Resultados para "${q}" (${todos.length})`;
-    renderGrid(todos,'grid-busqueda');
-  },300);
+    document.getElementById('view-busqueda').style.display = '';
+    document.getElementById('view-inicio').style.display   = 'none';
+    document.getElementById('view-seccion').style.display  = 'none';
+    document.getElementById('busqueda-titulo').textContent = `Resultados para "${q}" (${todos.length})`;
+    renderGrid(todos, 'grid-busqueda');
+  }, 300);
+}
+
+// FIX: Enter oculta el autocomplete
+function handleSearchKeydown(e) {
+  if (e.key === 'Enter') {
+    cerrarAutocomplete();
+    document.getElementById('buscador').blur();
+  }
 }
 
 function mostrarAutocomplete(lista) {
   const box = document.getElementById('autocomplete-box');
-  if (!lista.length){ cerrarAutocomplete(); return; }
-  box.innerHTML = lista.map(p=>{
-    const sinStock = !p.stock||p.stock<=0;
+  if (!lista.length) { cerrarAutocomplete(); return; }
+
+  box.innerHTML = lista.map(p => {
+    const sinStock = !p.stock || p.stock <= 0;
     const img = p.foto
-      ? `<img class="ac-img" src="${p.foto}" alt="" onerror="this.style.display='none'">`
+      ? `<img class="ac-img" src="${p.foto}" alt="" onerror="this.outerHTML='<div class=ac-img style=display:flex;align-items:center;justify-content:center;font-size:18px>📦</div>'">`
       : `<div class="ac-img" style="display:flex;align-items:center;justify-content:center;font-size:22px">📦</div>`;
     return `<div class="ac-item" onclick="openModal('${p.id}');cerrarAutocomplete()">
       ${img}
@@ -868,82 +893,155 @@ function mostrarAutocomplete(lista) {
   box.classList.add('show');
 }
 
-function cerrarAutocomplete(){
+function cerrarAutocomplete() {
   document.getElementById('autocomplete-box').classList.remove('show');
 }
-document.addEventListener('click',e=>{
+document.addEventListener('click', e => {
   if (!e.target.closest('.search-wrap')) cerrarAutocomplete();
 });
 
-// ── MODAL ─────────────────────────────────────────────────────────────────────
+// ─────────────────────────────────────────────────────────────────────────────
+// ALTERNATIVAS INTELIGENTES
+// Extrae palabras clave del nombre del producto para encontrar similares
+// ─────────────────────────────────────────────────────────────────────────────
+function extraerPalabrasClave(nombre) {
+  if (!nombre) return [];
+  const n = nombre.toLowerCase();
+
+  // Extraer potencia en watts/wats
+  const wattsMatch = n.match(/(\d+)\s*w(?:att?s?)?/);
+  const watts = wattsMatch ? parseInt(wattsMatch[1]) : null;
+
+  // Extraer tipo de herramienta (palabras clave importantes)
+  const tiposHerramienta = [
+    'taladro','amoladora','sierra','caladora','esmeril','compresor','soldadora',
+    'lijadora','atornillador','rotomartillo','martillo','destornillador','alicate',
+    'llave','pinza','motosierra','cortadora','fresadora','tronzadora','hidrolavadora',
+    'generador','bomba','cortacesped','bordeadora','pulverizador','sopladora',
+    'linterna','multimetro','detector','nivel','medidor','cautin','pistola',
+    'cinta','tijera','navaja','serrucho','hacha','pala','rastrillo','azada'
+  ];
+  const tipoEncontrado = tiposHerramienta.find(t => n.includes(t));
+
+  // Extraer voltaje
+  const voltMatch = n.match(/(\d+)\s*v(?:olt)?/);
+  const volts = voltMatch ? parseInt(voltMatch[1]) : null;
+
+  return { tipo: tipoEncontrado, watts, volts };
+}
+
+function calcularPuntajeAlternativa(prodBase, candidato) {
+  if (candidato.id === prodBase.id) return -1;
+  if (!candidato.stock || candidato.stock <= 0) return -1;
+
+  const baseKeys  = extraerPalabrasClave(prodBase.nombre);
+  const candKeys  = extraerPalabrasClave(candidato.nombre);
+  let score = 0;
+
+  // Misma categoría: peso grande
+  if (candidato.categoria === prodBase.categoria) score += 30;
+
+  // Mismo tipo de herramienta: peso muy grande
+  if (baseKeys.tipo && candKeys.tipo && baseKeys.tipo === candKeys.tipo) score += 50;
+
+  // Potencia similar (dentro del ±50%): bonus
+  if (baseKeys.watts && candKeys.watts) {
+    const diff = Math.abs(baseKeys.watts - candKeys.watts) / baseKeys.watts;
+    if (diff <= 0.15) score += 20;      // casi igual
+    else if (diff <= 0.30) score += 12; // similar
+    else if (diff <= 0.50) score += 5;  // rango aceptable
+  }
+
+  // Mismo voltaje
+  if (baseKeys.volts && candKeys.volts && baseKeys.volts === candKeys.volts) score += 10;
+
+  // Misma marca: bonus moderado
+  if (prodBase.marca && candidato.marca &&
+      prodBase.marca.toLowerCase() === candidato.marca.toLowerCase()) score += 8;
+
+  // Precio similar (dentro del ±40%): pequeño bonus
+  const pBase = precioNum(prodBase);
+  const pCand = precioNum(candidato);
+  if (pBase > 0 && pCand > 0) {
+    const diffP = Math.abs(pBase - pCand) / pBase;
+    if (diffP <= 0.20) score += 6;
+    else if (diffP <= 0.40) score += 3;
+  }
+
+  return score;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// MODAL
+// ─────────────────────────────────────────────────────────────────────────────
 function openModal(id) {
-  const p = productos.find(x=>x.id===id);
+  const p = productos.find(x => x.id === id);
   if (!p) return;
   prodActual = p;
   cacheIA    = {};
   modalQty   = 1;
   document.getElementById('modal-qty').textContent = '1';
-  const sinStock = !p.stock||p.stock<=0;
+  const sinStock = !p.stock || p.stock <= 0;
 
   // Imagen col1
   const imgEl = document.getElementById('m-img');
   if (p.foto) {
     imgZoomSrc = p.foto;
-    imgEl.innerHTML = `<img src="${p.foto}" alt="${p.nombre}" onerror="this.parentElement.innerHTML='<div class=modal-img-placeholder>📦</div>'">`;
+    imgEl.innerHTML = fotoHTML(p, 'modal');
   } else {
     imgZoomSrc = '';
     imgEl.innerHTML = `<div class="modal-img-placeholder">📦</div>`;
   }
 
-  // Col2: info
-  document.getElementById('m-marca').textContent = p.marca||'ARMHEL';
+  // Info
+  document.getElementById('m-marca').textContent = p.marca || 'ARMHEL';
   document.getElementById('m-nombre').textContent = p.nombre;
 
-  // Rating (si existe)
+  // Rating
   const ratingEl = document.getElementById('m-rating');
   if (p.rating) {
-    const stars = '★'.repeat(Math.round(p.rating)) + '☆'.repeat(5-Math.round(p.rating));
+    const stars = '★'.repeat(Math.round(p.rating)) + '☆'.repeat(5 - Math.round(p.rating));
     ratingEl.innerHTML = `<span class="stars">${stars}</span><span class="stars-num">${p.rating} (${p.reviews||0} reseñas)</span>`;
-    ratingEl.style.display='flex';
+    ratingEl.style.display = 'flex';
   } else {
-    ratingEl.style.display='none';
+    ratingEl.style.display = 'none';
   }
 
   // Precio
-  const precioEl = document.getElementById('m-precio');
+  const precioEl    = document.getElementById('m-precio');
   const precioOldEl = document.getElementById('m-precio-old');
   precioEl.textContent = formatPrecio(p);
   if (p.precioOriginal) {
-    precioOldEl.textContent = formatPrecio({precio:p.precioOriginal});
-    precioOldEl.style.display='';
+    precioOldEl.textContent = formatPrecio({precio: p.precioOriginal});
+    precioOldEl.style.display = '';
   } else {
-    precioOldEl.style.display='none';
+    precioOldEl.style.display = 'none';
   }
 
-  // Color (si existe)
+  // Color
   const colorRow = document.getElementById('m-color-row');
   if (p.color) {
     document.getElementById('m-color-nombre').textContent = p.color;
-    colorRow.style.display='flex';
+    colorRow.style.display = 'flex';
   } else {
-    colorRow.style.display='none';
+    colorRow.style.display = 'none';
   }
 
   // Atributos
   const attrsEl = document.getElementById('m-attrs');
-  const attrs = [];
-  if (p.peso)         attrs.push(`<strong>Peso neto:</strong> ${p.peso}`);
-  if (p.volumen)      attrs.push(`<strong>Volumen neto:</strong> ${p.volumen}`);
-  if (p.unidades)     attrs.push(`<strong>Unidades por pack:</strong> ${p.unidades}`);
-  if (p.formato)      attrs.push(`<strong>Formato de venta:</strong> ${p.formato}`);
-  if (p.sku)          attrs.push(`<strong>SKU:</strong> ${p.sku}`);
-  if (p.stock>0)      attrs.push(`<strong>Stock:</strong> ${p.stock} unidades`);
-  if (p.cuotas)       attrs.push(`<strong>Cuotas:</strong> 3x $${Math.round(precioNum(p)/3).toLocaleString('es-UY')} sin interés`);
-  attrsEl.innerHTML = attrs.map(a=>`<li>${a}</li>`).join('');
+  const attrs   = [];
+  if (p.peso)     attrs.push(`<strong>Peso neto:</strong> ${p.peso}`);
+  if (p.volumen)  attrs.push(`<strong>Volumen neto:</strong> ${p.volumen}`);
+  if (p.unidades) attrs.push(`<strong>Unidades por pack:</strong> ${p.unidades}`);
+  if (p.formato)  attrs.push(`<strong>Formato de venta:</strong> ${p.formato}`);
+  if (p.sku)      attrs.push(`<strong>SKU:</strong> ${p.sku}`);
+  if (p.stock > 0) attrs.push(`<strong>Stock:</strong> ${p.stock} unidades`);
+  if (precioNum(p)) attrs.push(`<strong>Cuotas:</strong> 3x $${Math.round(precioNum(p)/3).toLocaleString('es-UY')} sin interés`);
+  attrsEl.innerHTML = attrs.map(a => `<li>${a}</li>`).join('');
 
-  // Descripción — SIEMPRE mostrar (con o sin stock)
+  // Descripción (typewriter)
   const descEl = document.getElementById('m-desc');
-  const texto = p.desc || p.descripcion || '';
+  const texto  = p.desc || p.descripcion || '';
   if (texto) {
     descEl.style.display = '';
     descEl.innerHTML = '';
@@ -963,7 +1061,7 @@ function openModal(id) {
     descEl.style.display = 'none';
   }
 
-  // Col3: compra
+  // Stock badge
   const stockBadge = document.getElementById('m-stock-badge');
   if (sinStock) {
     stockBadge.innerHTML = `<div class="stock-dot-no"></div><span style="color:#e53935">Sin stock disponible</span>`;
@@ -972,58 +1070,61 @@ function openModal(id) {
   }
 
   // Envío
-  const envioEl = document.getElementById('m-envio-badge');
-  envioEl.innerHTML = p.envio==='gratis'
+  document.getElementById('m-envio-badge').innerHTML = p.envio === 'gratis'
     ? '🚚 Llega mañana · <strong>Envío gratis</strong>'
     : '🚚 Llega mañana en Montevideo';
 
-  // Sin stock: mostrar/ocultar botones
+  // Botones compra
   document.getElementById('sin-stock-actions').classList.toggle('show', sinStock);
-  document.getElementById('modal-compra-btns').style.display = sinStock ? 'none' : 'flex';
+  document.getElementById('modal-compra-btns').style.display       = sinStock ? 'none' : 'flex';
   document.getElementById('modal-compra-btns').style.flexDirection = 'column';
 
-  // WhatsApp con enlace directo al producto
+  // WhatsApp
   const productoUrl = `${TIENDA_URL}?producto=${p.id}`;
   const msg = sinStock
     ? `Hola! Me interesa este producto:\n\n*${p.nombre}*\nPrecio: ${formatPrecio(p)}\n🔗 ${productoUrl}\n\n¿Cuándo vuelve a tener stock?`
     : `Hola! Quiero comprar:\n\n*${p.nombre}*\nPrecio: ${formatPrecio(p)}\n🔗 ${productoUrl}\n\n¿Está disponible?`;
   document.getElementById('btn-wsp').href = `https://wa.me/${WA_NUMERO}?text=${encodeURIComponent(msg)}`;
 
-  // Productos relacionados
-  const rel = productos.filter(x => x.categoria===p.categoria && x.id!==p.id && x.stock>0).slice(0,3);
+  // Productos relacionados — con lógica inteligente
+  const relacionados = productos
+    .map(x => ({ prod: x, score: calcularPuntajeAlternativa(p, x) }))
+    .filter(x => x.score > 0)
+    .sort((a, b) => b.score - a.score)
+    .slice(0, 3)
+    .map(x => x.prod);
+
   const relEl = document.getElementById('m-relacionados');
-  if (rel.length) {
-    relEl.innerHTML = rel.map(r => `
+  if (relacionados.length) {
+    relEl.innerHTML = relacionados.map(r => `
       <div class="rel-item" onclick="openModal('${r.id}')">
-        <div class="rel-img">${r.foto?`<img src="${r.foto}" alt="${r.nombre}">`:'📦'}</div>
+        <div class="rel-img">${r.foto ? `<img src="${r.foto}" alt="${r.nombre}">` : '📦'}</div>
         <div class="rel-info">
           <div class="rel-nombre">${r.nombre}</div>
           <div class="rel-precio">${formatPrecio(r)}</div>
-          ${precioNum(r)?`<div class="rel-cuotas">3x $${Math.round(precioNum(r)/3).toLocaleString('es-UY')} s/i</div>`:''}
+          ${precioNum(r) ? `<div class="rel-cuotas">3x $${Math.round(precioNum(r)/3).toLocaleString('es-UY')} s/i</div>` : ''}
         </div>
       </div>`).join('');
   } else {
-    relEl.innerHTML = '<p style="font-size:12px;color:#aaa">No hay alternativas disponibles.</p>';
+    relEl.innerHTML = '<p style="font-size:12px;color:#aaa">No hay alternativas disponibles con stock.</p>';
   }
 
-  // IA reset
-  document.getElementById('ia-pregunta').value='';
-  document.getElementById('ia-respuesta').innerHTML='';
+  // Reset IA
+  document.getElementById('ia-pregunta').value = '';
+  document.getElementById('ia-respuesta').innerHTML = '';
   document.getElementById('ia-respuesta').classList.remove('show');
-  document.getElementById('btn-ia').disabled=false;
-  document.getElementById('btn-ia').textContent='Consultar';
+  document.getElementById('btn-ia').disabled = false;
+  document.getElementById('btn-ia').textContent = 'Consultar';
 
   document.getElementById('modal').classList.add('open');
-  document.body.style.overflow='hidden';
+  document.body.style.overflow = 'hidden';
 }
 
-// Cantidad modal
 function cambiarQtyModal(d) {
   modalQty = Math.max(1, modalQty + d);
   document.getElementById('modal-qty').textContent = modalQty;
 }
 
-// Visor imagen
 function abrirZoom() {
   if (!imgZoomSrc) return;
   document.getElementById('img-zoom-src').src = imgZoomSrc;
@@ -1033,117 +1134,167 @@ function cerrarZoom() {
   document.getElementById('img-zoom').classList.remove('open');
 }
 
+// Alternativas con lógica inteligente desde el botón "Sin stock"
 function buscarAlternativas() {
   if (!prodActual) return;
   closeModalBtn();
-  const alt = productos.filter(p=>p.categoria===prodActual.categoria&&p.id!==prodActual.id&&p.stock>0).slice(0,12);
-  document.getElementById('view-inicio').style.display='none';
-  document.getElementById('view-seccion').style.display='';
-  document.getElementById('view-busqueda').style.display='none';
-  document.getElementById('seccion-titulo').textContent='🔍 Alternativas disponibles';
-  document.getElementById('seccion-count').textContent=alt.length+' productos con stock';
-  renderGrid(alt,'grid-seccion');
-  showToast('Mostrando alternativas con stock disponible');
+
+  const alternativas = productos
+    .map(x => ({ prod: x, score: calcularPuntajeAlternativa(prodActual, x) }))
+    .filter(x => x.score > 0)
+    .sort((a, b) => b.score - a.score)
+    .slice(0, 12)
+    .map(x => x.prod);
+
+  document.getElementById('view-inicio').style.display  = 'none';
+  document.getElementById('view-seccion').style.display = '';
+  document.getElementById('view-busqueda').style.display = 'none';
+
+  const baseKeys = extraerPalabrasClave(prodActual.nombre);
+  const tipoLabel = baseKeys.tipo ? `"${baseKeys.tipo}"` : 'este tipo de producto';
+  document.getElementById('seccion-titulo').textContent = `🔍 Alternativas para ${tipoLabel}`;
+  document.getElementById('seccion-count').textContent  = alternativas.length + ' productos con stock';
+  renderGrid(alternativas, 'grid-seccion');
+  showToast('Mostrando las mejores alternativas disponibles');
 }
 
 function consultarDisponibilidad() {
   if (!prodActual) return;
   const productoUrl = `${TIENDA_URL}?producto=${prodActual.id}`;
   const msg = `Hola! Me interesa el producto:\n\n*${prodActual.nombre}*\n🔗 ${productoUrl}\n\n¿Cuándo vuelve a tener stock?`;
-  window.open(`https://wa.me/${WA_NUMERO}?text=${encodeURIComponent(msg)}`,'_blank');
+  window.open(`https://wa.me/${WA_NUMERO}?text=${encodeURIComponent(msg)}`, '_blank');
 }
 
-function closeModal(e){if(e&&e.target!==document.getElementById('modal'))return;closeModalBtn();}
-function closeModalBtn(){document.getElementById('modal').classList.remove('open');document.body.style.overflow='';}
+function closeModal(e) { if (e && e.target !== document.getElementById('modal')) return; closeModalBtn(); }
+function closeModalBtn() { document.getElementById('modal').classList.remove('open'); document.body.style.overflow = ''; }
 
-// ── ASESOR IA ─────────────────────────────────────────────────────────────────
-function preguntaRapida(t){document.getElementById('ia-pregunta').value=t;}
+// ─────────────────────────────────────────────────────────────────────────────
+// ASESOR IA
+// ─────────────────────────────────────────────────────────────────────────────
+function preguntaRapida(t) { document.getElementById('ia-pregunta').value = t; }
 
 async function consultarIA() {
   const pregunta = document.getElementById('ia-pregunta').value.trim();
-  if (!pregunta||!prodActual) return;
-  const key     = prodActual.id+'_'+pregunta;
+  if (!pregunta || !prodActual) return;
+
+  const key     = prodActual.id + '_' + pregunta;
   const respDiv = document.getElementById('ia-respuesta');
   const btnIA   = document.getElementById('btn-ia');
-  if (cacheIA[key]){ respDiv.innerHTML=cacheIA[key]; respDiv.classList.add('show'); return; }
-  btnIA.disabled=true; btnIA.textContent='...';
-  respDiv.innerHTML='⏳ Analizando...'; respDiv.classList.add('show');
 
+  if (cacheIA[key]) { respDiv.innerHTML = cacheIA[key]; respDiv.classList.add('show'); return; }
+
+  btnIA.disabled    = true;
+  btnIA.textContent = '...';
+  respDiv.innerHTML = '⏳ Analizando...';
+  respDiv.classList.add('show');
+
+  // Construir alternativas con la lógica inteligente para el prompt
   const alternativas = productos
-    .filter(p=>p.categoria===prodActual.categoria&&p.id!==prodActual.id&&p.stock>0)
-    .slice(0,6)
-    .map(p=>`- ${p.nombre} (${formatPrecio(p)})`)
+    .map(x => ({ prod: x, score: calcularPuntajeAlternativa(prodActual, x) }))
+    .filter(x => x.score > 20)  // solo las realmente relevantes
+    .sort((a, b) => b.score - a.score)
+    .slice(0, 5)
+    .map(x => `- ${x.prod.nombre} (${formatPrecio(x.prod)})`)
     .join('\n');
 
   const prompt = `Sos el asesor técnico de ARMHEL Ferretería Industrial, Montevideo, Uruguay.
 
 REGLAS ESTRICTAS:
 - Respondé SIEMPRE de manera profesional, técnica y cortés.
-- NUNCA uses lenguaje informal, modismos, apodos ni palabras ofensivas.
-- NUNCA menciones productos que no estén en el catálogo real proporcionado.
+- NUNCA uses lenguaje informal, modismos ni palabras ofensivas.
+- NUNCA menciones productos que no estén en el catálogo proporcionado.
 - Si no tenés certeza, decí que no podés confirmarlo y sugerí consultar por WhatsApp.
 - Respondé en español neutro, claro y preciso.
 - Máximo 4 oraciones.
 
 Producto consultado:
 - Nombre: ${prodActual.nombre}
-- Descripción: ${prodActual.desc||prodActual.descripcion||'Sin descripción disponible'}
+- Descripción: ${prodActual.desc || prodActual.descripcion || 'Sin descripción disponible'}
 - Precio: ${formatPrecio(prodActual)}
-- Stock: ${prodActual.stock>0?prodActual.stock+' unidades disponibles':'SIN STOCK'}
+- Stock: ${prodActual.stock > 0 ? prodActual.stock + ' unidades disponibles' : 'SIN STOCK'}
 
-${alternativas?`Productos alternativos disponibles:\n${alternativas}`:''}
+${alternativas ? `Productos alternativos relevantes disponibles:\n${alternativas}` : ''}
 
 Pregunta del cliente: ${pregunta}`;
 
   try {
-    const res  = await fetch('/api/asesor',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({pregunta:prompt,producto:{nombre:prodActual.nombre,descripcion:prodActual.desc,precio:prodActual.precio,stock:prodActual.stock}})});
+    const res  = await fetch('/api/asesor', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        pregunta: prompt,
+        producto: {
+          nombre:      prodActual.nombre,
+          descripcion: prodActual.desc,
+          precio:      prodActual.precio,
+          stock:       prodActual.stock
+        }
+      })
+    });
     const data = await res.json();
-    const txt  = data.respuesta||'No se pudo responder en este momento.';
-    respDiv.innerHTML = txt.replace(/\n/g,'<br>');
+    const txt  = data.respuesta || 'No se pudo responder en este momento.';
+    respDiv.innerHTML = txt.replace(/\n/g, '<br>');
     cacheIA[key] = respDiv.innerHTML;
-  } catch(e) {
-    respDiv.innerHTML='Error al conectar con el asesor. Consultá por WhatsApp.';
+  } catch (e) {
+    respDiv.innerHTML = 'Error al conectar con el asesor. Consultá por WhatsApp.';
   }
-  btnIA.disabled=false; btnIA.textContent='Consultar';
+  btnIA.disabled    = false;
+  btnIA.textContent = 'Consultar';
 }
 
-// ── MERCADO PAGO ──────────────────────────────────────────────────────────────
+// ─────────────────────────────────────────────────────────────────────────────
+// MERCADO PAGO
+// ─────────────────────────────────────────────────────────────────────────────
 async function pagarMP() {
   if (!prodActual) return;
-  if (!prodActual.stock||prodActual.stock<=0){showToast('Producto sin stock','error');return;}
-  const precio = precioNum(prodActual) * modalQty;
+  if (!prodActual.stock || prodActual.stock <= 0) { showToast('Producto sin stock', 'error'); return; }
   const btn = document.querySelector('.btn-comprar-ahora');
-  if (btn) { btn.textContent='Procesando...'; btn.disabled=true; }
+  if (btn) { btn.textContent = 'Procesando...'; btn.disabled = true; }
   try {
-    const res=await fetch('https://api.mercadopago.com/checkout/preferences',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+MP_ACCESS_TOKEN},body:JSON.stringify({items:[{title:prodActual.nombre,quantity:modalQty,currency_id:'UYU',unit_price:precioNum(prodActual)}],back_urls:{success:TIENDA_URL,failure:TIENDA_URL,pending:TIENDA_URL},auto_return:'approved',statement_descriptor:'ARMHEL FERRETERIA'})});
-    const data=await res.json();
-    if (data.init_point){window.location.href=data.init_point;}
-    else showToast('Error al crear preferencia de pago','error');
-  } catch(e){showToast('Error al conectar con Mercado Pago','error');}
-  if (btn) { btn.textContent='COMPRAR AHORA'; btn.disabled=false; }
+    const res = await fetch('https://api.mercadopago.com/checkout/preferences', {
+      method:  'POST',
+      headers: {'Content-Type':'application/json', 'Authorization':'Bearer '+MP_ACCESS_TOKEN},
+      body:    JSON.stringify({
+        items: [{ title: prodActual.nombre, quantity: modalQty, currency_id: 'UYU', unit_price: precioNum(prodActual) }],
+        back_urls: { success: TIENDA_URL, failure: TIENDA_URL, pending: TIENDA_URL },
+        auto_return: 'approved',
+        statement_descriptor: 'ARMHEL FERRETERIA'
+      })
+    });
+    const data = await res.json();
+    if (data.init_point) { window.location.href = data.init_point; }
+    else showToast('Error al crear preferencia de pago', 'error');
+  } catch (e) { showToast('Error al conectar con Mercado Pago', 'error'); }
+  if (btn) { btn.textContent = 'COMPRAR AHORA'; btn.disabled = false; }
 }
 
-// ── CARRITO ───────────────────────────────────────────────────────────────────
+// ─────────────────────────────────────────────────────────────────────────────
+// CARRITO
+// ─────────────────────────────────────────────────────────────────────────────
 function agregarAlCarrito() {
   if (!prodActual) return;
-  const idx=carrito.findIndex(i=>i.id===prodActual.id);
-  if (idx>=0){carrito[idx].qty+=modalQty;}else{carrito.push({...prodActual,qty:modalQty});}
+  const idx = carrito.findIndex(i => i.id === prodActual.id);
+  if (idx >= 0) { carrito[idx].qty += modalQty; }
+  else { carrito.push({...prodActual, qty: modalQty}); }
   actualizarCarrito();
   showToast('✅ Producto agregado al carrito');
   closeModalBtn();
 }
+
 function actualizarCarrito() {
-  const total=carrito.reduce((s,i)=>s+i.qty,0);
-  document.getElementById('carrito-count').textContent=total;
-  document.getElementById('carrito-float').style.display=total>0?'flex':'none';
-  const items=document.getElementById('cart-items');
-  if (!carrito.length){
-    items.innerHTML='<div class="cart-empty"><span style="font-size:40px">🛒</span><p>Tu carrito está vacío</p></div>';
-    document.getElementById('cart-footer').innerHTML='';return;
+  const total = carrito.reduce((s, i) => s + i.qty, 0);
+  document.getElementById('carrito-count').textContent = total;
+  document.getElementById('carrito-float').style.display = total > 0 ? 'flex' : 'none';
+
+  const items = document.getElementById('cart-items');
+  if (!carrito.length) {
+    items.innerHTML = '<div class="cart-empty"><span style="font-size:40px">🛒</span><p>Tu carrito está vacío</p></div>';
+    document.getElementById('cart-footer').innerHTML = '';
+    return;
   }
-  items.innerHTML=carrito.map((i,idx)=>`
+  items.innerHTML = carrito.map((i, idx) => `
     <div class="cart-item">
-      <div class="cart-item-img">${i.foto?`<img src="${i.foto}" alt="${i.nombre}">`:'📦'}</div>
+      <div class="cart-item-img">${i.foto ? `<img src="${i.foto}" alt="${i.nombre}">` : '📦'}</div>
       <div class="cart-item-info">
         <div class="cart-item-nombre">${i.nombre}</div>
         <div class="cart-item-precio">${formatPrecio(i)}</div>
@@ -1155,40 +1306,52 @@ function actualizarCarrito() {
       </div>
       <button class="cart-remove" onclick="removerItem(${idx})">🗑</button>
     </div>`).join('');
-  const tot=carrito.reduce((s,i)=>s+precioNum(i)*i.qty,0);
-  document.getElementById('cart-footer').innerHTML=`
+
+  const tot = carrito.reduce((s, i) => s + precioNum(i) * i.qty, 0);
+  document.getElementById('cart-footer').innerHTML = `
     <div class="cart-total"><span>Total estimado:</span><span>$ ${tot.toLocaleString('es-UY')}</span></div>
     <button class="btn-comprar-ahora" onclick="pagarCarritoMP()" style="border-radius:10px">Pagar con Mercado Pago</button>`;
 }
-function cambiarQty(idx,d){carrito[idx].qty+=d;if(carrito[idx].qty<=0)carrito.splice(idx,1);actualizarCarrito();}
-function removerItem(idx){carrito.splice(idx,1);actualizarCarrito();}
-function toggleCarrito(){document.getElementById('cart-panel').classList.toggle('open');}
 
-async function pagarCarritoMP(){
-  const btn=document.querySelector('#cart-footer .btn-comprar-ahora');
-  if(btn){btn.textContent='Procesando...';btn.disabled=true;}
-  try{
-    const items=carrito.map(i=>({title:i.nombre,quantity:i.qty,currency_id:'UYU',unit_price:precioNum(i)}));
-    const res=await fetch('https://api.mercadopago.com/checkout/preferences',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+MP_ACCESS_TOKEN},body:JSON.stringify({items,back_urls:{success:TIENDA_URL,failure:TIENDA_URL,pending:TIENDA_URL},auto_return:'approved',statement_descriptor:'ARMHEL FERRETERIA'})});
-    const data=await res.json();
-    if(data.init_point){window.location.href=data.init_point;}
-    else showToast('Error al crear preferencia','error');
-  }catch(e){showToast('Error Mercado Pago','error');}
-  if(btn){btn.textContent='Pagar con Mercado Pago';btn.disabled=false;}
+function cambiarQty(idx, d) {
+  carrito[idx].qty += d;
+  if (carrito[idx].qty <= 0) carrito.splice(idx, 1);
+  actualizarCarrito();
+}
+function removerItem(idx) { carrito.splice(idx, 1); actualizarCarrito(); }
+function toggleCarrito()  { document.getElementById('cart-panel').classList.toggle('open'); }
+
+async function pagarCarritoMP() {
+  const btn = document.querySelector('#cart-footer .btn-comprar-ahora');
+  if (btn) { btn.textContent = 'Procesando...'; btn.disabled = true; }
+  try {
+    const items = carrito.map(i => ({ title: i.nombre, quantity: i.qty, currency_id: 'UYU', unit_price: precioNum(i) }));
+    const res = await fetch('https://api.mercadopago.com/checkout/preferences', {
+      method:  'POST',
+      headers: {'Content-Type':'application/json','Authorization':'Bearer '+MP_ACCESS_TOKEN},
+      body:    JSON.stringify({ items, back_urls: {success:TIENDA_URL,failure:TIENDA_URL,pending:TIENDA_URL}, auto_return:'approved', statement_descriptor:'ARMHEL FERRETERIA' })
+    });
+    const data = await res.json();
+    if (data.init_point) { window.location.href = data.init_point; }
+    else showToast('Error al crear preferencia', 'error');
+  } catch (e) { showToast('Error Mercado Pago', 'error'); }
+  if (btn) { btn.textContent = 'Pagar con Mercado Pago'; btn.disabled = false; }
 }
 
-function showToast(msg,type='success'){
-  const t=document.getElementById('toast');
-  t.textContent=msg;
-  t.style.background=type==='error'?'var(--rojo)':type==='info'?'var(--azul2)':'var(--verde)';
-  t.className='toast show';
-  setTimeout(()=>t.classList.remove('show'),3200);
+function showToast(msg, type = 'success') {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.style.background = type === 'error' ? 'var(--rojo)' : type === 'info' ? 'var(--azul2)' : 'var(--verde)';
+  t.className = 'toast show';
+  setTimeout(() => t.classList.remove('show'), 3200);
 }
 
-// Deep link: abrir producto por URL param
+// ─────────────────────────────────────────────────────────────────────────────
+// DEEP LINK
+// ─────────────────────────────────────────────────────────────────────────────
 function checkDeepLink() {
   const params = new URLSearchParams(window.location.search);
-  const pid = params.get('producto');
+  const pid    = params.get('producto');
   if (pid && productos.length) {
     const p = productos.find(x => x.id === pid);
     if (p) openModal(pid);
