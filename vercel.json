@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "cleanUrls": true,
+  "headers": [
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "no-store" }
+      ]
+    }
+  ],
+  "rewrites": [
+    { "source": "/api/products",                   "destination": "/api/products/index" },
+    { "source": "/api/products/:id",               "destination": "/api/products/[id]" },
+    { "source": "/api/quotations",                 "destination": "/api/quotations/index" },
+    { "source": "/api/quotations/:id",             "destination": "/api/quotations/[id]" },
+    { "source": "/api/quotations/:id/pdf",         "destination": "/api/quotations/[id]" },
+    { "source": "/api/activities",                 "destination": "/api/activities/index" },
+    { "source": "/api/webhooks/mercadopago",       "destination": "/api/webhooks/mercadopago" }
+  ]
+}

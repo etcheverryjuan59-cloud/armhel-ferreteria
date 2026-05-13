@@ -1,0 +1,19 @@
+{
+  "name": "armhel-ino-backend",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node server.dev.js",
+    "check": "node --check api/products/index.js && node --check api/products/[id].js && node --check api/quotations/index.js && node --check api/quotations/[id].js && node --check api/activities/index.js && node --check api/webhooks/mercadopago.js && node --check lib/firebase.js && node --check firestore/schema.js"
+  },
+  "dependencies": {
+    "firebase-admin": "^13.0.0"
+  },
+  "devDependencies": {
+    "dotenv": "^16.4.5"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

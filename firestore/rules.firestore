@@ -1,0 +1,118 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ── Helpers ──────────────────────────────────────────────────────────────
+
+    function isAuth() {
+      return request.auth != null;
+    }
+
+    function userId() {
+      return request.auth.uid;
+    }
+
+    // Verifica que el usuario pertenezca a la org con un rol específico o superior
+    function hasRole(orgId, role) {
+      let membership = get(/databases/$(database)/documents/users/$(userId())).data.memberships;
+      return membership.hasAny([{ orgId: orgId, role: role }]);
+    }
+
+    function isOwnerOrAdmin(orgId) {
+      return hasRole(orgId, 'owner') || hasRole(orgId, 'admin');
+    }
+
+    function isOperatorOrAbove(orgId) {
+      return isOwnerOrAdmin(orgId) || hasRole(orgId, 'operator');
+    }
+
+    function isMember(orgId) {
+      return isOperatorOrAbove(orgId) || hasRole(orgId, 'viewer');
+    }
+
+    function belongsToOrg(orgId) {
+      return request.resource.data.orgId == orgId;
+    }
+
+    // ── Users ─────────────────────────────────────────────────────────────────
+
+    match /users/{userId} {
+      allow read: if isAuth() && (request.auth.uid == userId);
+      allow write: if isAuth() && (request.auth.uid == userId);
+    }
+
+    // ── Organizations ────────────────────────────────────────────────────────
+
+    match /organizations/{orgId} {
+      allow read: if isAuth() && isMember(orgId);
+      allow update: if isAuth() && isOwnerOrAdmin(orgId);
+      allow create: if isAuth();  // solo el primer setup
+      allow delete: if false;     // nunca se borran orgs
+    }
+
+    // ── Products ─────────────────────────────────────────────────────────────
+
+    match /organizations/{orgId}/products/{productId} {
+      // Lectura pública para la tienda (productos con visibleInStore: true)
+      allow read: if resource.data.visibleInStore == true
+                  || (isAuth() && isMember(orgId));
+
+      allow create: if isAuth() && isOperatorOrAbove(orgId) && belongsToOrg(orgId);
+      allow update: if isAuth() && isOperatorOrAbove(orgId);
+      allow delete: if isAuth() && isOwnerOrAdmin(orgId);
+    }
+
+    // ── Suppliers ────────────────────────────────────────────────────────────
+
+    match /organizations/{orgId}/suppliers/{supplierId} {
+      allow read:   if isAuth() && isMember(orgId);
+      allow write:  if isAuth() && isOperatorOrAbove(orgId);
+      allow delete: if isAuth() && isOwnerOrAdmin(orgId);
+    }
+
+    // ── Clients ──────────────────────────────────────────────────────────────
+
+    match /organizations/{orgId}/clients/{clientId} {
+      allow read:   if isAuth() && isMember(orgId);
+      allow create: if isAuth() && isOperatorOrAbove(orgId) && belongsToOrg(orgId);
+      allow update: if isAuth() && isOperatorOrAbove(orgId);
+      allow delete: if isAuth() && isOwnerOrAdmin(orgId);
+    }
+
+    // ── Quotations ───────────────────────────────────────────────────────────
+
+    match /organizations/{orgId}/quotations/{quotationId} {
+      allow read:   if isAuth() && isMember(orgId);
+      allow create: if isAuth() && isOperatorOrAbove(orgId) && belongsToOrg(orgId);
+      allow update: if isAuth() && isOperatorOrAbove(orgId);
+      allow delete: if isAuth() && isOwnerOrAdmin(orgId);
+    }
+
+    // ── Orders ───────────────────────────────────────────────────────────────
+
+    match /organizations/{orgId}/orders/{orderId} {
+      allow read:   if isAuth() && isMember(orgId);
+      // Las órdenes las crea el backend vía Admin SDK (webhook MP)
+      // No se permiten escrituras desde el cliente directamente
+      allow create: if false;
+      allow update: if isAuth() && isOwnerOrAdmin(orgId);
+      allow delete: if false;
+    }
+
+    // ── Activities ───────────────────────────────────────────────────────────
+
+    match /organizations/{orgId}/activities/{activityId} {
+      allow read:   if isAuth() && isMember(orgId);
+      // Las actividades solo las escribe el backend (Admin SDK)
+      allow write:  if false;
+    }
+
+    // ── Automations ──────────────────────────────────────────────────────────
+
+    match /organizations/{orgId}/automations/{automationId} {
+      allow read:   if isAuth() && isMember(orgId);
+      allow write:  if isAuth() && isOwnerOrAdmin(orgId);
+    }
+  }
+}
